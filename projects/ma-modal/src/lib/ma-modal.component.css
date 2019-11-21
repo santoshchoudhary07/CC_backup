@@ -1,0 +1,12 @@
+.popup .popup-body {
+    padding: 15px 22px 15px;
+    max-height: calc(100vh - 62px);
+    max-width: calc(100vw - 20px);
+}
+
+.popup-body {
+    max-height: 90vh;
+    max-width: 90vw;
+    overflow: auto;
+    min-height: 130px;
+}

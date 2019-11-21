@@ -1,0 +1,53 @@
+﻿#CentralLoginForm .account-header {
+	font-size: 12pt;
+	font-weight: bold;
+}
+		
+#CentralLoginForm .account-detail {
+	font-size: 10pt;
+}
+		
+#CentralLoginForm .highlight {
+	background-color: rgb(3, 102, 221);
+	color: white;
+	cursor: pointer;
+}
+		
+#EditPasswordForm header {
+	padding-bottom: 15px;
+}
+
+#EditPasswordForm input, #EditPasswordForm select {
+	width: 290px;
+}
+
+#RecoverCredentialsForm #Email {
+	width: 172px;
+}
+
+#RecoverCredentialsForm #PasswordAnswer {
+	width: 196px;
+}
+
+#RecoverCredentialsForm #Username {
+	display: inline;
+	width: 175px;
+}
+
+#RecoverCredentialsForm #UserNotFoundLabel {
+	color: Red;
+}
+
+#RecoverCredentialsForm .form-foot {
+	padding-top: 21px;
+}
+
+#RecoverCredentialsForm .form-head {
+	padding-bottom: 21px;
+}
+
+.pstrength-minchar{
+	font-size: 7pt;
+	padding-bottom: 5px;
+	width: 310px;
+}

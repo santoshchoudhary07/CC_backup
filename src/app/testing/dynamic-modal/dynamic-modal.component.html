@@ -1,0 +1,47 @@
+<ma-dynamic-modal [title]="'Form'" [(isModalOpen)]="isOpen">
+  <div class="form">
+    <form novalidate="" class="ng-untouched ng-pristine ng-invalid">
+      <div class="form-body">
+        <section class="section section-light-blue" id="content-1">
+          <header class="section-head">
+            <h3 class="section-title">Start Template</h3>
+          </header>
+          <div class="section-body section-body-solid-dark">
+            <div class="form form-questions">
+              <div class="form-body">
+                <section class="section section-light-blue-secondary">
+                  <header class="section-head">
+                    <h4 class="section-title">Basic Information</h4>
+                  </header>
+                  <div class="section-body section-body-light">
+                    <div>
+                      <div class="form-row"><label class="form-label" for="field-1#">Name <span
+                            class="form-asterisk">*</span></label>
+                        <div class="form-controls"><input class="field" id="name" maxlength="100" name="name"
+                            placeholder="name" required="" typeof="text">
+                        </div>
+                      </div>
+                      <div class="form-row"><label class="form-label" for="field-1#">Description</label>
+                        <div class="form-controls"><textarea class="field" id="description" maxlength="255"
+                            name="description" placeholder="description"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="form-actions">
+                <div class="btns-group top-gutter-15">
+                  <div class="btn-holder"><button class="btn btn-left btn-small" type="button"
+                      (click)="close()">Create</button><button class="btn btn-right btn-small" type="button"
+                      (click)="close()">Cancel</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </form>
+  </div>
+</ma-dynamic-modal>

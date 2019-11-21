@@ -1,0 +1,52 @@
+<div class="form">
+  <div class="section-body section-body-light">
+    <div class="form-row">
+      <div class="form-label">Checkbox</div>
+      <div class="form-controls">
+        <!-- <app-checkbox [(ngModel)]="name" [checkBoxValue]="'company'" [disabled]=false [readonly]=false [required]=false [id]="'checkbox-id'"
+          [name]="'checkbox-name'" (maCheckBoxChange)="maCheckBoxChange($event)">abc</app-checkbox> -->
+          <!-- <ma-checkbox [(ngModel)]="name" [checkBoxValue]="true" [disabled]=false [readonly]=false [required]=false [id]="'checkbox-id'"
+          [name]="'checkbox-name'" (maCheckBoxChange)="maCheckBoxChange($event)">Company</ma-checkbox> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<form [formGroup]="profileForm">
+  <label>
+    First Name:
+    <input type="text" formControlName="firstName">
+  </label>
+  <br>
+  <label>
+    Last Name:
+    <input type="text" formControlName="lastName">
+  </label>
+  <br>
+  <div class="form">
+    <div class="accordion">
+      <div class="accordion-section accordion-section-expanded">
+        <div class="accordion-body">
+          <div class="form-body">
+            <div class="form-row">
+              <label class="form-label">checkbox</label>
+              <div class="form-controls">
+                <!-- <ma-checkbox formControlName="name" [checkBoxValue]="'abc'" [disabled]=false [readonly]=false [required]=true [id]="'checkbox-id'"
+                [name]="'checkbox-name'" (maCheckBoxChange)="maCheckBoxChange($event)">abc</ma-checkbox> -->
+                <ma-checkbox formControlName="name" [checkBoxValue]="1" [disabled]=false [readonly]=false [required]=true [id]="'checkbox-idvxc'"
+                [name]="'checkbox-name'" (maCheckBoxChange)="maCheckBoxChange($event)">Company</ma-checkbox>
+                <!-- <input formControlName="name" type="checkbox" name="vehicle1" value="Bike"> I have a bike<br> -->
+                <div class="color-attention "
+              *ngIf="profileForm.controls['name'].touched &&  !profileForm.controls['name'].valid && profileForm.controls['name'].errors.required">
+              Title is required.
+          </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button (click)="submit()" [disabled]="profileForm.invalid">submit</button>
+</form>

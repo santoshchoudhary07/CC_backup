@@ -1,0 +1,156 @@
+TABLE	{
+	WIDTH:		100%;			}
+
+IFRAME.tabMatte		{
+	WIDTH:		100%; 	
+	HEIGHT: 	100%;		}
+
+BODY.stdBody		{
+	BACKGROUND: 		url(../images/page_bg.gif);
+	PADDING: 		5px 5px;
+	MARGIN: 		0px;
+	FONT: 			11px ARIAL;
+	HEIGHT: 		100%;			}
+
+BODY		{
+	MARGIN: 		0px;
+	FONT: 			10px ARIAL;		}
+
+SELECT	{
+	WIDTH:				100%;
+	FONT:				11px ARIAL;
+	CURSOR:				HAND;			}
+INPUT.text	{
+	WIDTH:				100%;
+	FONT:				11px ARIAL;		}
+TEXTAREA	{
+	WIDTH:				100%;
+	FONT-SIZE:			11px;			}
+BUTTON	{
+	FONT:				11px ARIAL;
+	CURSOR:				HAND;		}
+TABLE.frmStruct
+{
+    BORDER-RIGHT: #cccccc 1px solid;
+    BORDER-TOP: #cccccc 1px solid;
+    BORDER-LEFT: #cccccc 1px solid;
+    WIDTH: 100%;
+    BORDER-BOTTOM: #cccccc 1px solid;
+    HEIGHT: 100%;
+    BACKGROUND-COLOR: #ffffff
+}
+TD.frmStructHdr
+{
+    xBACKGROUND: 		url(../images/hdr_bg.gif);
+    BACKGROUND-COLOR:		#5588cc;
+    PADDING:	4px 4px;
+    FONT: BOLD 14px ARIAL;
+    COLOR: #ffffff;
+    BORDER-BOTTOM: #2a1aaf 1px SOLID;
+    HEIGHT: 20px;				}
+
+TD.frmStructMatte
+{
+    PADDING-RIGHT: 5px;
+    PADDING-LEFT: 5px;
+    PADDING-BOTTOM: 5px;
+    VERTICAL-ALIGN: top;
+    PADDING-TOP: 5px
+}
+TABLE.mtteStruct
+{
+    BORDER-TOP: #a9a9a9 1px SOLID;
+    BORDER-BOTTOM: #e6e6fa 1px INSET;
+    BORDER-LEFT: #a9a9a9 1px SOLID;
+    BORDER-RIGHT: #e6e6fa 1px INSET;
+    FILTER: progid:DXImageTransform.Microsoft.Gradient(
+			GradientType=0, 
+			StartColorStr='#10000000', 
+			EndColorStr='#A0000000');
+
+    WIDTH: 100%;
+    HEIGHT: 100%
+}
+TD.mtteStruct
+{
+    PADDING-RIGHT: 8px;
+    PADDING-LEFT: 8px;
+    PADDING-BOTTOM: 10px;
+    VERTICAL-ALIGN: top;
+    PADDING-TOP: 10px;
+}
+TABLE.mtteInsetStruct			{
+	WIDTH:				100%; 
+	HEIGHT:				100%; 
+	BACKGROUND-COLOR:	#FFFFFF; 
+	BORDER-TOP:			#a9a9a9 1px SOLID;
+	BORDER-BOTTOM:		#e6e6fa 1px SOLID;
+	BORDER-LEFT:		#a9a9a9 1px SOLID;
+	BORDER-RIGHT:		#e6e6fa 1px OUTSET;			}
+TD.mtteInsetStruct			{
+	PADDING: 10px 10px;			}
+
+
+TD.frmLbl			{
+	VERTICAL-ALIGN:		TOP;
+	WIDTH:			185px;
+	HEIGHT:			25px;
+	BACKGROUND:		url(../images/label_bg.gif) no-repeat;
+	FONT:			BOLD 11px ARIAL;
+	PADDING:		4px 4px;			}
+	
+TD.frmRight			{
+	FONT:			11px ARIAL;			}
+
+.tabFormGroup		{
+	padding: 10px;
+	border: 1px inset #cccccc;
+	VERTICAL-ALIGN: TOP;		}
+.tabFormGroupHeader		{
+	padding: 0 5 0 5;
+	margin-left: 5px;
+	position: relative;
+	top: 7px;
+	background: white;
+	color: #447AC2;
+	font-weight: bold;
+	font-size: 12px;		}
+
+DIV.roRight		{
+	FONT:	BOLD 11px Arial;
+	BACKGROUND-COLOR: #f5f5f5; 
+	PADDING: 2px 5px;
+	WIDTH:	60%;
+	BORDER:	#EFEFEF 1px SOLID;		}
+
+INPUT.roRight			{
+	HEIGHT: 		20px; 
+	FONT: 			BOLD 11px Arial; 
+	BACKGROUND-COLOR: 	#f5f5f5; 
+	PADDING: 2px 5px; 	
+	WIDTH:	60%; 
+	BORDER:	#EFEFEF 1px SOLID;			}
+
+
+TABLE.mtteInsetTabFmt		{
+    WIDTH:				100%;
+    HEIGHT:				100%		}
+
+TD.mtteInsetTabFmt		{
+    BORDER-RIGHT:		#CCCCCC 1px OUTSET;
+    PADDING-RIGHT:		5px;
+    PADDING-LEFT:		5px;
+    PADDING-BOTTOM:		3px;
+    VERTICAL-ALIGN:		TOP;
+    BORDER-LEFT:		#CCCCCC 1px SOLID;
+    PADDING-TOP:		4px;
+    BORDER-BOTTOM:		#CCCCCC 1px OUTSET;
+    BACKGROUND-COLOR:		#FFFFFF		}
+
+TABLE.tabFormGroupSection		{
+	FONT: 	11px ARIAL; 
+	WIDTH: 	100%;			}
+
+SPAN.reqFieldLbl		{
+	FONT: BOLD 10px ARIAL; 
+	COLOR: RED;			}

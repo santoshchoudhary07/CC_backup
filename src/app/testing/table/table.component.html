@@ -1,0 +1,28 @@
+<div class="wrapper">
+  <div class="container">
+    <main class="main">
+      <div class="main-body">
+        <div class="shell">
+          <section class="section main-body-wrapper">
+            <input type="text" [(ngModel)]="name" (ngModelChange)="search()" />
+
+            <div class="section-body">
+              <!-- <input [(ngModel)]="searchTextId" placeholder="Search Id.." class="advancedSearchTextbox">
+              <input [(ngModel)]="searchTextName" placeholder="Search Name.." class="advancedSearchTextbox">
+              <input [(ngModel)]="searchTextAny" placeholder="Search Any.." class="advancedSearchTextbox">
+              <ma-pagination (filteredList)="pageChanged($event)" [paginationList]="tableList" [pageSize]=3 [pageSizeList]="[1,3,5]">
+              </ma-pagination> -->
+              <!-- {{tableList.length}} -->
+              <!-- <ma-table [(options)]="options" [(list)]="tableList" [checkBoxBindProperty]="'isChecked'" [selectPlaceholder]="'--'"
+                [selectList]="tableList" [selectDisplayProperty]="'id'" [selectBindProperty]="'bind'" [selectValueProperty]="'id'"
+                [dateFormat]="'MM/dd/yyyy'" [loaderImagePath]="'./assets/Common/CSS/images/loading-small.gif'"
+                (listChange)="sortingChange($event)" (maTableInputOnChange)="maTableInputOnChange($event)"
+                (editData)="edit($event)"></ma-table> -->
+                <ma-table [(options)]="options" [(list)]="fighters"></ma-table>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>

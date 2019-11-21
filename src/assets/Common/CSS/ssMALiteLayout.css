@@ -1,0 +1,122 @@
+/*****************************************************
+LAYOUT & GENERAL CLASSES
+*****************************************************/
+	/*****************************************************
+		Page Level
+	*****************************************************/	
+	.wFull
+	{
+		width:100%;
+	}
+	/*****************************************************
+	*****************************************************/
+
+	
+	/*****************************************************
+		Page Level
+	*****************************************************/
+	.pgHdr
+	{
+		width:100%;
+		border:1px solid #999999;
+		background-color:#777777;
+		text-align:left;
+		margin:0 0 10 0;
+	}
+	
+	.pgHdr .pgTitle
+	{
+		color:#fff;
+		font:bold 9pt verdana;
+		padding:3 4 3 4;
+	}
+	
+	.pgBody
+	{
+		width:100%;
+	}
+	
+	.pgBodyPad
+	{
+		padding: 0 10 10 10;
+	}
+	/*****************************************************
+	*****************************************************/
+	
+	/*****************************************************
+		Forms
+	*****************************************************/
+	.frm
+	{
+		font: normal 8pt verdana;
+	}
+
+	.frmLbl
+	{
+		xbackground: url(../../../common/img/label_bg.png) no-repeat;
+		margin: 3 0 0 0;
+		font:normal 8pt verdana;
+		float:left; 
+		width:175px;
+		vertical-align:top; 
+		text-align:left; 
+		padding:0 0 5 5;
+	}
+
+	.frmInfo
+	{
+		text-align:left; 
+		vertical-align:top; 
+		padding:0 0 0 0;
+		float:left;								
+		clear:right;
+	}
+	
+	.frmInfoWidthStnd
+	{
+		width:500px;
+	}
+	
+	.frm span.subLabel
+	{
+		font: italics 8pt verdana;
+		color: #000;
+	}
+	/*****************************************************
+	*****************************************************/
+	
+	/*****************************************************
+		Wrappers
+	*****************************************************/
+	fieldset
+	{
+		padding:0 10 10 10;
+		font: normal 8pt verdana;
+	}
+
+	fieldset legend.pWrapper
+	{
+		font: bold 9pt verdana;
+		color: #447AC2;
+		background: #fff;
+		border: 1px solid #d5dfe5;
+		padding: 2px 6px;
+	} 
+	
+	fieldset legend.sWrapper
+	{
+		color: #3a3a3a;
+		border: 1px solid #d5dfe5;
+		padding: 2px 6px;
+		font: bold 8pt verdana;
+		background: #f0f0f0;
+	} 
+	
+	fieldset div.bdyPad
+	{
+		padding-top:8px;
+	}
+	/*****************************************************
+	*****************************************************/
+/*****************************************************
+*****************************************************/

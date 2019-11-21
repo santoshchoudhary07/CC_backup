@@ -1,0 +1,11 @@
+/*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~
+:::ELEMENTS
+:::::: Reset CSS to remove browser defaults
+~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*/
+html, body{height: 100%;max-height:100%;font-family: arial,sans-serif;font-size: 9pt;color: #000000;background-color:#fff;}
+html, body, div, p, h1, h2, h3, h4, img, span, ul, li, legend, table, td, fieldset, ol, form, label, button{margin: 0; padding: 0; border:0;}
+button, div, legend, p, select, label, input[type=button], input[type=password], input[type=text], input[type=radio], input[type=submit]{font-size:8pt;font-family: arial,sans-serif;}
+table{border-collapse: collapse;}
+li{list-style:none;}
+ul, ol{list-style-type: none;}
+textarea{resize: none;font-size: 9pt;font-family: arial,sans-serif;}

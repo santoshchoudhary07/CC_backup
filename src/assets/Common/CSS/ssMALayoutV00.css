@@ -1,0 +1,501 @@
+/*****************************************************
+Generic Elements
+*****************************************************/
+		table	{
+			border-collapse:collapse;
+			font:normal 8pt verdana;
+			border-spacing:0;			}
+
+		select	{
+			font:normal 8pt verdana;
+			cursor:pointer;			}
+		
+		input	{
+			font:normal 8pt verdana;
+			/*cursor:expression(this.type=="radio"||this.type=="checkbox"?"pointer":"auto");*/
+					}
+			
+		textarea {
+			font:normal 8pt verdana;		}
+
+		iframe		{
+			width:100%;		}
+
+		button	{
+			font:normal 8pt verdana;
+			cursor:pointer;		}
+	/*****************************************************
+	Generic Elements Formatting
+	*****************************************************/
+		.alignRight	{
+			text-align:right;		}
+			
+		.alignLeft	{
+			text-align:left;		}
+			
+		.alignCenter	{
+			text-align:center;		}
+			
+		.spanAcross	{
+			width:100%;		}
+			
+		.err {
+			background-color:khaki;
+			color:red; 
+			border-top:solid 1px #CCCCCC;
+			border-left:solid 1px lightblue;
+			border-right:solid 1px lightblue;
+			border-bottom:solid 1px lightblue;		}
+			
+		.elemRO		{
+			background-color:#efefef;
+			border:1px #b8b8b8 solid;
+			padding:0 3 0 3;
+			color:#808080;			}
+			
+		.stndFont	{
+			font:normal 8pt verdana;		}
+/****************************************************/
+
+/*****************************************************
+Element.Class
+*****************************************************/
+		select.fmtWidth	{
+			width:60%;			}
+			
+		input.fmtWidth		{
+			/*width:expression(this.type=="text"?"60%":"auto");			*/
+			}
+
+		span.lblReqField		{
+			font:bold 8pt verdana; 
+			color:red;			}
+			
+		span.aLink			{
+			color:blue;
+			cursor:pointer;
+			text-decoration: underline;		}
+	/*****************************************
+	Element::Body
+	Sample:	<BODY class="bdyMa [Optional Class: bdyMaBgImg] [Optional Class: bdyMaBgGradient]">..</BODY>
+	*****************************************/
+		body.bdyMa 		{
+			background-color:#fff;
+			text-align:center;
+			height:100%;
+			width:100%;
+			vertical-align:top;
+			margin:0 0 0 0;		}
+			
+		body.bdyMaBgImg 		{
+			padding:5px;
+			background:url(../img/page_bg.png);		}
+	/****************************************/
+/****************************************************/
+
+/*****************************************************
+Layout Canvas
+*****************************************************/
+	/*****************************************
+	Element.Class::table.canvas
+	*****************************************/
+		table.canvas			{
+			border-right:#cccccc 1px solid;
+			border-top:#cccccc 1px solid;
+			border-left:#cccccc 1px solid;
+			border-bottom:#cccccc 1px solid;
+			height:100%;
+			background-color:#ffffff;			}
+
+		table.canvas td.canvasHdr		{
+			font:bold 10pt verdana;
+			background-color:#5588cc;
+			padding:4px 4px;
+			height:25px;
+			color:#ffffff;
+			border-bottom:#2a1aaf 1px solid;		}
+
+		table.canvas td.canvasBody		{			
+			background-color:#ffffff;
+			padding-right:5px;
+			padding-left:5px;
+			padding-bottom:5px;
+			padding-top:5px;
+			vertical-align:top;			}
+
+		table.canvas td.canvasFtr		{
+			background-color:#5588cc;
+			padding:4px 4px;
+			height:25px;
+			color:#ffffff;
+			border-top:#2a1aaf 1px solid;		}
+	/****************************************/
+/****************************************************/
+
+/*****************************************************
+Layout Canvas Matte
+*****************************************************/
+	/*****************************************
+	Element.Class::table.matte
+	*****************************************/
+		table.matte			{
+			border-top:#000000 1px SOLID;
+			border-bottom:#000000 1px INSET;
+			border-left:#000000 1px SOLID;
+			border-right:#000000 1px INSET;
+			background-color:#999999;
+			width:100%;
+			height:100%;			}
+
+		td.matteBody		{
+			padding-right:8px;
+			padding-left:8px;
+			padding-bottom:8px;
+			padding-top:8px;
+			vertical-align:top;		}
+
+	/*****************************************
+	Element.Class::table.matte
+	Comments:	Generic inset layout
+	*****************************************/
+		table.matteInset			{
+			border-collapse:collapse;
+			width:100%;
+			height:100%;
+			background-color:	#ffffff; 
+			border-top:#a9a9a9 1px solid;
+			border-bottom:#e6e6fa 1px solid;
+			border-left:#a9a9a9 1px solid;
+			border-right:#e6e6fa 1px outset;				}
+
+		table.matteInset td.matteInsetBody		{
+			vertical-align:top;
+			padding-top:0px;
+			padding-left:10px;
+			padding-right:10px;
+			padding-bottom:10px;			}
+
+	/*****************************************
+	Element.Class::table.matte
+	Comments:	Use for Tab layout
+	*****************************************/
+		table.matteInsetTab		{
+			width:100%;
+			height:100%;			}
+
+		table.matteInsetTab td.matteInsetHdr		{
+			padding:0 0;
+			height:20px;				}
+
+		table.matteInsetTab td.matteInsetBody		{
+			border-top:#cccccc 1px solid;
+			border-right:#cccccc 1px outset;
+			border-left:#cccccc 1px solid;
+			border-bottom:#cccccc 1px outset;
+			padding-top:0px;
+			padding-right:10px;
+			padding-left:10px;
+			padding-bottom:10px;
+			vertical-align:top;
+			background-color:#ffffff;		}
+
+		table.matteSizing		{
+			border-collapse:collapse;
+			border-style:hidden;
+			padding:0 0;
+			width:100%;
+			height:100%;			}
+
+		table.matteSizing td		{
+			vertical-align:top;		}
+
+	/*****************************************
+	Element.Class::div
+	Comments:	Use for Tabs
+	*****************************************/
+		div.tabSpacing		{
+			float:left;
+			width:6px;				}
+
+		div.tabItem		{
+			width:inherit;
+			position:relative;
+			top:1px;
+			float:left;
+			height:22px;
+			padding-top:3px;
+			padding-bottom:3px;
+			padding-left:10px;
+			padding-right:10px;
+			border-top:#c8c8c8 1px solid;
+			border-bottom:#cccccc 1px solid;
+			border-right:#c8c8c8 1px solid;
+			font:bold 8pt verdana;
+			background-color:#c8c8c8;
+			cursor:pointer;
+			color:#c8c8c8;
+			filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#00c8c8c8', EndColorStr='#ff696969');			}
+
+		div.tabItemTmp		{
+			position:relative;
+			top:1px;
+			float:left;
+			height:22px;
+			padding-top:3px;
+			padding-bottom:3px;
+			padding-left:10px;
+			padding-right:10px;
+			border-top:#c8c8c8 1px solid;
+			border-right:#c8c8c8 1px solid;
+			font:bold 8pt verdana;
+			cursor:default;
+			color:#000000;
+			background-color:#ffffff;			}
+	/****************************************/
+/****************************************************/
+
+/*****************************************************
+Generic Classes
+*****************************************************/
+	/*****************************************
+		Class::.bdyMinWidth###
+		Comment:	Lock BODY width to allow for h-scroll and 
+							page layout integrity
+		Sample:
+				<body class="[Optional Class] bdyMinWidth600">..</TABLE>							
+	/****************************************/
+		.bdyMinWidth600	{
+			/*width:expression(document.body.clientWidth<=600?"600":"100%");		*/
+			}
+			
+		.bdyMinWidth	{
+			/*width:expression(document.body.clientWidth<=800?"800":"100%");		*/
+					}
+	/****************************************/
+
+	.alignTopLeft		{
+		vertical-align:top;
+		text-align:left		}
+/****************************************************/
+
+
+/*****************************************************
+Form Section 
+*****************************************************/
+	.spacing00		{
+		height:21px;			}
+		
+	.frmInputBlock		{
+		vertical-align:top;
+		float:left;
+		padding:0 4 0 4;
+		width:350px;			}
+
+	.frmSection			{
+		border-spacing: 0;
+		border-collapse:collapse;
+		border-top:#cccccc 1px outset;
+		border-left:#cccccc 1px outset;
+		border-bottom:#cccccc 1px inset;
+		border-right:#cccccc 1px inset;
+		background-color:Transparent;
+		text-align:left;
+		}
+
+	.frmSectionBody			{
+		text-align:left;
+		padding: 14 10 10 10;
+		background-color:Transparent;
+		font:normal 9pt verdana;				}
+		
+	.frmSectionBodyNoTopPadding			{
+		text-align:left;
+		padding: 0 10 10 10;
+		background-color:Transparent;
+		font:normal 9pt verdana;				}
+
+	.frmSectionLabel			{
+		float:left;
+		background-color:#ffffff;
+		padding:2 7 2 7;
+		font:bold 9pt verdana;
+		color:#447AC2;
+		z-index:6;					}
+
+	.frmPosSectionLabelCollapse
+	{
+		position:relative; 
+		top:8px;
+		left:0px;
+	}
+	
+	.frmPosSectionLabelCollapseImg
+	{
+		position:relative; 
+		top:8px;
+		left:8px;
+	}
+	
+	.frmPosSectionLabelNoCollapse
+	{
+		position:relative; 
+		top:10px;
+		left:4px;	
+	}
+
+	.frmSubSectionLabel			{
+		position:relative; 
+		top:6px;
+		left:4px;
+		float:left;
+		background-color:#ffffff;
+		margin: 4 0 0 4;
+		padding: 0 5 0 2;
+		font:bold 8pt verdana;
+		color:#999999;
+		z-index:6;					}
+
+	.frmSubSectionMargin			{
+		margin: -12 0 0 0;			}
+
+	.frmInputVerticalLabel			{
+		border-left:#efefef 4px solid;
+		font:normal 8pt verdana;
+		float:left; 
+		text-align:left; 
+		padding-top:1px;
+		padding-left:2px;
+		padding-bottom:0px;
+		white-space:nowrap;							}
+
+	div.frmInputVerticalSection			{
+		padding-left:0px;
+		padding-top:0px;
+		padding-bottom:1px;
+		float:left;
+		clear:both;							}
+
+	div.frmInputHorizontalLabel			{
+		background:url(../img/label_bg.png) top left no-repeat;	
+		margin: 3 0 0 0;
+		font:normal 8pt verdana;
+		float:left; 
+		width:175px;
+		vertical-align:top; 
+		text-align:left; 
+		padding:0 0 5 5;				}
+		
+	td.frmInputHorizontalLabel			{
+		width:175px;		}
+		
+	div.frmInputHorizontalLabelShort			{
+		background:url(../img/label_bg_Short.png) top left no-repeat;	
+		margin: 3 0 0 0;
+		font:normal 8pt verdana;
+		float:left; 
+		width:110px;
+		vertical-align:top; 
+		text-align:left; 
+		padding:0 0 5 5;				}
+		
+	div.frmInputHorizontalLabel span.notation			{
+		font:italic 6pt verdana;				}
+
+	div.frmInputHorizontalSection			{
+		text-align:left; 
+		vertical-align:top; 
+		width:175px;
+		padding:0 0 0 0;
+		float:left;								
+		clear:right;			}
+	
+	div.frmInputHorizontalSectionRO			{
+		color:#808080;
+		width:175px;
+		text-align:left; 
+		vertical-align:top; 
+		font:normal 8pt verdana;
+		margin: 0 0 0 0;
+		background-color:#efefef;
+		border:1px #b8b8b8 solid;
+		padding:1 1 3 3;
+		float:left;
+		clear:right;			}
+		
+	div.frmFloatInfo		{
+		float:left;
+		padding:0 4 0 0;		}
+/****************************************************/
+
+/*****************************************************
+Line Items 
+*****************************************************/
+	.standardLineItem		{
+		background-color:#e8e8e8;
+		width:100%;			}
+
+	.standardLineItemHdr			{
+		text-align:center;
+		vertical-align: middle;
+		padding:4 2 4 2;
+		font: bold 7pt verdana;
+		background-color:#c8c8c8;
+		color:#d0d0d0;
+		background: url(../img/imgStandardLiHdr.png) repeat center;			}
+		
+	.standardLineItemRowHdr			{
+		vertical-align:middle;
+		padding:2 2 2 2;
+		font: normal 8pt verdana;
+		background-color:#ffffff;
+		color:#000000;
+		filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#005588CC', EndColorStr='#505588CC');				}
+		
+	.standardLineItemRowCell			{
+		vertical-align: top;
+		padding:2 2 2 2;
+		font: normal 8pt verdana;
+		background-color:#ffffff;
+		color:#000000;							}
+		
+	.standardLineItemSectionV00		{
+		border-spacing:0;
+		padding: 0 0 0 0;
+		width:100%;
+		border-collapse:collapse;
+		border:1px solid #999999;
+		background-color:Transparent;		}
+
+	.standardLineItemBlockV00		{
+		background-color:#e8e8e8;			}
+
+	.standardLineItemHdrX2V00			{
+		text-align:center;
+		vertical-align: middle;
+		padding:4 2 4 2;
+		font: bold 7pt verdana;
+		background-color:#c8c8c8;
+		color:#d0d0d0;
+		background: url(../img/imgStandardLiHdrX2.png) repeat center left;			}
+		
+	.standardLineItemHdrV00			{
+		text-align:center;
+		vertical-align: middle;
+		padding:4 2 4 2;
+		font: bold 7pt verdana;
+		background-color:#c8c8c8;
+		color:#d0d0d0;
+		background: url(../img/imgStandardLiHdr.png) repeat center left;			}
+			
+	.standardLineItemRowCellV00			{
+		vertical-align: top;
+		padding:2 2 2 2;
+		font: normal 8pt verdana;
+		background-color:#ffffff;
+		color:#000000;							}
+		
+	.standardLineItemFooterV00			{
+		width:100%;
+		background-color:#c8c8c8;
+		filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#00c8c8c8', EndColorStr='#ffaaaaaa');				}
+/****************************************************/

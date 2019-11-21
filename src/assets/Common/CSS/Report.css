@@ -1,0 +1,74 @@
+﻿
+body{
+	font-family: verdana;
+	font-size: 10px;
+    margin: 0px 0px 0px 0px;
+}
+
+table{
+	font-family: verdana;
+	font-size: 10px;
+	border-collapse:collapse;
+}
+
+select {
+	font-family: verdana;
+	font-size: 10px;
+}
+
+table.data td{
+	border:1px solid #dddddd;
+	vertical-align:top;
+	padding-left:2px;
+	padding-right:2px;
+    white-space: nowrap;
+    text-align:right;
+}
+
+.total td{
+	vertical-align:top;
+	font-weight:bold;
+}
+
+.total .numdata{
+	border-top:2px solid black;
+	border-bottom:4px double black;
+}
+
+
+.reportheader th{
+	border:1px solid black;
+	text-align:center;
+	background: #ddeeff;
+	vertical-align:middle;
+	padding:2px;
+	font-weight: bold;
+    white-space: nowrap;
+}
+
+.numdata{
+	text-align:right;
+	padding-right:2px;
+	padding-left:2px;
+}
+
+.subtotal td{
+	vertical-align:top;
+	padding-left:2px;
+	padding-right:2px;
+	font-weight:bold;
+}
+
+.noResults {
+    padding:5px;
+}
+
+.results {
+    padding:5px;
+}
+
+.highlight {
+    background-color:#feffa9;
+    font-weight:bold;
+}
+

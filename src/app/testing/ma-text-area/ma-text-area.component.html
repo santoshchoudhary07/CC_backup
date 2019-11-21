@@ -1,0 +1,73 @@
+<!-- <div class="form">
+  <div class="accordion">
+    <div class="accordion-section accordion-section-expanded">
+      <div class="accordion-body">
+        <div class="form-body">
+          <div class="form-row">
+            <label class="form-label">text area</label>
+            <div class="form-controls">
+              <ma-text-area [(ngModel)]="address" [rows]=10 [columns]=30 [maxLength]=30 [readonly]=false [disabled]=false [placeholder]="'Enter Address'"
+                [required]=false [id]="'text-area-id'" [name]="'text-area'" (maTextAreaOnChange)="maTextOnChange($event)"></ma-text-area>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+<!-- <form #shivaniForm="ngForm">
+    label>
+    First Name:
+    <input type="text" name="firstName">
+  <div class="color-attention "
+              *ngIf="profileForm.controls['firstName'].touched &&  !profileForm.controls['firstName'].valid && profileForm.controls['firstName'].errors.required">
+              Title is required.
+          </div>
+  <br>
+    Last Name:
+    <input type="text" name="lastName">
+  <ma-text-area [(ngModel)]="address" [name]="'xyz'" [rows]=10 [columns]=10 [maxLength]=25 [readonly]=false [disabled]=false [placeholder]="'Enter Address'"
+  [required]=true (maTextAreaOnChange)="maTextOnChange($event)" (blur)="blur(shivaniForm)"></ma-text-area>
+</form> -->
+
+<!-- <ma-text-area [(ngModel)]="address" [rows]=10 [columns]=10 [maxLength]=25 [readonly]=false [disabled]=false [placeholder]="'Enter Address'"
+[required]=true (maTextAreaOnChange)="maTextOnChange($event)" (blur)="blur()"></ma-text-area> -->
+
+<form [formGroup]="profileForm">
+  <label>
+    First Name:
+    <input type="text" formControlName="firstName">
+  </label>
+  <div class="color-attention "
+              *ngIf="profileForm.controls['firstName'].touched &&  !profileForm.controls['firstName'].valid && profileForm.controls['firstName'].errors.required">
+              Title is required.
+          </div>
+  <br>
+  <label>
+    Last Name:
+    <input type="text" formControlName="lastName">
+  </label>
+  <br>
+  <div class="form">
+    <div class="accordion">
+      <div class="accordion-section accordion-section-expanded">
+        <div class="accordion-body">
+          <div class="form-body">
+            <div class="form-row">
+              <label class="form-label">text area</label>
+              <div class="form-controls">
+                <ma-text-area formControlName="name" [(ngModel)]="address" [rows]=1 [columns]="1"  [maxLength]=25 [readonly]=false [disabled]=false [placeholder]="'Enter Address'"
+                  [required]=true (maTextAreaOnChange)="maTextOnChange($event)" (blur)="blur()"></ma-text-area>
+                  <div class="color-attention "
+              *ngIf="profileForm.controls['name'].touched && !profileForm.controls['name'].valid && profileForm.controls['name'].errors.required">
+              Title is required.
+          </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button (click)="submit()" [disabled]="profileForm.invalid">submit</button>
+</form>

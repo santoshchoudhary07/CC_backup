@@ -1,0 +1,56 @@
+<div class="form">
+  <div class="accordion">
+    <div class="accordion-section accordion-section-expanded">
+      <div class="accordion-body">
+        <div class="form-body">
+          <div class="form-row">
+            <label class="form-label">Masking{{name}}</label>
+            <div class="form-controls">
+              <!-- <ma-masking [(ngModel)]="name" [maskType]="'(000)-[00]-00'" [disabled]=false [readOnly]=false [required]=false [id]="'mask-id'"
+                [name]="'mask-name'" [unMaskValue]=true (onMaskChange)="onMaskChange($event)"></ma-masking> -->
+              <!-- 
+              <app-masking [(ngModel)]="name" [maskType]="'(000)-[00]-00'" [disabled]=false [readOnly]=false [required]=false [id]="'mask-id'"
+                [name]="'mask-name'" [unMaskValue]=true (onMaskChange)="onMaskChange($event)"></app-masking> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <app-masking [(ngModel)]="name" [maskType]="'(000)-[00]-00'" [disabled]=false [readOnly]=false [required]=false [id]="'mask-id'"
+                [name]="'mask-name'" [unMaskValue]=true (onMaskChange)="onMaskChange($event)"></app-masking> -->
+
+<!-- <form [formGroup]="profileForm">
+  <label>
+    First Name:
+    <input type="text" formControlName="firstName">
+  </label>
+  <br>
+  <label>
+    Last Name:
+    <input type="text" formControlName="lastName">
+  </label>
+  <br>
+  <div class="form">
+    <div class="accordion">
+      <div class="accordion-section accordion-section-expanded">
+        <div class="accordion-body">
+          <div class="form-body">
+            <div class="form-row">
+              <label class="form-label">MA MASKING</label>
+              <div class="form-controls">
+                <app-masking formControlName="name" [maskType]="'(000)-[00]-00'" [disabled]=false [readOnly]=false [required]=false [id]="'mask-id'"
+                  [name]="'mask-name'" [unMaskValue]=false (onMaskChange)="onMaskChange($event)"></app-masking>
+                <ma-masking formControlName="name" [maskType]="'(000)-[00]-00'" [disabled]=false [readOnly]=false [id]="'mask-id'"
+                  [name]="'mask-name'" [unMaskValue]=false (onMaskChange)="onMaskChange($event)"></ma-masking>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button (click)="submit()" [disabled]="profileForm.invalid">submit</button>
+</form> -->

@@ -1,0 +1,53 @@
+/* tables */
+table.tablesorter {
+	border:1px solid #535353;
+	border-collapse: collapse;
+	font-family: verdana;
+	font-size: 10px;
+	background-color: #fbfbfb;
+	
+	margin-top:0px 0pt 15px;
+	margin-bottom:15px;
+	margin-left:0pt;
+	margin-right:0pt;
+	width: 100%;
+	text-align: left;
+}
+table.tablesorter thead tr th, table.tablesorter tfoot tr th {
+	background-color: #d4d4d4;
+	border: 1px outset #efefef;
+    font-weight:bold;
+    font-size:11px;
+	text-align: center;
+	padding-left: 4px;
+	padding-top: 4px;
+	padding-right: 16px;
+	padding-bottom: 4px;
+	xfilter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0,StartColorStr='#d4d4d4',EndColorStr='#eeeeee');
+      
+}
+table.tablesorter thead tr .header {
+	background-image: url(bg.gif);
+	background-repeat: no-repeat;
+	background-position: center right;
+	cursor: pointer;
+}
+table.tablesorter tbody td {
+	border: 1px solid #cccccc;
+	padding: 4px;
+	text-align:right;
+	
+	vertical-align: top;
+}
+table.tablesorter tbody tr.odd td {
+}
+table.tablesorter thead tr .headerSortUp {
+	background-image: url(asc.gif);
+}
+table.tablesorter thead tr .headerSortDown {
+	background-image: url(desc.gif);
+}
+table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
+background-color: #b6b2b2;
+	xfilter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0,StartColorStr='#b6b2b2',EndColorStr='#dbdbdb');
+}

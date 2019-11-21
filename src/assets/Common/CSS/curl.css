@@ -1,0 +1,98 @@
+﻿
+.curl {
+    width: 60px; /* default width of page curl */
+    height: 60px; /* default height of page curl */
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 0 10px rgba(0,0,0,.8);
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+    .curl .curlcontent {
+        position: absolute;
+        left: 15px; /* left position of curl content to show */
+        top: 15px; /* top position of curl content to show */
+    }
+
+    .curl:after { /* the curl itself */
+        position: absolute;
+        display: block;
+        content: '';
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        transform: rotate(45deg) translateX(70%) scale(1.4);
+        background: #afafaf;
+        background: -moz-linear-gradient(left, #afafaf 0%, #ffffff 29%);
+        background: -webkit-linear-gradient(left, #afafaf 0%,#ffffff 29%);
+        background: linear-gradient(to right, #afafaf 0%,#ffffff 29%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#afafaf', endColorstr='#ffffff',GradientType=1 );
+    }
+
+    .curl:hover {
+        width: 100px; /* width of page curl when mouse over */
+        height: 100px; /* height of page curl when mouse over */
+        -webkit-transition: all 0.3s;
+        -moz-transition: all 0.3s;
+        transition: all 0.3s;
+        box-shadow: 10px 10px 50px rgba(0,0,0,.8);
+    }
+
+    /* #### Right corner curl specific CSS (instead of default left corner) ### */
+
+    .curl.rightcorner {
+        left: auto;
+        right: 0;
+    }
+
+        .curl.rightcorner:after {
+            left: auto;
+            right: 0;
+            transform: rotate(135deg) translateX(70%) scale(1.4);
+        }
+
+        .curl.rightcorner .curlcontent {
+            left: auto;
+            right: 15px; /* right position of curl content to show */
+            top: 15px; /* top position of curl content to show */
+        }
+
+/* attempt to peel back the page (position logo where it will be on the new page) */
+
+.curl.peel {
+    width:200%;
+    height:300%;
+    transition-duration: 1s;
+    background-color: #f2f2f2;
+}
+.curl.peel .logo {
+    top:0px;
+    margin-top:12px;
+}
+.curl.peel .curlcontent {
+    min-width: 1120px;
+    padding: 0 20px;
+    margin-top: 9px;
+    margin-left: 20px;
+    transition: .5s;
+}
+
+body {
+    opacity: 1;
+    transition: .8s;
+}
+.fadeout {
+    opacity: 0;
+    transition: .8s;
+}
+.fadein {
+    opacity: 1;
+    transition: .8s;
+}

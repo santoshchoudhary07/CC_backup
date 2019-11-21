@@ -1,0 +1,43 @@
+div.addRowSection			{
+	border-spacing:0;
+	padding: 0 0 0 0;
+	width:100%;
+	border-collapse:collapse;
+	border-top:1px solid #999999;
+	border-left:1px outset #999999;
+	border-right:1px outset #999999;
+	background-color:Transparent;		}
+	
+.addRowFooterBold			{
+	width:100%;
+	border-bottom:1px #999999 solid;
+	border-left:1px #999999 outset;
+	border-right:1px #999999 outset;
+	background-color:#c8c8c8;
+	filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#00c8c8c8', EndColorStr='#ffaaaaaa');				}
+	
+.addRowDelSectionBold		{
+	vertical-align:top;
+	width:20px;
+	text-align:center;
+	border-right:1px #999999 solid;
+	background-color:#e2e2e2;				}
+ 
+.addRowFooterPadding			{
+	padding:1 25 1 25;					}
+ 
+.addRowFooterBold button			{
+	font:normal 8pt verdana;		}
+
+div.#disableAlert		{
+	color:#f1e3c6;
+	display:none;
+	position:absolute;
+	border:2px #ff0000 ridge;
+	padding:4 20 4 4;
+	width:250px;
+	z-index:99;
+	text-align:left;
+	font: bold verdana 8pt;
+	filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=5, OffY=5, Color='#aaaaaa', Positive='true'), progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#ff0000', EndColorStr='#ff881405');
+					}

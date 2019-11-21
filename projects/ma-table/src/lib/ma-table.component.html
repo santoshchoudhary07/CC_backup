@@ -1,0 +1,177 @@
+<ng-container *ngIf="options.isScrollable; else simpleTable">
+    <div class="table table-properties table-scrollable table-fixed-layout">
+        <div class="table-head">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <thead>
+                    <tr>
+                        <ng-container *ngFor="let head of options.headList">
+                            <ng-container *ngIf="!head?.thNgIfCondition">
+                                <th class="sorting-arrow" [ngClass]="head?.headerClassName ? head?.headerClassName : ''"
+                                    (click)="sortBy(head)">
+                                    <span>
+                                        <ng-container *ngIf="head?.selectAllCheckBox">
+                                            <div class="checkbox set-checkbox">
+                                                <input id="check-id" [(ngModel)]="checkedSelectAll" type="checkbox"
+                                                    name="name" (change)="selectAll()" />
+                                                <label for="check-id">
+                                                </label>
+                                            </div>
+                                        </ng-container>
+                                        {{head.columnName}}
+                                    </span>
+                                    <i *ngIf="!head?.inputType"
+                                        [ngClass]="(sortField === head.sortBy && options.sorting && head.isSorting) ? 'arrow-up inline-space-left arrow' : options.sorting && head.isSorting ? 'arrow-down inline-space-left arrow': ''"></i>
+                                </th>
+                            </ng-container>
+                        </ng-container>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="table-body custom-scroll scrolling">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tbody>
+                    <tr *ngIf="loading" class="data-info">
+                        <td [attr.colspan]="options?.headList?.length">
+                            <img [src]="loaderImagePath" alt="Loading...">
+                        </td>
+                    </tr>
+                    <tr *ngIf="!loading && isMessage" class="data-info">
+                        <td [attr.colspan]="options?.headList?.length">{{options?.message}}</td>
+                    </tr>
+                    <ng-container *ngFor="let data of options.dataList; let i=index">
+                        <ng-container *ngIf="!data?.trNgIfCondition">
+                            <tr [ngClass]="data?.trClassName ? data?.trClassName : ''" (click)="editTable(data, i)">
+                                <ng-container *ngFor="let property of options.headList">
+                                    <ng-container *ngIf="!data[property?.tdNgIfCondition]">
+                                        <td [ngClass]="data[property?.tdClassName] ? data[property?.tdClassName] : ''">
+                                            <div [ngSwitch]="data[property?.inputType]">
+                                                <div *ngSwitchCase="'button'">
+                                                    <button class="btn btn-small"
+                                                        [ngClass]="data[property?.actionClass] ? data[property?.actionClass] : ''"
+                                                        (click)="inputChange(data, i, property.columnName)">{{data[property?.inputLabel]}}</button>
+                                                </div>
+                                                <div *ngSwitchCase="'link'">
+                                                    <a (click)="inputChange(data, i, property.columnName)"
+                                                        [ngClass]="data[property?.actionClass] ? data[property?.actionClass] : ''">{{data[property?.inputLabel]}}</a>
+                                                </div>
+                                                <div *ngSwitchCase="'dropdown'">
+                                                    <ma-dropdown [options]="selectList"
+                                                        [renderProperty]="selectDisplayProperty"
+                                                        [optionId]="selectValueProperty"
+                                                        [placeholder]="selectPlaceholder ? selectPlaceholder : ''"
+                                                        [(ngModel)]="data[selectBindProperty]" [id]="'select_' + i"
+                                                        (onMaSelectChange)="onMaSelectChange($event, data, i, property.columnName)">
+                                                    </ma-dropdown>
+                                                </div>
+                                                <div *ngSwitchCase="'checkbox'">
+                                                    <div class="checkbox">
+                                                        <input id="id_{{i}}" [(ngModel)]="data[checkBoxBindProperty]"
+                                                            [ngClass]="data[property?.actionClass] ? data[property?.actionClass] : ''"
+                                                            type="checkbox" [name]="i"
+                                                            (change)="maInputOnChange(data, i, property.columnName)" />
+                                                        <label for="id_{{i}}">
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div *ngSwitchDefault>
+                                                    {{checkIfDate(data[property.sortBy]) ? (data[property.sortBy] | date:dateFormat) : data[property.sortBy]}}
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </ng-container>
+                                </ng-container>
+                            </tr>
+                        </ng-container>
+                    </ng-container>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</ng-container>
+
+<ng-template #simpleTable>
+    <div class="table table-worksheet">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <thead>
+                <tr>
+                    <ng-container *ngFor="let head of options.headList">
+                        <ng-container *ngIf="!head?.thNgIfCondition">
+                            <th class="sorting-arrow" [ngClass]="head?.headerClassName ? head?.headerClassName : ''"
+                                (click)="sortBy(head)">
+                                <span>
+                                    <ng-container *ngIf="head?.selectAllCheckBox">
+                                        <div class="checkbox set-checkbox">
+                                            <input id="check-id" [(ngModel)]="checkedSelectAll" type="checkbox"
+                                                name="name" (change)="selectAll()" />
+                                            <label for="check-id">
+                                            </label>
+                                        </div>
+                                    </ng-container>
+                                    {{head.columnName}}
+                                </span>
+                                <i *ngIf="!head.inputType"
+                                    [ngClass]="(sortField === head.sortBy && options.sorting && head.isSorting) ? 'arrow-up inline-space-left arrow' : options.sorting && head.isSorting ? 'arrow-down inline-space-left arrow': ''"></i>
+                            </th>
+                        </ng-container>
+                    </ng-container>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngIf="loading" class="data-info">
+                    <td [attr.colspan]="options?.headList?.length">
+                        <img [src]="loaderImagePath" alt="Loading...">
+                    </td>
+                </tr>
+                <tr *ngIf="!loading && isMessage" class="data-info">
+                    <td [attr.colspan]="options?.headList?.length">{{options?.message}}</td>
+                </tr>
+                <ng-container *ngFor="let data of options.dataList; let i=index">
+                    <ng-container *ngIf="!data?.trNgIfCondition">
+                        <tr [ngClass]="data?.trClassName ? data?.trClassName : ''" (click)="editTable(data, i)">
+                            <ng-container *ngFor="let property of options.headList">
+                                <ng-container *ngIf="!data[property?.tdNgIfCondition]">
+                                    <td [ngClass]="data[property?.tdClassName] ? data[property?.tdClassName] : ''">
+                                        <div [ngSwitch]="data[property?.inputType]">
+                                            <div *ngSwitchCase="'button'">
+                                                <button class="btn btn-small"
+                                                    [ngClass]="data[property?.actionClass] ? data[property?.actionClass] : ''"
+                                                    (click)="inputChange(data, i, property.columnName)">{{data[property?.inputLabel]}}</button>
+                                            </div>
+                                            <div *ngSwitchCase="'link'">
+                                                <a (click)="inputChange(data, i, property.columnName)"
+                                                    [ngClass]="data[property?.actionClass] ? data[property?.actionClass] : ''">{{data[property?.inputLabel]}}</a>
+                                            </div>
+                                            <div *ngSwitchCase="'dropdown'">
+                                                <ma-dropdown [options]="selectList"
+                                                    [renderProperty]="selectDisplayProperty"
+                                                    [optionId]="selectValueProperty"
+                                                    [placeholder]="selectPlaceholder ? selectPlaceholder : ''"
+                                                    [(ngModel)]="data[selectBindProperty]" [id]="'select_' + i"
+                                                    (onMaSelectChange)="onMaSelectChange($event, data, i, property.columnName)">
+                                                </ma-dropdown>
+                                            </div>
+                                            <div *ngSwitchCase="'checkbox'">
+                                                <div class="checkbox">
+                                                    <input id="id_{{i}}" [(ngModel)]="data[checkBoxBindProperty]"
+                                                        [ngClass]="data[property?.actionClass] ? data[property?.actionClass] : ''"
+                                                        type="checkbox" [name]="i"
+                                                        (change)="maInputOnChange(data, i, property.columnName)" />
+                                                    <label for="id_{{i}}">
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div *ngSwitchDefault>
+                                                {{checkIfDate(data[property.sortBy]) ? (data[property.sortBy] | date:dateFormat) : data[property.sortBy]}}
+                                            </div>
+                                        </div>
+                                    </td>
+                                </ng-container>
+                            </ng-container>
+                        </tr>
+                    </ng-container>
+                </ng-container>
+            </tbody>
+        </table>
+    </div>
+</ng-template>

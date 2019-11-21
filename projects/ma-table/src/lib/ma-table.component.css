@@ -1,0 +1,28 @@
+.table-worksheet {
+    white-space: unset;
+}
+
+.table-worksheet td {
+    max-width: 180px;
+}
+
+.table-worksheet td.description {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.scrolling {
+    overflow-y: auto;
+    max-height: 60vh;
+    min-height: 5vh;
+}
+
+.set-checkbox{
+display: inline;
+}
+
+.data-info {
+    text-align: center !important;
+}
+

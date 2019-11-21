@@ -1,0 +1,40 @@
+<!-- <app-multi-select [(ngModel)]="name" [multiSelectList]="list" [renderProperty]="'id'" [optionId]="'id'" [readonly]=false
+    [required]=false [disabled]=false [availableLabel]="'available'" [selectedLabel]="'select'" [name]="'name'" [id]="'select-id'"
+    (onMaMultiSelectChange)="onMaMultiSelectChange($event)"></app-multi-select> -->
+<!-- <ma-multi-select [(ngModel)]="name" [multiSelectList]="list" [renderProperty]="'id'" [optionId]="'id'" [readonly]=false
+    [required]=false [disabled]=false [availableLabel]="'available'" [selectedLabel]="'select'" [name]="'name'" [id]="'select-id'"
+    (onMaMultiSelectChange)="onMaMultiSelectChange($event)"></ma-multi-select> -->
+
+<form [formGroup]="profileForm">
+    <label>
+        First Name:
+        <input type="text" formControlName="firstName">
+    </label>
+    <br>
+    <label>
+        Last Name:
+        <input type="text" formControlName="lastName">
+    </label>
+    <br>
+    <div class="form">
+        <div class="accordion">
+            <div class="accordion-section accordion-section-expanded">
+                <div class="accordion-body">
+                    <div class="form-body">
+                        <div class="form-row">
+                            <!-- <app-multi-select formControlName="name" [multiSelectList]="list" [renderProperty]="'id'" [optionId]="'id'" [readonly]=false
+                                [required]=false [disabled]=false [availableLabel]="'available'" [selectedLabel]="'select'" [name]="'name'"
+                                [id]="'select-id'" (onMaMultiSelectChange)="onMaMultiSelectChange($event)"></app-multi-select> -->
+
+                            <!-- <ma-multi-select formControlName="name" [multiSelectList]="list" [renderProperty]="'id'" [optionId]="'id'" [readonly]=false
+                                [required]=false [disabled]=false [availableLabel]="'available'" [selectedLabel]="'select'" [name]="'name'"
+                                [id]="'select-id'" (onMaMultiSelectChange)="onMaMultiSelectChange($event)"></ma-multi-select> -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button (click)="submit()" [disabled]="profileForm.invalid">submit</button>
+</form>

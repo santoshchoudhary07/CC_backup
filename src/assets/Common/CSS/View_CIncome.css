@@ -1,0 +1,82 @@
+table {
+    border: none;
+    width: 100%;
+}
+
+td {
+    text-align: left;
+}
+
+#ButtonPanel {
+    margin-top: 9px;
+    text-align: center;
+}
+
+#cmdCancel {
+    width: 70px;
+}
+
+#outerTable {
+    border: 1px solid #cccccc;
+}
+
+.detail-cell-1 {
+    padding: 5px;
+    text-align: left;
+    vertical-align: top;
+}
+
+.detail-cell-2 {
+    border: 1px solid black;
+    width: 597px;
+} 
+
+.detail-cell-3 {
+    background-color: white;
+    text-align: center;
+}
+
+.group-header {
+    text-align: left;
+}
+
+.payments-table {
+    background-color: #666666;
+}
+
+.payments-table thead td {
+    background-color: #d3d3d3;
+    font-weight: bold;
+}
+
+.payments-table tbody {
+    background-color: #ffffff;
+}
+
+.receipt-link {
+    color: blue;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.right-align {
+    text-align: right;
+}
+
+.section-header {
+    background-color: #5588cc;
+    color: white;
+    font-weight: bold;
+    height: 20px; 
+    margin-bottom: 2px;
+    padding: 4px;
+}
+
+.section-header-text {
+    color: white;
+    font-weight: bold;
+}
+
+.tabForm, .tabFormGroup {
+    width: 100%;
+}

@@ -1,0 +1,108 @@
+/*****************************************************
+Classes
+*****************************************************/
+.stepHeader
+{
+	height:21px;
+	font-weight:bold;
+	color: #4F5C6C;
+	font-size: 12px;
+}
+
+.step
+{
+	height:21px;
+	padding: 5px;
+	margin-bottom: 5px;
+}
+
+.sideBarTitle 
+{
+	height:18px;
+	font-weight:bold;
+	font-size: 12px;
+	color: #34537A;
+	border-bottom: 1px solid #34537A;
+}
+
+.tableData td
+{
+	padding:2px 5px;
+	font:normal 7pt verdana;
+	border-left:#add8e6 1px solid;
+	border-bottom:#add8e6 1px solid;
+	vertical-align:top;
+}
+
+.tableData .rowHdr
+{
+   text-align:right;
+   padding:2px 5px;
+	font:bold 7pt verdana;
+   color:#000000;
+   border-left:#add8e6 1px solid;
+   border-bottom:#add8e6 1px solid;
+   filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#005588CC', EndColorStr='#505588CC');
+}
+
+.tableHeader
+{
+	font-weight:bold;
+	color: #add8e6;
+	background: #ffffff;
+}
+
+.tableHeader .rptHdr
+{
+   padding: 2 3 2 3;
+	font:bold 7pt verdana;
+   color: blue;
+   border-left: #add8e6 1px solid;
+   border-bottom: #add8e6 1px solid;
+	background: url('../img/imgGradientAddRow.png') repeat-x;
+	background-position: left bottom;
+}
+
+button.pagingNavigation
+{
+	font:	11px webdings;
+	width:	18px;
+	text-align: center;
+	padding: 0px;
+}
+
+.pagingFilterSection
+{
+	border:1px solid #add8e6; 
+	height:100%; 
+	width:100%;
+}
+
+.pagingFilterSection .pagingFilterSectionHdr
+{
+	font:bold 8pt verdana;
+	color:#447AC2;
+	width:100%;
+	padding:5 2 5 0;
+	border-top:1px #88abc2 solid;
+	border-left:1px #999999 outset;
+	border-right:1px #999999 outset;
+	background: url('../img/imgGradientHeader.png') repeat-x;
+	xfilter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#005588CC', EndColorStr='#505588CC');
+	background-position: left top;
+}
+
+.pagingFilterSection .pagingFilterSectionDetail
+{
+	display:none; 
+	border-top:1px #add8e6 solid;
+}
+
+.rptLayout
+{
+	width:100%;
+	background:#ffffff;
+	table-layout:fixed;
+	border-collapse:collapse;
+	border-spacing:0;
+}

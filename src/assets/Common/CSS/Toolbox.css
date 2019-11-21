@@ -1,0 +1,297 @@
+
+
+.titleBar {
+    height:20px; 
+    vertical-align:middle; 
+    line-height:20px;
+    background: #5588cc;
+    padding:4px;
+    color:white;
+    font-weight:bold;
+    margin-bottom:2px; 
+    border:1px solid #efefef; 
+    border-left:0px; 
+    border-right:0px;
+}
+
+.titleBar a {
+    color:#ffcc33;
+}
+
+.subtitleBar {
+    height:20px; 
+    vertical-align:middle; 
+    line-height:20px;
+    background: #c3d5ee;
+    padding:4px;
+    color:black;
+    font-weight:bold;
+    margin-bottom:2px; 
+    border-bottom:1px solid #efefef; 
+    border-left:0px; 
+    border-right:0px;
+    border-top:0px;
+    clear:both;
+}
+
+.mainContent {
+    padding: 5px; 
+    width:100%; 
+    text-align:left; 
+    vertical-align:top;
+}
+.bodySection {
+    padding: 5px; 
+    text-align:left; 
+    vertical-align:top;
+    background-color:#ffffff;
+}
+
+.summary {
+    padding:5px; 
+    border:0;
+    background-color:#ffffff;
+    margin-bottom:10px;
+}
+
+div.detailSection {
+    clear:both;
+    margin-bottom:10px;
+}
+
+table.subContent {
+    width:100%; 
+    padding:5; 
+    border:0;
+    background-color:#ffffff;
+}
+
+.subContentTD {
+    padding:5px;
+    background-color:#ffffff;
+}
+
+div.wrapper label{
+    font-weight:bold; 
+    width:170px;
+}
+
+div.buttonBar {
+    clear:both;
+	padding:4px;
+	border: 1px inset #cccccc;	
+    background:#e0e0e0;
+    text-align:center;
+}
+
+div.buttonBar label {
+    font-weight:bold; 
+}
+
+button {
+	font-family: verdana;
+	font-size: 8pt;
+	padding: 2px;
+    margin-left:2px;
+    margin-right:2px;
+	background: #77aaee;
+	color: white;	
+}
+
+.altRow {
+    background-color:#fbfefe;
+}
+
+.altRow1 {
+    background-color:#ecf5f5;
+}
+.datatable{
+	border-collapse: collapse;
+	font-family: verdana;
+	font-size: 10px;
+	background: white;
+}
+
+.datatable th {
+	background-color: #cceeff;
+	border: 1px outset #efefef;
+	text-align: center;
+	padding-left: 2px;
+	padding-right: 2px;
+	filter:progid:DXImageTransform.Microsoft.Gradient
+      (GradientType=0,StartColorStr='#ddffff',EndColorStr='#aaccdd');
+}
+
+.datatable .subtotal{
+	font-weight:bold;
+	border-top:1px solid black;
+	background-color: #efefef;
+}
+
+.datatable td {
+    padding-left:7px;
+    padding-right:7px;
+    padding-top:3px;
+    padding-bottom:3px;
+    white-space: nowrap;
+}
+
+
+table.incidental{
+    border:1px solid #535353;
+	border-collapse: collapse;
+	font-family: verdana;
+	font-size: 10px;
+	background: #fbfbfb;
+}
+
+table.incidental th {
+	background-color: #cceeff;
+	border: 1px outset #efefef;
+    font-weight:bold;
+    font-size:11px;
+	text-align: center;
+	padding: 4px;
+	filter:progid:DXImageTransform.Microsoft.Gradient
+      (GradientType=0,StartColorStr='#d4d4d4',EndColorStr='#eeeeee');
+}
+
+table.incidental th.headerRow {
+    font-size:12px;
+} 
+
+table.incidental td{
+	border: 1px solid #cccccc;
+	padding: 4px;
+	text-align:right;
+}
+
+div.permissionDenied {
+    background-color:#ffffff;
+    border:1px solid #000000;
+    padding:4px;
+    margin:4px;
+}
+
+div.criteriaField {
+    float:left;
+}
+
+div.criteriaField input {
+    width:243px;
+}
+
+div.criteriaField p {
+    width:243px;
+}
+
+div.criteriaField select {
+    width:243px;
+}
+
+div.criteriaFieldReadOnly {
+    float:left;
+    width:243px;
+    height:18px;
+    padding-left:3px;
+    padding-top:3px;
+    padding-right:3px;
+    margin-left:2px;
+    background-color:#efefef;
+}
+
+div.criteria {
+    clear:both;
+    margin-top:2px;
+    margin-bottom:2px;
+}
+
+div.criteriaLabel {
+    float:left;
+    width:177px;
+    font-weight:bold;
+}
+
+div.criteriaSection {
+    float:left;
+    width:500px;
+}
+
+input.date {
+    width:100px;
+}
+
+div.pagesLinks {
+    margin-top:10px;
+    margin-bottom:4px;
+}
+
+div.message {
+    clear:both;
+    border:1px solid #005400;
+    background: #ebffeb;
+    font-weight:bold;
+    color:#007800;
+    margin-bottom:5px;
+}
+
+tr.noborder td {
+    border:0px;
+}
+
+td.error {
+    background-color:#ffcdcd;
+    border:1px solid #b90000;
+}
+
+div.errorHeader {
+    clear:both;
+    background-color:#ffcdcd;
+    border:1px solid #b90000;
+    color:#950000;
+}
+
+input.error {
+    background-color:#ffcdcd;
+    border:1px solid #b90000;
+}
+
+div.availableSelectedLists {
+    float:left;
+}
+
+div.availableSelectedListsLabel {
+    clear:both;
+    margin-left:3px;
+    margin-top:5px;
+    font-size:10px;
+    background:none;
+    font-weight:bold;
+}
+
+.errorText {
+    color:#d80000;
+    font-weight:bold;
+}
+
+.successText {
+    color:#007906;
+    font-weight:bold;
+}
+
+.warningText {
+    color:#d8a300;
+    font-weight:bold;
+}
+
+.incidentalText {
+    color:#617591;
+    font-size:10px;
+    font-weight:normal;
+}
+
+.removeExcluded {
+	text-align:right; 
+	padding-top:5px; 
+	padding-bottom:5px;
+}

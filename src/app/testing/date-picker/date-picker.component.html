@@ -1,0 +1,80 @@
+<div class="form">
+  <div class="accordion">
+    <div class="accordion-section accordion-section-expanded">
+      <div class="accordion-body">
+        <div class="form-body">
+          <div class="form-row">
+            <label class="form-label">date picker</label>
+            <div class="form-controls">
+              <!-- <ma-dates [(ngModel)]="date" [minDate]="minDate" [maxDate]="maxDate" [disabled]=false [readOnly]=false [name]="'name'"
+                [id]="'id'" [placeholder]="'MM/dd/yyyy'" [displayDateFormat]="'MM/dd/yyyy'" [required]=false (maDateOnChange)="maDateOnChange($event)"></ma-dates> -->
+
+              <!-- <ma-date-picker [(ngModel)]="date" [minDate]="minDate" [maxDate]="maxDate" [disabled]=false [readOnly]=false [name]="'name'"
+                [id]="'id'" [displayDateFormat]="'MM/dd/yyyy'" [placeholder]="'MM/dd/yyyy'" [required]=false (maDateOnChange)="maDateOnChange($event)"></ma-date-picker> -->
+          </div>
+        </div>
+        <div class="form-row">
+            <label class="form-label">date picker</label>
+            <div class="form-controls">
+              <!-- <ma-dates [(ngModel)]="date" [minDate]="minDate" [maxDate]="maxDate" [disabled]=false [readOnly]=false [name]="'name'"
+                [id]="'id'" [placeholder]="'MM/dd/yyyy'" [displayDateFormat]="'MM/dd/yyyy'" [required]=false (maDateOnChange)="maDateOnChange($event)"></ma-dates> -->
+
+              <!-- <ma-date-picker [(ngModel)]="date"  [maxDate]="maxDate" [disabled]=false [readOnly]=false [name]="'name'"
+                [id]="'id'" [displayDateFormat]="'MM/dd/yyyy'" [placeholder]="'MM/dd/yyyy'" [required]=false (maDateOnChange)="maDateOnChange($event)"></ma-date-picker> -->
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<form [formGroup]="profileForm">
+    <label>
+      First Name:
+      <input type="text" formControlName="firstName">
+    </label>
+    <br>
+    <label>
+      Last Name:
+      <input type="text" formControlName="lastName">
+    </label>
+    <br>
+    <div class="form">
+      <div class="accordion">
+        <div class="accordion-section accordion-section-expanded">
+          <div class="accordion-body">
+            <div class="form-body">
+              <div class="form-row">
+                <label class="form-label">start Date</label>
+                <div class="form-controls">
+                    <ma-date-picker formControlName="name"
+                     [minDate]="minDate" [maxDate]="maxDate"  [disabled]=false [readOnly]=false [name]="'name'"
+                    [id]="'id'" [displayDateFormat]="'MM/dd/yyyy'" [placeholder]="'MM/dd/yyyy'" [required]=false (maDateOnChange)="maDateOnChange($event)"></ma-date-picker>
+                <div class="color-attention "
+                *ngIf="profileForm.controls['name'].touched &&  !profileForm.controls['name'].valid && profileForm.controls['name'].errors.required">
+                Title is required.
+            </div>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <label class="form-label">end Date</label>
+                <div class="form-controls">
+                  <!-- <ma-date-picker formControlName="end"  [disabled]=false [readOnly]=false [name]="'name'" [maxDate]="maxDate"  [minDate]="minDate"
+                  [id]="'id'" [displayDateFormat]="'MM/dd/yyyy'" [placeholder]="'MM/dd/yyyy'" [required]=false (maDateOnChange)="maDateOnChange($event)"></ma-date-picker> -->
+                <!-- <div class="color-attention "
+                *ngIf="profileForm.controls['name'].touched &&  !profileForm.controls['name'].valid && profileForm.controls['name'].errors.required">
+                Title is required.
+            </div> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button (click)="submit()" >submit</button>
+  </form>
+
+  <!-- <ma-date-picker  [(ngModel)]="end" [minDate]="date"  [disabled]=false [readOnly]=false [name]="'name'"
+                    [id]="'id'" [displayDateFormat]="'MM/dd/yyyy'" [placeholder]="'MM/dd/yyyy'" [required]=false (maDateOnChange)="maDateOnChange($event)"></ma-date-picker> -->

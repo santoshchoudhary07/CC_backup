@@ -1,0 +1,46 @@
+<!-- <div class="form">
+  <div class="form-body">
+    <div class="form-row">
+      <div class="form-label">gender</div>
+      <div class="form-controls">
+        <div class="radios-inline">
+          <ma-radio-button [id]="'id1'" [(ngModel)]="name" [radioValue]="'Male'" (maRadioButtonChange)="maRadioButtonChange($event)">Male</ma-radio-button>
+          <ma-radio-button [id]="'id2'" [(ngModel)]="name" [radioValue]="'Female'" (maRadioButtonChange)="maRadioButtonChange($event)">Female</ma-radio-button>
+          <ma-radio-button [id]="'id3'" [(ngModel)]="name" [radioValue]="'Other'" (maRadioButtonChange)="maRadioButtonChange($event)">Other</ma-radio-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<form [formGroup]="profileForm">
+    <label>
+      First Name:
+      <input type="text" formControlName="firstName">
+    </label>
+    <br>
+    <label>
+      Last Name:
+      <input type="text" formControlName="lastName">
+    </label>
+    <br>
+    <div class="form">
+      <div class="accordion">
+        <div class="accordion-section accordion-section-expanded">
+          <div class="accordion-body">
+            <div class="form-body">
+              <div class="form-row">
+                <label class="form-label">gender</label>
+                <div class="form-controls">
+                        <ma-radio-button [id]="'id1'" [name]="'a'" formControlName="name" [radioValue]="'male'" [readonly]=false (maRadioButtonChange)="maRadioButtonChange($event)">Male</ma-radio-button>
+                        <ma-radio-button [id]="'id2'" [name]="'a'" formControlName="name" [radioValue]="'female'" [readonly]=false (maRadioButtonChange)="maRadioButtonChange($event)">Female</ma-radio-button>
+                        <ma-radio-button [id]="'id3'" [name]="'b'" formControlName="name" [radioValue]="'other'" [readonly]=false (maRadioButtonChange)="maRadioButtonChange($event)">Other</ma-radio-button>
+                    </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button (click)="submit()" [disabled]="profileForm.invalid">submit</button>
+  </form>   

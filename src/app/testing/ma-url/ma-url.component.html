@@ -1,0 +1,33 @@
+<form #signupForm="ngForm" (ngSubmit)="submit(signupForm)">
+  <div class="form">
+    <div class="section-body">
+      <div class="form-row">
+        <div class="form-label">Password</div>
+        <div class="form-controls">
+          <!-- <ma-url [name]="'url'" [(ngModel)]="name" [readonly]="false" [required]="false"
+            [disabled]="false" (maUrlOnChange)="maUrlOnChange($event)"></ma-url>
+          <div style="color: red" *ngIf="signupForm.invalid && signupForm.controls['url'].errors.pattern">Url
+            not valid. </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <button type="submit">Submit</button>
+</form>
+
+<form [formGroup]="urlForm" action="">
+  <div class="form">
+    <div class="section-body">
+      <div class="form-row">
+        <div class="form-label">Url</div>
+        <div class="form-controls">
+          <!-- <ma-url [name]="'psw'" formControlName="url" [readonly]="false" [required]="false" [disabled]="false"
+            (maUrlOnChange)="maUrlOnChange($event)"></ma-url>
+          <div style="color: red" *ngIf="urlForm.invalid && urlForm.controls['url'].errors.pattern">Url
+            not valid. </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <button type="submit" (click)="submit(urlForm)">submit</button>
+  </form>

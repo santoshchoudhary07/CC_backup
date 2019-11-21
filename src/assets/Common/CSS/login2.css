@@ -1,0 +1,232 @@
+iframe#EmptyIframe, iframe#IndirectAuthenticationIframe {
+	display: none;
+}
+
+#LogonPanel .hidden {
+	display: none;
+}
+
+#LogonPanel table.full {
+	height: 100%;
+	width: 100%;
+}
+
+#LogonPanel table.collapse {
+	border-collapse: collapse;
+}
+
+#LogonPanel #HeaderCell {
+	background-color: #003B8A;
+	border-bottom: solid 1px #000000;
+	border-top: solid 1px #000000;
+	height: 58px;
+	padding: 0;
+}
+
+#LogonPanel #FooterCell {
+	background-color: #003B8A;
+	color: #ffffff;
+	height: 25px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+#LogonPanel #BodyCell {
+	background: url("../../images/page_bg.gif");
+	padding: 11px 25px 11px 23px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+#LogonPanel #BodyCellContent {
+	background: url("../../images/panel_bg.gif");
+	border: solid 1px #000000;
+}
+
+#LogonPanel #LoginCell {
+	padding: 12px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+#LogonPanel #LoginTable {
+	border: 1px solid #cccccc;
+	display: inline-block;
+}
+
+#LogonPanel #LoginBoxTitle {
+	background: #5588cc;
+	color: #ffffff;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 4px;
+}
+
+#LogonPanel #LoginBoxBodyFrame1 {
+	background-color: #ffffff;
+	padding: 5px;
+	vertical-align: top;
+}
+
+#LogonPanel #LoginBoxBodyContent1 {
+	border-width: 0;
+	width: 100%;
+}
+
+#LogonPanel #LoginBoxBodyContent2 {
+	border-width: 0;
+	width: 100%;
+}
+
+#LogonPanel #LoginBoxBodyFrame2 {
+	border: 1px solid #000000;
+}
+
+#LogonPanel #LoginBoxBodyContent3 {
+	border-width: 0;
+	height: 200px;
+	width: 462px;
+}
+
+#LogonPanel #LoginBoxBodyFrame3 {
+	background-color: #ffffff;
+	padding: 8px;
+}
+
+#LogonPanel #SignInImageCell {
+	padding: 4px;
+}
+
+#LogonPanel #SignInImage {
+	border-width: 0;
+	height: 57px;
+	width: 102px;
+}
+
+#LogonPanel #LogOnForm {
+	margin-bottom: 0px;
+	margin-top: 0px; 
+}
+
+#LogonPanel #LogOnForm .field {
+	display: inline-block;
+	width: 100%;
+}
+
+#LogonPanel #LogOnForm .field .label {
+	background: url("../../images/login_label_bg.gif") top left no-repeat;
+	float: left;
+	height: 24px;
+	padding: 5px 2px 0 8px;
+	width: 112px;
+}
+
+#LogonPanel #LogOnForm #UserNamePanel {
+	clear: right;
+	float: left;
+	width: auto;
+}
+
+#LogonPanel #LogOnForm .inputElem {
+	height: 20px;
+	width: 100%;
+}
+
+#LogonPanel #LogOnForm #PasswordPanel {
+	float: left;
+}
+
+#LogonPanel #LogOnForm #SaveUserNamePanel {
+	display: inline-block;
+	float: left;        
+}
+
+#LogonPanel #LogOnForm #SaveUserNamePanelPadding {
+	float: left;
+	width: 112px;
+}
+
+#LogonPanel #LogOnForm #SaveUserNamePanelControlPanel {
+	float: left;
+}
+
+#LogonPanel #LogOnForm #SaveUserNamePanelLabelPanel {
+	float: left;
+	margin: 3px 0 0 0;
+}
+
+#LogonPanel #LogOnForm #LoginButtonPanel {
+	display: inline-block;
+	float: right;
+}
+
+#LogonPanel #LogOnForm #LoginButtonPanelPadding {
+	float: left;
+	width: 112px;
+}
+
+#LogonPanel #LogOnForm #image2 {
+	font: bold 7pt verdana;
+	height: 20px;
+	margin: 10px 0 0 0;
+	width: 59px;
+}
+
+#LogonPanel #MaLogoPanel {
+	float: left;
+	padding: 0 0 0 60px;
+}
+
+#LogonPanel #PropManLogoPanel {
+	float: right;
+	padding: 0;
+}
+
+#LogonPanel td.logo-cell img {
+	padding: 0;
+}
+
+#LogonPanel #SsoInstructions {
+    margin-left: 21px; 
+    padding-left: 12px;
+}
+
+#IdPPanel {
+    padding-bottom: 33px;
+    text-align: center;
+}
+
+#IdPPanel img {
+    cursor: pointer;
+}
+
+#IdPPanel img#ELS {
+    height: 33px;
+}
+
+#LogonPanel .hidden {
+    display: none;
+}
+
+#LoginSelector .login-account {
+    cursor: pointer;
+    padding: 9px;
+}
+
+#LoginSelector #LoginAccounts {
+    overflow-y: auto;
+}
+
+#LoginSelector .login-account.highlight {
+    background-color: rgb(221, 248, 255);
+    opacity: 0.75;
+}
+
+#LoginSelector .user-name {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.ui-dialog .ui-dialog-content {
+    overflow: auto;
+}

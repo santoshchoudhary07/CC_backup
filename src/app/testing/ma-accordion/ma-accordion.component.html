@@ -1,0 +1,336 @@
+<!-- <app-accordion [closeOthers]=true [accordionList]="list">
+  <ng-template #section1>
+    <div class="keys-legend">
+      <h1>section1</h1>
+      <p>
+        <strong class="color-success">Success:</strong> Save process completed
+        <br>
+        <strong class="color-error">Error:</strong> Could not save
+        <br>
+        <strong class="color-warning">Warning:</strong> Saved but may not be correct
+      </p>
+      <p>
+        Required fields are marked with an
+        <span class="form-asterisk">*</span>
+      </p>
+    </div>
+  </ng-template>
+
+  <ng-template #section2>
+
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia eos dicta, vel animi ipsam saepe quas rem. Doloremque
+      necessitatibus in, et odit quisquam ducimus similique, porro iste, deserunt, autem architecto totam inventore voluptatum.
+      Odio quia totam molestias alias, laboriosam, suscipit maiores harum consequatur consectetur inventore doloribus, blanditiis
+      repellendus omnis sunt praesentium non quae ratione aliquid et sequi quo. Ad praesentium fuga quod iste. Nemo nesciunt
+      quis adipisci aliquam inventore voluptates, iusto. Hic exercitationem qui ea molestias voluptate dolorem deserunt,
+      quae incidunt nemo quidem voluptatibus saepe pariatur aliquid magnam animi reiciendis nam culpa aliquam tempore ducimus
+      assumenda omnis doloribus nesciunt ullam.</p>
+
+  </ng-template>
+
+  <ng-template #section3>
+    <div class="nav-tertiary">
+      <ul>
+        <li>
+          <a>
+            <i class="ico-task"></i>
+
+            Add Task
+          </a>
+        </li>
+
+        <li>
+          <a>
+            <i class="ico-add-note"></i>
+
+            Add Notes
+          </a>
+        </li>
+
+        <li>
+          <a>
+            <i class="ico-phone"></i>
+
+            Phone
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="infos">
+      <div class="info">
+        <dl>
+          <dt>Borrower</dt>
+
+          <dd>Jane Doe</dd>
+
+          <dt>Lender</dt>
+
+          <dd>&nbsp;</dd>
+
+          <dt>Location</dt>
+
+          <dd>Appletree MHP [site:15]</dd>
+
+          <dt>Loan Name</dt>
+
+          <dd>New Loan</dd>
+
+          <dt>Loan Type</dt>
+
+          <dd>Home Loan</dd>
+        </dl>
+      </div>
+
+      <div class="info">
+        <dl>
+          <dt>Creation Date</dt>
+
+          <dd>01/04/2006 9:58:27 PM</dd>
+
+          <dt>Originator</dt>
+
+          <dd>Internal</dd>
+
+          <dt>Originator Loan #</dt>
+
+          <dd>&nbsp;</dd>
+
+          <dt>Pool</dt>
+
+          <dd>None</dd>
+
+          <dt>Collateral Line</dt>
+
+          <dd>&nbsp;</dd>
+        </dl>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template #section4>
+    <div class="table table-scrollable">
+      <div class="table-body custom-scroll">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tbody>
+            <tr>
+              <td>
+                <strong>General Note: Marianne Baptista </strong> [11/17/2011 8:59:18 AM]
+                <br> No title or trail in house. Do not sell until cleared.
+              </td>
+
+            </tr>
+
+            <tr>
+              <td>
+                <strong>General Note: Teresa Tavenner</strong> [02/08/2010 1:33:59 PM]
+                <br> Decals- Rcvd 2010 decal, sending to CM to display sticker #16874541/16874.
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <strong>General Note: Tami Molina</strong> [09/22/2009 10:19:46 AM]
+                <br> No title or trail in house. Do not sell until cleared.
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <strong>General Note: Marianne Baptista </strong> [11/17/2011 8:59:18 AM]
+                <br> No title or trail in house. Do not sell until cleared.
+              </td>
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="form form-note top-gutter-15">
+      <form action="?" method="post">
+        <div class="form-body">
+          <div class="form-row form-row-block">
+            <label for="note" class="form-label">Add Note</label>
+
+            <div class="form-controls">
+              <textarea name="note" id="note" cols="30" rows="10" class="field textarea"></textarea>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </ng-template>
+
+</app-accordion> -->
+
+<!-- <div class="btns-group">
+ <button class="btn btn-small" (click)="expandAll.expandAllAccordion(true)">expand</button>
+ <button class="btn btn-small" (click)="expandAll.expandAllAccordion(false)">collapse</button>
+</div>
+<ma-accordion [closeOthers]=false [accordionList]="list" #expandAll>
+  <ng-template #section1>
+    <div class="keys-legend">
+      <h1>section1</h1>
+      <p>
+        <strong class="color-success">Success:</strong> Save process completed
+        <br>
+        <strong class="color-error">Error:</strong> Could not save
+        <br>
+        <strong class="color-warning">Warning:</strong> Saved but may not be correct
+      </p>
+      <p>
+        Required fields are marked with an
+        <span class="form-asterisk">*</span>
+      </p>
+    </div>
+  </ng-template>
+
+  <ng-template #section2>
+
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia eos dicta, vel animi ipsam saepe quas rem.
+      Doloremque
+      necessitatibus in, et odit quisquam ducimus similique, porro iste, deserunt, autem architecto totam inventore
+      voluptatum.
+      Odio quia totam molestias alias, laboriosam, suscipit maiores harum consequatur consectetur inventore doloribus,
+      blanditiis
+      repellendus omnis sunt praesentium non quae ratione aliquid et sequi quo. Ad praesentium fuga quod iste. Nemo
+      nesciunt
+      quis adipisci aliquam inventore voluptates, iusto. Hic exercitationem qui ea molestias voluptate dolorem deserunt,
+      quae incidunt nemo quidem voluptatibus saepe pariatur aliquid magnam animi reiciendis nam culpa aliquam tempore
+      ducimus
+      assumenda omnis doloribus nesciunt ullam.</p>
+
+  </ng-template>
+
+  <ng-template #section3>
+    <div class="nav-tertiary">
+      <ul>
+        <li>
+          <a>
+            <i class="ico-task"></i>
+
+            Add Task
+          </a>
+        </li>
+
+        <li>
+          <a>
+            <i class="ico-add-note"></i>
+
+            Add Notes
+          </a>
+        </li>
+
+        <li>
+          <a>
+            <i class="ico-phone"></i>
+
+            Phone
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="infos">
+      <div class="info">
+        <dl>
+          <dt>Borrower</dt>
+
+          <dd>Jane Doe</dd>
+
+          <dt>Lender</dt>
+
+          <dd>&nbsp;</dd>
+
+          <dt>Location</dt>
+
+          <dd>Appletree MHP [site:15]</dd>
+
+          <dt>Loan Name</dt>
+
+          <dd>New Loan</dd>
+
+          <dt>Loan Type</dt>
+
+          <dd>Home Loan</dd>
+        </dl>
+      </div>
+
+      <div class="info">
+        <dl>
+          <dt>Creation Date</dt>
+
+          <dd>01/04/2006 9:58:27 PM</dd>
+
+          <dt>Originator</dt>
+
+          <dd>Internal</dd>
+
+          <dt>Originator Loan #</dt>
+
+          <dd>&nbsp;</dd>
+
+          <dt>Pool</dt>
+
+          <dd>None</dd>
+
+          <dt>Collateral Line</dt>
+
+          <dd>&nbsp;</dd>
+        </dl>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template #section4>
+    <div class="table table-scrollable">
+      <div class="table-body custom-scroll">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tbody>
+            <tr>
+              <td>
+                <strong>General Note: Marianne Baptista </strong> [11/17/2011 8:59:18 AM]
+                <br> No title or trail in house. Do not sell until cleared.
+              </td>
+
+            </tr>
+
+            <tr>
+              <td>
+                <strong>General Note: Teresa Tavenner</strong> [02/08/2010 1:33:59 PM]
+                <br> Decals- Rcvd 2010 decal, sending to CM to display sticker #16874541/16874.
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <strong>General Note: Tami Molina</strong> [09/22/2009 10:19:46 AM]
+                <br> No title or trail in house. Do not sell until cleared.
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <strong>General Note: Marianne Baptista </strong> [11/17/2011 8:59:18 AM]
+                <br> No title or trail in house. Do not sell until cleared.
+              </td>
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="form form-note top-gutter-15">
+      <form action="?" method="post">
+        <div class="form-body">
+          <div class="form-row form-row-block">
+            <label for="note" class="form-label">Add Note</label>
+
+            <div class="form-controls">
+              <textarea name="note" id="note" cols="30" rows="10" class="field textarea"></textarea>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </ng-template>
+
+</ma-accordion> -->

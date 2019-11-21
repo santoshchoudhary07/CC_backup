@@ -1,0 +1,106 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "es2015",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2018",
+      "dom"
+    ],
+    "paths": {
+      "ma-accordion": [
+        "dist/ma-accordion"
+      ],
+      "ma-accordion/*": [
+        "dist/ma-accordion/*"
+      ],
+      "ma-dynamic-modal": [
+        "dist/ma-dynamic-modal"
+      ],
+      "ma-dynamic-modal/*": [
+        "dist/ma-dynamic-modal/*"
+      ],
+      "ma-table": [
+        "dist/ma-table"
+      ],
+      "ma-table/*": [
+        "dist/ma-table/*"
+      ],
+      "ma-select": [
+        "dist/ma-select"
+      ],
+      "ma-select/*": [
+        "dist/ma-select/*"
+      ],
+      "ma-text": [
+        "dist/ma-text"
+      ],
+      "ma-text/*": [
+        "dist/ma-text/*"
+      ],
+      "ma-text-area": [
+        "dist/ma-text-area"
+      ],
+      "ma-text-area/*": [
+        "dist/ma-text-area/*"
+      ],
+      "ma-date-picker": [
+        "dist/ma-date-picker"
+      ],
+      "ma-date-picker/*": [
+        "dist/ma-date-picker/*"
+      ],
+      "ma-modal": [
+        "dist/ma-modal"
+      ],
+      "ma-modal/*": [
+        "dist/ma-modal/*"
+      ],
+      "pagination": [
+        "dist/pagination"
+      ],
+      "pagination/*": [
+        "dist/pagination/*"
+      ],
+      "ma-checkbox": [
+        "dist/ma-checkbox"
+      ],
+      "ma-checkbox/*": [
+        "dist/ma-checkbox/*"
+      ],
+      "ma-radio-button": [
+        "dist/ma-radio-button"
+      ],
+      "ma-radio-button/*": [
+        "dist/ma-radio-button/*"
+      ],
+      "ma-number": [
+        "dist/ma-number"
+      ],
+      "ma-number/*": [
+        "dist/ma-number/*"
+      ],
+      "ma-masking": [
+        "dist/ma-masking"
+      ],
+      "ma-masking/*": [
+        "dist/ma-masking/*"
+      ]
+    }
+  },
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true
+  }
+}

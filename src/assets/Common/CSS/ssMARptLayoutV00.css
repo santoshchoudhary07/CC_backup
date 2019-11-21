@@ -1,0 +1,26 @@
+TABLE.rptLayout		{
+	WIDTH:			100%;
+	BACKGROUND-COLOR: 	#FFFFFF;
+	BORDER-TOP: 		#add8e6 1px SOLID; 
+	BORDER-RIGHT: 		#add8e6 1px SOLID;
+	BORDER-BOTTOM: 		#add8e6 1px SOLID;			}
+
+TD.rptHdr		{
+    PADDING: 2px 5px;
+    FONT: BOLD 11px ARIAL;
+    COLOR: BLUE;
+    BORDER-LEFT: #add8e6 1px SOLID;
+    BORDER-BOTTOM: #add8e6 1px SOLID;
+    xBACKGROUND-COLOR: #5588cc;
+    FILTER: progid:DXImageTransform.Microsoft.Gradient(
+			GradientType=0, 
+			StartColorStr='#005588CC', 
+			EndColorStr='#505588CC')			}
+
+TD.rptHdr SPAN		{
+    COLOR: #000000;			}
+
+TD.rptDetail		{
+	PADDING: 3px 4px;
+    	FONT: 11px ARIAL;
+    	BORDER-LEFT: #add8e6 1px SOLID;			}
