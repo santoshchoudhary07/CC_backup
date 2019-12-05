@@ -1,4 +1,4 @@
-import { forwardRef } from '@angular/core';
+﻿import { forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, FormControl, Validator } from '@angular/forms';
 
 const noop = () => {
@@ -35,10 +35,8 @@ export abstract class MaInputComponent implements ControlValueAccessor {
 
     // set accessor including call the onchange callback
     set value(v: any) {
-        if (v !== this.innerValue) {
-            this.innerValue = v;
-            this.onChangeCallback(v);
-        }
+        this.innerValue = v;
+        this.onChangeCallback(v);
     }
 
     // Set touched on blur
@@ -48,9 +46,7 @@ export abstract class MaInputComponent implements ControlValueAccessor {
 
     // From ControlValueAccessor interface
     writeValue(value: any): void {
-        if (value !== this.innerValue) {
-            this.innerValue = value;
-        }
+        this.innerValue = value;
     }
 
     // From ControlValueAccessor interface

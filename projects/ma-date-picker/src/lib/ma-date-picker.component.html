@@ -1,5 +1,5 @@
 <div class="datepicker">
-    <date-picker [hidden]="!datePickerOpen" [startDate]="minDate" [endDate]="maxDate" [(ngModel)]="ngModel"
+    <date-picker [hidden]="!datePickerOpen" [startDate]="minDate" [endDate]="maxDate" [ngModel]="ngModel"
         (maDateOnChange)="updateValue($event);closeDatePicker()"></date-picker>
     <input type="hidden" name="{{name}}" id="{{id}}" class="field hasDatepicker" [(ngModel)]="value"
         [required]="required" />

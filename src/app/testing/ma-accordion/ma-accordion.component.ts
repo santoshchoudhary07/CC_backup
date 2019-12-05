@@ -14,7 +14,7 @@ export class MaAccordionComponent implements OnInit {
   // @ViewChild('section4') section4: TemplateRef<any>;
   @Output()
   uploaded = new EventEmitter<any>();
-toggle: boolean;
+  toggle: boolean;
   constructor() { }
 
   ngOnInit() {

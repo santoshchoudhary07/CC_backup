@@ -1,4 +1,4 @@
-﻿import { Component, OnInit, Input, Output, OnChanges, SimpleChanges, EventEmitter, ChangeDetectorRef, AfterViewChecked } from '@angular/core';
+﻿import { Component, OnInit, Input, Output, OnChanges, SimpleChanges, EventEmitter } from '@angular/core';
 
 import { MaInputComponent, MakeProvider } from './ma-input.component';
 
@@ -7,7 +7,7 @@ import { MaInputComponent, MakeProvider } from './ma-input.component';
     templateUrl: 'ma-select.component.html',
     providers: [MakeProvider(MaSelectComponent)]
 })
-export class MaSelectComponent extends MaInputComponent implements OnInit, OnChanges, AfterViewChecked {
+export class MaSelectComponent extends MaInputComponent implements OnInit, OnChanges {
     @Input() ngModel: any;
     @Input() optionId: string;
     @Input() renderProperty: string;
@@ -29,7 +29,7 @@ export class MaSelectComponent extends MaInputComponent implements OnInit, OnCha
     loading: boolean;
     initialized: boolean;
 
-    constructor(private cdr: ChangeDetectorRef) {
+    constructor() {
         super();
         this.canBlur = true;
     }
@@ -48,10 +48,6 @@ export class MaSelectComponent extends MaInputComponent implements OnInit, OnCha
         this.loading = true;
         this.initialized = true;
     }
-
-    ngAfterViewChecked() {
-        this.cdr.detectChanges();
-      }
 
     ngOnChanges(changes: SimpleChanges) {
         if ((this.initialized && changes.ngModel && changes.ngModel.currentValue !== changes.ngModel.previousValue) ||
@@ -74,7 +70,6 @@ export class MaSelectComponent extends MaInputComponent implements OnInit, OnCha
                 this.updateValue();
             }
             this.focused = false;
-            this.cdr.detectChanges();
         }
     }
 
@@ -86,7 +81,6 @@ export class MaSelectComponent extends MaInputComponent implements OnInit, OnCha
         if (!this.readOnly && !this.disabled) {
             if (!status && this.canBlur || status) {
                 this.focused = !this.focused;
-                this.cdr.detectChanges();
             }
         }
     }

@@ -96,6 +96,12 @@
       ],
       "ma-masking/*": [
         "dist/ma-masking/*"
+      ],
+      "ma-table-testing-module": [
+        "dist/ma-table-testing-module"
+      ],
+      "ma-table-testing-module/*": [
+        "dist/ma-table-testing-module/*"
       ]
     }
   },

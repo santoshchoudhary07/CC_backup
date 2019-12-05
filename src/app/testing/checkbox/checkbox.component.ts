@@ -20,7 +20,7 @@ export class CheckboxComponent implements OnInit {
     this.profileForm = this.fb.group({
       firstName: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
-      name: [1, [Validators.required]],
+      name: [null, [Validators.required]],
     });
   }
 

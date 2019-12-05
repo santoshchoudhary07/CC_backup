@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges, OnChanges, AfterViewChecked, ChangeDetectorRef } from '@angular/core';
 
 import { MaInputComponent, MakeProvider } from './ma-inputs';
 import { ControlValueAccessor } from './control-value-accessor';
@@ -13,7 +13,7 @@ import { ControlValueAccessor } from './control-value-accessor';
   providers: [MakeProvider(MaTextComponent)]
 
 })
-export class MaTextComponent extends MaInputComponent implements OnInit, OnChanges, ControlValueAccessor {
+export class MaTextComponent extends MaInputComponent implements OnInit, OnChanges, AfterViewChecked, ControlValueAccessor {
   @Input() ngModel: string;
   @Input() placeholder: string;
   @Input() readonly: boolean;
@@ -28,7 +28,7 @@ export class MaTextComponent extends MaInputComponent implements OnInit, OnChang
 
   initialized: boolean;
 
-  constructor() {
+  constructor(private changeDetectorRef: ChangeDetectorRef) {
     super();
   }
 
@@ -40,6 +40,10 @@ export class MaTextComponent extends MaInputComponent implements OnInit, OnChang
     if (this.initialized && changes.ngModel && changes.ngModel.currentValue !== changes.ngModel.previousValue) {
       this.updateValue();
     }
+  }
+
+  ngAfterViewChecked(): void {
+    this.changeDetectorRef.detectChanges();
   }
 
   updateValue(): void {

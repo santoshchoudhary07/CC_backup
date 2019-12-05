@@ -4,6 +4,8 @@ export class Table {
     public isScrollable: boolean;
     public sorting: boolean;
     public message: string;
+    public pipeName: string;
+    public pipeFormat: string;
 
     constructor() {
         this.dataList = [];
@@ -11,5 +13,7 @@ export class Table {
         this.isScrollable = false;
         this.sorting = false;
         this.message = null;
+        this.pipeName = null;
+        this.pipeFormat = null;
     }
 }

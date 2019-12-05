@@ -575,6 +575,41 @@
           }
         }
       }
+    },
+    "ma-table-testing-module": {
+      "projectType": "library",
+      "root": "projects/ma-table-testing-module",
+      "sourceRoot": "projects/ma-table-testing-module/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ma-table-testing-module/tsconfig.lib.json",
+            "project": "projects/ma-table-testing-module/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ma-table-testing-module/src/test.ts",
+            "tsConfig": "projects/ma-table-testing-module/tsconfig.spec.json",
+            "karmaConfig": "projects/ma-table-testing-module/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ma-table-testing-module/tsconfig.lib.json",
+              "projects/ma-table-testing-module/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }},
   "defaultProject": "ma-common-components-v8"
 }

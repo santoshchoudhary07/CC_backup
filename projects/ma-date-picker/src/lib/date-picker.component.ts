@@ -107,7 +107,7 @@ export class DatePickerComponent extends MaInputComponent implements OnInit, OnC
   }
 
   private checkMinMaxDate(): void {
-    if (this.startDate.setHours(0, 0, 0, 0) >= this.endDate.setHours(0, 0, 0, 0)) {
+    if (this.startDate.setHours(0, 0, 0, 0) > this.endDate.setHours(0, 0, 0, 0)) {
       this.startDate = this.today;
     }
 

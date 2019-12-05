@@ -8,8 +8,8 @@ import { Table } from './ma-table.model';
   templateUrl: './ma-table.component.html',
   styleUrls: ['./ma-table.component.css']
 })
-export class MaTableComponent implements OnInit, OnChanges {
-  // @Input() options: Table;
+export class MaTableTestingModuleComponent implements OnInit, OnChanges {
+  @Input() options: Table;
   @Input() list: any[];
   @Input() selectList: any[];
   @Input() selectDisplayProperty: string[];
@@ -18,19 +18,12 @@ export class MaTableComponent implements OnInit, OnChanges {
   @Input() selectPlaceholder: string;
   @Input() checkBoxBindProperty: string;
   @Input() loaderImagePath: string;
-  @Input() loading: boolean;
   @Output() listChange = new EventEmitter<any[]>();
   @Output() maTableInputOnChange = new EventEmitter<any[]>();
   @Output() editData = new EventEmitter<any[]>();
-  public tableOption: Table;
-  @Input() get options(): Table {
-    return this.tableOption;
-  }
-  set options(value: Table) {
-    this.tableOption = value;
-  }
 
   sortField: any;
+  loading: boolean;
   checkedSelectAll: boolean;
   isMessage: boolean;
   isPage: boolean;
@@ -39,7 +32,6 @@ export class MaTableComponent implements OnInit, OnChanges {
     this.options = new Table();
     this.list = [];
     this.loading = true;
-    this.isMessage = true;
   }
 
   ngOnInit() {
@@ -48,10 +40,13 @@ export class MaTableComponent implements OnInit, OnChanges {
   ngOnChanges(): void {
     this.columnList();
     if (this.options.dataList && this.options.dataList.length > 0) {
-      this.isMessage = false;
       if (this.options.dataList.length === this.list.length) {
         this.isPage = true;
       }
+      this.isMessage = false;
+      this.loading = false;
+    } else {
+      this.loading = false;
     }
   }
 
@@ -64,7 +59,7 @@ export class MaTableComponent implements OnInit, OnChanges {
     }
   }
 
-  maInputOnChange(item: any, index: number, columnName: string): void {
+  maInputOnChange(item: any, index: number, columnName: string): any {
     this.checkIfAllSelected(index);
     this.inputChange(item, index, columnName);
   }
@@ -73,11 +68,8 @@ export class MaTableComponent implements OnInit, OnChanges {
     this.inputChange(item, index, columnName);
   }
 
-  inputChange(item: any, index: number, columnName: any, inputLabel?: string): void {
+  inputChange(item: any, index: number, columnName: any): void {
     item.index = index;
-    if (inputLabel) {
-      item.actionLabelType = inputLabel;
-    }
     item.columnName = columnName;
     this.isPage ? this.listChange.emit(this.options.dataList) : '';
     this.maTableInputOnChange.emit(item);
@@ -129,10 +121,6 @@ export class MaTableComponent implements OnInit, OnChanges {
     }
   }
 
-  isArray(item: any): boolean {
-    return Array.isArray(item) ? true : false;
-  }
-
   private columnList(): void {
     const columnName = [];
     const keyArray = [];
@@ -154,23 +142,22 @@ export class MaTableComponent implements OnInit, OnChanges {
   }
 
   private sortByKey(array: any[], key: string, desc: boolean): any[] {
-    let x: any;
-    let y: any;
+    let x: any, y: any;
     if (key) {
       return array.sort((a, b) => {
-        if (isNaN(this.displayProperty(key, a)) && isNaN(this.displayProperty(key, b))) {
-          x = (this.displayProperty(key, a) && this.displayProperty(key, a).toLowerCase()) || '';
-          y = (this.displayProperty(key, b) && this.displayProperty(key, b).toLowerCase()) || '';
-        } else {
-          x = this.displayProperty(key, a) || '';
-          y = this.displayProperty(key, b) || '';
-        }
-        if (desc) {
-          return ((x > y) ? -1 : ((x < y) ? 1 : 0));
-        } else {
-          return ((x < y) ? -1 : ((x > y) ? 1 : 0));
-        }
-      });
+            if (isNaN(this.displayProperty(key, a)) && isNaN(this.displayProperty(key, b))) {
+              x = (this.displayProperty(key, a) && this.displayProperty(key, a).toLowerCase()) || '';
+              y = (this.displayProperty(key, b) && this.displayProperty(key, b).toLowerCase()) || '';
+            } else {
+              x = this.displayProperty(key, a) || '';
+              y = this.displayProperty(key, b) || '';
+            }
+            if (desc) {
+              return ((x > y) ? -1 : ((x < y) ? 1 : 0));
+            } else {
+              return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+            }
+          });
     }
   }
 }

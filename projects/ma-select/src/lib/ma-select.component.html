@@ -6,7 +6,7 @@
             <option *ngFor="let option of optionsList" [ngValue]="option">{{renderProperty ? option[renderProperty] : option}}</option>
         </select>
         <button type="button" class="fs-dropdown-selected"
-            (click)="setFocus(true)">{{((selectedOption || selectedOption === 0) ? (renderProperty ? selectedOption[renderProperty] : selectedOption) : placeholder ? placeholder : '')}}</button>
+            (click)="setFocus(true)">{{((selectedOption && value || selectedOption === 0) ? (renderProperty ? selectedOption[renderProperty] : selectedOption) : placeholder ? placeholder : '')}}</button>
         <div class="fs-dropdown-options" tabindex="0" [focus]="focused" (blur)="setFocus(false);onTouched()"
             (mouseleave)="allowBlur(true)" (mouseenter)="allowBlur(false)">
             <button *ngFor="let option of optionsList" type="button" class="fs-dropdown-item"

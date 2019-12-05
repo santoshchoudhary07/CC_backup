@@ -1,4 +1,4 @@
-import { Component, OnInit, SimpleChanges, Output, Input, EventEmitter, OnChanges } from '@angular/core';
+import { Component, OnInit, SimpleChanges, Output, Input, EventEmitter, OnChanges, ChangeDetectorRef, AfterViewChecked } from '@angular/core';
 
 import { MaInputComponent, MakeProvider } from './ma-inputs';
 import { ControlValueAccessor } from './control-value-accessor';
@@ -8,7 +8,7 @@ import { ControlValueAccessor } from './control-value-accessor';
   templateUrl: './ma-select.component.html',
   providers: [MakeProvider(MaSelectComponent)]
 })
-export class MaSelectComponent extends MaInputComponent implements OnInit, OnChanges, ControlValueAccessor {
+export class MaSelectComponent extends MaInputComponent implements OnInit, OnChanges, AfterViewChecked, ControlValueAccessor {
   @Input() ngModel: any;
   @Input() optionsList: any[];
   @Input() optionId: string;
@@ -30,20 +30,24 @@ export class MaSelectComponent extends MaInputComponent implements OnInit, OnCha
   loading: boolean;
   initialized: boolean;
 
-  constructor() {
+  constructor(private cdr: ChangeDetectorRef) {
     super();
     this.canBlur = true;
+    this.focused = false;
   }
 
   ngOnInit() {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    this.initialize();
     if ((this.initialized && changes.ngModel && changes.ngModel.currentValue !== changes.ngModel.previousValue) ||
       (this.initialized && changes.optionsList && changes.optionsList.currentValue !== changes.optionsList.previousValue)) {
-      this.ngOnInit();
+        this.initialize();
     }
+  }
+
+  ngAfterViewChecked() {
+    this.cdr.detectChanges();
   }
 
   onSelectChange(option: any): void {
@@ -60,6 +64,7 @@ export class MaSelectComponent extends MaInputComponent implements OnInit, OnCha
         this.updateValue();
       }
       this.focused = false;
+      this.cdr.detectChanges();
     }
   }
 
@@ -71,6 +76,7 @@ export class MaSelectComponent extends MaInputComponent implements OnInit, OnCha
     if (!this.readOnly && !this.disabled) {
       if (!status && this.canBlur || status) {
         this.focused = !this.focused;
+        this.cdr.detectChanges();
       }
     }
   }
@@ -93,10 +99,12 @@ export class MaSelectComponent extends MaInputComponent implements OnInit, OnCha
   }
 
   writeValue(value: any): void {
-      if (!this.ngModel && !this.value && (value || value === 0)) {
-        this.value = this.ngModel = value;
-        this.initialize();
-      }
+    if (!this.ngModel && !this.value && (value || value === 0)) {
+      this.value = this.ngModel = value;
+      this.initialize();
+    } else {
+      this.value = this.ngModel = value;
+    }
   }
 
   registerOnTouched(fn: any): void {

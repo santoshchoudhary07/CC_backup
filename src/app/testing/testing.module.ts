@@ -96,6 +96,7 @@ import { AutoCompleteComponent } from './auto-complete/auto-complete.component';
 import { MaTableModule } from 'projects/ma-table/src/public-api';
 import { MaSelectModule } from 'projects/ma-select/src/public-api';
 import { PaginationModule } from 'projects/pagination/src/public-api';
+import { MaTableTestingModuleModule } from 'ma-table-testing-module';
 
 @NgModule({
   declarations: [TableComponent, AutoCompleteComponent, MaSearchPipe, DatePickerComponent, DateTimeComponent, SelectComponent, ModalComponent, MaskingComponent, ToggleComponent, MaTextAreaComponent, PhotosComponent, MaTextComponent, MaAccordionComponent, NumbersComponent, CheckboxComponent, MultiSelectComponent, RadioComponent, PasswordConfirmationComponent, MaTreeComponent, PasswordComponent, MaUrlComponent, DynamicModalComponent, CustomPatternComponent],
@@ -110,6 +111,7 @@ import { PaginationModule } from 'projects/pagination/src/public-api';
     MaTextAreaModule,
     MaTextModule,
     MaDynamicModalModule,
+    // MaTableTestingModuleModule,
     // MaTableModule,
     // NgPaginationModule,
     // MaSelectModule,

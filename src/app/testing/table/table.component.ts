@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DemoService } from '../../demo.service';
-import { isDate } from 'util';
+import { isDate, isObject } from 'util';
 import { MaSearchPipe } from 'projects/ma-table/src/public-api';
 
 @Component({
@@ -14,18 +14,20 @@ export class TableComponent implements OnInit {
   name: any;
   dataValue: any;
   originalData: any[] = [];
+  check: any;
+  loading: boolean = true;
   pages: any[] = [
     { id: 1, value: 3 },
     { id: 2, value: 5 },
     { id: 3, value: 1 }
   ];
-  fighters = [
-    { name: 'Conor McGregor', wins: 21, losses: 3, address: { street: 123 }, id: 1 },
-    { name: 'Tony Ferguson', wins: 23, losses: 3, address: { street: 123 }, id: 1 },
-    { name: 'Max Holloway', wins: 19, losses: 3, address: { street: 123 }, id: 1 },
-    { name: 'Jon Jones', wins: 22, losses: 1, address: { street: 123 }, id: 1 },
-    { name: 'Daniel Cormier', wins: 21, losses: 1, address: { street: 123 }, id: 1 },
-    { name: 'Brock Lesnar', wins: 5, losses: 3, address: { street: 123 }, id: 1 }
+  fighters: any = [
+    { name: 'Conor McGregor', wins: 21, losses: 3, id: 1, date: new Date() },
+    { name: 'Tony Ferguson', wins: 23, losses: 3, address: { street: { area: 'sdf' } }, id: 1, date: new Date() },
+    { name: 'Max Holloway', wins: 19, losses: 3, address: { street: { area: 'dsfd' } }, id: 1, date: new Date() },
+    { name: 'Jon Jones', wins: 22, losses: 1, address: { street: { area: 'wewer' } }, id: 1, date: new Date() },
+    { name: 'Daniel Cormier', wins: 21, losses: 1, address: { street: { area: 'uty' } }, id: 1, date: new Date() },
+    { name: 'Brock Lesnar', wins: 5, losses: 3, address: { street: { area: 'nmn' } }, id: 1, date: new Date() }
   ];
   // pagination end
 
@@ -44,11 +46,12 @@ export class TableComponent implements OnInit {
   // ];
 
   tableHeadList: any[] = [
-    { columnName: 'Id', isSorting: true, sortBy: 'address.street' },
+    { columnName: 'Id', isSorting: true, sortBy: 'id' },
     { columnName: 'User-Id', sortBy: 'name', isSorting: true },
-    { columnName: 'Title', sortBy: 'wins', isSorting: true },
+    { columnName: 'Title', sortBy: 'wins', isSorting: true, pipe: { name: 'currency', format: 'USD' } },
     { columnName: 'Post', sortBy: 'losses', isSorting: true },
-    // { columnName: 'Action', isSorting: true, inputType: 'inputType', inputLabel: 'actionLink', },
+    { columnName: 'Date', sortBy: 'date', isSorting: true, pipe: { name: 'date', format: 'MM/dd/yyyy' } },
+    { columnName: 'Action', isSorting: true, inputType: 'inputType', inputLabel: 'actionLink', },
     // { columnName: 'Action', isSorting: true, inputType: 'inputType' },
     // { columnName: 'link', isSorting: true, sortBy: 'id', inputType: 'inputType', inputLabel: 'link'},
   ];
@@ -56,33 +59,50 @@ export class TableComponent implements OnInit {
   constructor(private demoSer: DemoService, private maSearch: MaSearchPipe) { }
 
   ngOnInit() {
+    // this.check = ['address', 'street'];
+    // this.fighters.forEach(element => {
+    //   console.log(element['address']['street']);
+    // });
     // isDate()
     this.init();
     // table begin
+   
     this.demoSer.getData().subscribe(data => {
       this.originalData = data;
       this.tableList = data;
+      this.loading = false;
       this.tableList[0].isChecked = true;
       this.tableList[1].bind = 2;
-      this.tableList.forEach(element => {
+      this.fighters.forEach(element => {
         element.date = new Date();
-        element.inputType = 'checkbox';
-        element.actionLink = 'save';
+        element.inputType = 'link';
+        element.actionLink = ['save', 'edit'];
         element.link = element.id;
         // element.isChecked = true;
         // element.trClassName = element.isChecked ? 'change-background' : ''
-        element.trClassName = element.isChecked ? 'change-background' : ''
+        element.trClassName = element.isChecked ? 'change-background' : '';
         // element.isHide = element.isChecked;
         // element.trNgIfCondition = element.isChecked;
 
 
       });
-      this.options.dataList = this.fighters;
+        this.options.dataList =this.fighters;
       // this.options.dataList = this.tableList;
       // this.list = this.tableList
       this.options = Object.assign({}, this.options);
     });
     // table end
+  }
+
+  fun(keyPath: any, obj: any) {
+    if (Array.isArray(keyPath)) {
+      for (const i of keyPath) {
+        obj = obj[i] = obj[i] || {};
+      }
+      return isObject(obj) ? Object.keys(obj).length > 0 ? obj : null : obj;
+    } else {
+      return obj[keyPath];
+    }
   }
 
   search() {
@@ -95,7 +115,7 @@ export class TableComponent implements OnInit {
     this.options = {
       dataList: [],
       headList: this.tableHeadList,
-      isScrollable: true,
+      isScrollable: false,
       sorting: true,
       message: 'no records found',
     };
@@ -106,12 +126,12 @@ export class TableComponent implements OnInit {
       element.inputType = 'checkbox';
       element.actionName = 'save';
       element.trClassName = element.isChecked ? 'change-background' : '',
-        element.tdClassName = element.isChecked ? 'change-background' : ''
+        element.tdClassName = element.isChecked ? 'change-background' : '';
       element.isHide = element.isChecked;
       // element.trNgIfCondition = element.isChecked;
 
     });
-    this.options.dataList = this.tableList;
+    this.options.dataList = this.fighters;
     this.options = Object.assign({}, this.options);
   }
 
@@ -132,7 +152,7 @@ export class TableComponent implements OnInit {
   }
 
   maTableInputOnChange(item: any) {
-    console.log(this.tableList);
+    // console.log(this.tableList);
     console.log(item);
   }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectorRef, AfterViewChecked } from '@angular/core';
 
 import { MaInputComponent, MakeProvider } from './ma-input.component';
 import { isNumber, isBoolean } from 'util';
@@ -20,7 +20,7 @@ import { ControlValueAccessor } from './control-value-accessor';
   styles: [],
   providers: [MakeProvider(MaCheckboxComponent)]
 })
-export class MaCheckboxComponent extends MaInputComponent implements OnInit, ControlValueAccessor {
+export class MaCheckboxComponent extends MaInputComponent implements OnInit, AfterViewChecked, ControlValueAccessor {
   @Input() ngModel: any;
   @Input() checkBoxValue: any;
   @Input() readonly: boolean;
@@ -35,11 +35,15 @@ export class MaCheckboxComponent extends MaInputComponent implements OnInit, Con
   checked: boolean;
   checkbox: boolean;
 
-  constructor() {
+  constructor(private changeDetectorRef: ChangeDetectorRef) {
     super();
   }
 
   ngOnInit() {
+  }
+
+  ngAfterViewChecked() {
+    this.changeDetectorRef.detectChanges();
   }
 
   checkBoxChange(event: any): void {

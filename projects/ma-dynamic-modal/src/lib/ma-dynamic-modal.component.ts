@@ -3,7 +3,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'ma-dynamic-modal',
   template: `
-  <div *ngIf="isModalOpen" class="popup popup-first" id="popup-alert" [ngClass]="{'popup-open': isModalOpen}">
+  <ng-container *ngIf="isModalOpen">
+  <div class="popup popup-first" id="popup-alert" [ngClass]="{'popup-open': isModalOpen}">
   <div class="popup-overlay popup-close"></div>
   <div class="popup-inner popup-width">
     <div class="popup-head">
@@ -15,10 +16,11 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
       </div>
     </div>
     <div class="popup-body">
-    <ng-content></ng-content>
+    <ng-content *ngIf="isModalOpen"></ng-content>
     </div>
   </div>
 </div>
+</ng-container>
   `,
   styles: ['.popup-width{ width: 800px;}']
 })

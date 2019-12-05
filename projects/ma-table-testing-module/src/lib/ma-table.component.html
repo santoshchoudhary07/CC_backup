@@ -36,7 +36,7 @@
                             <img [src]="loaderImagePath" alt="Loading...">
                         </td>
                     </tr>
-                    <tr *ngIf="!loading && (options.dataList && options.dataList.length) === 0" class="data-info">
+                    <tr *ngIf="!loading && isMessage" class="data-info">
                         <td [attr.colspan]="options?.headList?.length">{{options?.message}}</td>
                     </tr>
                     <ng-container *ngFor="let data of options.dataList; let i=index">
@@ -47,34 +47,13 @@
                                         <td [ngClass]="data[property?.tdClassName] ? data[property?.tdClassName] : ''">
                                             <div [ngSwitch]="data[property?.inputType]">
                                                 <div *ngSwitchCase="'button'">
-                                                    <ng-container
-                                                        *ngIf="isArray(data[property?.inputLabel]); else simpleButton">
-                                                        <ng-container
-                                                            *ngFor="let buttonItem of data[property?.inputLabel]">
-                                                            <button class="btn btn-small"
-                                                                [ngClass]="data[property?.actionClass] ? data[property?.actionClass] : ''"
-                                                                (click)="inputChange(data, i, property.columnName, buttonItem)">{{buttonItem}}</button>
-                                                        </ng-container>
-                                                    </ng-container>
-                                                    <ng-template #simpleButton>
-                                                        <button class="btn btn-small"
-                                                            [ngClass]="data[property?.actionClass] ? data[property?.actionClass] : ''"
-                                                            (click)="inputChange(data, i, property.columnName)">{{data[property?.inputLabel]}}</button>
-                                                    </ng-template>
+                                                    <button class="btn btn-small"
+                                                        [ngClass]="data[property?.actionClass] ? data[property?.actionClass] : ''"
+                                                        (click)="inputChange(data, i, property.columnName)">{{data[property?.inputLabel]}}</button>
                                                 </div>
                                                 <div *ngSwitchCase="'link'">
-                                                    <ng-container
-                                                        *ngIf="isArray(data[property?.inputLabel]); else simpleAnchorLink">
-                                                        <ng-container
-                                                            *ngFor="let linkItem of data[property?.inputLabel]">
-                                                            <a (click)="inputChange(data, i, property.columnName, linkItem)"
-                                                                [ngClass]="data[property?.actionClass] ? data[property?.actionClass] : ''">{{linkItem}}</a>
-                                                        </ng-container>
-                                                    </ng-container>
-                                                    <ng-template #simpleAnchorLink>
-                                                        <a (click)="inputChange(data, i, property.columnName)"
-                                                            [ngClass]="data[property?.actionClass] ? data[property?.actionClass] : ''">{{data[property?.inputLabel]}}</a>
-                                                    </ng-template>
+                                                    <a (click)="inputChange(data, i, property.columnName)"
+                                                        [ngClass]="data[property?.actionClass] ? data[property?.actionClass] : ''">{{data[property?.inputLabel]}}</a>
                                                 </div>
                                                 <div *ngSwitchCase="'dropdown'">
                                                     <ma-dropdown [options]="selectList"
@@ -174,7 +153,7 @@
                         <img [src]="loaderImagePath" alt="Loading...">
                     </td>
                 </tr>
-                <tr *ngIf="!loading && (options.dataList && options.dataList.length) === 0" class="data-info">
+                <tr *ngIf="!loading && isMessage" class="data-info">
                     <td [attr.colspan]="options?.headList?.length">{{options?.message}}</td>
                 </tr>
                 <ng-container *ngFor="let data of options.dataList; let i=index">
@@ -185,32 +164,13 @@
                                     <td [ngClass]="data[property?.tdClassName] ? data[property?.tdClassName] : ''">
                                         <div [ngSwitch]="data[property?.inputType]">
                                             <div *ngSwitchCase="'button'">
-                                                <ng-container
-                                                    *ngIf="isArray(data[property?.inputLabel]); else simpleButton">
-                                                    <ng-container *ngFor="let buttonItem of data[property?.inputLabel]">
-                                                        <button class="btn btn-small"
-                                                            [ngClass]="data[property?.actionClass] ? data[property?.actionClass] : ''"
-                                                            (click)="inputChange(data, i, property.columnName, buttonItem)">{{buttonItem}}</button>
-                                                    </ng-container>
-                                                </ng-container>
-                                                <ng-template #simpleButton>
-                                                    <button class="btn btn-small"
-                                                        [ngClass]="data[property?.actionClass] ? data[property?.actionClass] : ''"
-                                                        (click)="inputChange(data, i, property.columnName)">{{data[property?.inputLabel]}}</button>
-                                                </ng-template>
+                                                <button class="btn btn-small"
+                                                    [ngClass]="data[property?.actionClass] ? data[property?.actionClass] : ''"
+                                                    (click)="inputChange(data, i, property.columnName)">{{data[property?.inputLabel]}}</button>
                                             </div>
                                             <div *ngSwitchCase="'link'">
-                                                <ng-container
-                                                    *ngIf="isArray(data[property?.inputLabel]); else simpleAnchorLink">
-                                                    <ng-container *ngFor="let linkItem of data[property?.inputLabel]">
-                                                        <a (click)="inputChange(data, i, property.columnName, linkItem)"
-                                                            [ngClass]="data[property?.actionClass] ? data[property?.actionClass] : ''">{{linkItem}}</a>
-                                                    </ng-container>
-                                                </ng-container>
-                                                <ng-template #simpleAnchorLink>
-                                                    <a (click)="inputChange(data, i, property.columnName)"
-                                                        [ngClass]="data[property?.actionClass] ? data[property?.actionClass] : ''">{{data[property?.inputLabel]}}</a>
-                                                </ng-template>
+                                                <a (click)="inputChange(data, i, property.columnName)"
+                                                    [ngClass]="data[property?.actionClass] ? data[property?.actionClass] : ''">{{data[property?.inputLabel]}}</a>
                                             </div>
                                             <div *ngSwitchCase="'dropdown'">
                                                 <ma-dropdown [options]="selectList"

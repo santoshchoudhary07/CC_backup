@@ -13,12 +13,17 @@
               <ma-pagination (filteredList)="pageChanged($event)" [paginationList]="tableList" [pageSize]=3 [pageSizeList]="[1,3,5]">
               </ma-pagination> -->
               <!-- {{tableList.length}} -->
-              <!-- <ma-table [(options)]="options" [(list)]="tableList" [checkBoxBindProperty]="'isChecked'" [selectPlaceholder]="'--'"
+              <ma-table [(options)]="options" [(list)]="fighters" [loading]="loading" [checkBoxBindProperty]="'isChecked'" [selectPlaceholder]="'--'"
                 [selectList]="tableList" [selectDisplayProperty]="'id'" [selectBindProperty]="'bind'" [selectValueProperty]="'id'"
-                [dateFormat]="'MM/dd/yyyy'" [loaderImagePath]="'./assets/Common/CSS/images/loading-small.gif'"
+                [loaderImagePath]="'./assets/Common/CSS/images/loading-small.gif'"
                 (listChange)="sortingChange($event)" (maTableInputOnChange)="maTableInputOnChange($event)"
-                (editData)="edit($event)"></ma-table> -->
-                <ma-table [(options)]="options" [(list)]="fighters"></ma-table>
+                (editData)="edit($event)"></ma-table>
+                <!-- <ma-table-testing-module [(options)]="options" [(list)]="fighters" [checkBoxBindProperty]="'isChecked'" [selectPlaceholder]="'--'"
+                [selectList]="tableList" [selectDisplayProperty]="'id'" [selectBindProperty]="'bind'" [selectValueProperty]="'id'"
+                [loaderImagePath]="'./assets/Common/CSS/images/loading-small.gif'"
+                (listChange)="sortingChange($event)" (maTableInputOnChange)="maTableInputOnChange($event)"
+                (editData)="edit($event)"></ma-table-testing-module> -->
+                <!-- <ma-table [(options)]="options" [(list)]="fighters"></ma-table>
             </div>
           </section>
         </div>
@@ -26,3 +31,37 @@
     </main>
   </div>
 </div>
+
+<!-- <table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Salary</th>
+      <th>Age</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container >
+        <tr *ngFor="let emp of fighters">
+            <td>{{emp[check]}}</td>
+            <td>{{emp.name}}</td>
+            <td>{{emp.wins}}</td>
+          </tr>
+    </ng-container>
+    
+  </tbody>
+</table> -->
+
+<!-- <table class="table">
+    <thead>
+      <tr >
+        <th *ngFor="let emp of tableHeadList">{{emp.columnName}}</th>
+      </tr>
+    </thead>
+    <tbody>
+
+          <tr *ngFor="let emp of fighters">
+              <td *ngFor="let a of tableHeadList">{{fun(a.sortBy, emp)}}</td>
+            </tr>
+    </tbody>
+  </table> -->

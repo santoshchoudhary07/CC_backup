@@ -52,7 +52,7 @@ export class MaModalComponent implements OnInit, OnChanges {
 
   close(button?: any): void {
     this.isModalOpenChange.emit(false);
-      this.modalClose.emit(button);
+    this.modalClose.emit(button);
   }
 
   setTime(): void {

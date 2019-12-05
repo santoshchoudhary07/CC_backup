@@ -24,7 +24,7 @@ export class SelectComponent implements OnInit {
     this.profileForm = this.fb.group({
       firstName: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
-      name: [1, [Validators.required]],
+      name: ['', [Validators.required]],
     });
     // this.name = 1;
     this.demoSer.getData().subscribe(data => {
@@ -61,5 +61,9 @@ export class SelectComponent implements OnInit {
   //select end
   submit() {
     console.log(this.profileForm.value)
+  }
+
+  reset() {
+    this.profileForm.reset();
   }
 }

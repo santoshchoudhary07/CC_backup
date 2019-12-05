@@ -81,14 +81,7 @@ export class MaDatePickerComponent extends MaInputComponent implements OnInit, O
     if (this.displayDate && this.displayDate.length === this.displayDateFormat.length) {
       const date = new Date(Date.parse(this.displayDate));
       this.ngModel = isNaN(date.getTime()) ? null : date;
-      this.maxDate = this.maxDate ? (isNaN(this.maxDate.getTime()) ? null : new Date(this.maxDate)) : null;
-      this.minDate = this.minDate ? (isNaN(this.minDate.getTime()) ? new Date() : new Date(this.minDate)) : new Date();
-      if (this.minDate && this.maxDate) {
-        this.checkMinMaxDate();
-        if (((this.ngModel.setHours(0, 0, 0, 0) > this.maxDate.setHours(0, 0, 0, 0)) || (this.ngModel.setHours(0, 0, 0, 0) < this.minDate.setHours(0, 0, 0, 0)))) {
-          this.ngModel = null;
-        }
-      }
+      this.checkInvalidDate();
       this.displayDate = new DatePipe('en-US').transform(this.ngModel, this.displayDateFormat ? this.displayDateFormat : 'MM/dd/yyyy');
     }
   }
@@ -121,6 +114,7 @@ export class MaDatePickerComponent extends MaInputComponent implements OnInit, O
       this.ngModel = date;
       this.convertToDate(true);
     }
+    this.checkInvalidDate();
     setTimeout(() => {
       this.value = this.isDateObject ? this.ngModel : this.displayDate;
       this.ngModelChange.emit(this.value);
@@ -170,6 +164,18 @@ export class MaDatePickerComponent extends MaInputComponent implements OnInit, O
 
     if (this.maxDate.setHours(0, 0, 0, 0) < today.setHours(0, 0, 0, 0)) {
       this.maxDate = today;
+    }
+  }
+
+  private checkInvalidDate(): void {
+    this.maxDate = this.maxDate ? (isNaN(this.maxDate.getTime()) ? null : new Date(this.maxDate)) : null;
+    this.minDate = this.minDate ? (isNaN(this.minDate.getTime()) ? new Date() : new Date(this.minDate)) : new Date();
+    if (this.minDate && this.maxDate && this.ngModel) {
+      this.checkMinMaxDate();
+      if (((this.ngModel.setHours(0, 0, 0, 0) > this.maxDate.setHours(0, 0, 0, 0)) || (this.ngModel.setHours(0, 0, 0, 0) < this.minDate.setHours(0, 0, 0, 0)))) {
+        this.ngModel = null;
+        this.displayDate = null;
+      }
     }
   }
 
