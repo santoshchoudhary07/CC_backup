@@ -1,0 +1,216 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "module": "es2015",
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es5",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2018",
+      "dom"
+    ],
+    "paths": {
+      "pagination": [
+        "dist/pagination"
+      ],
+      "pagination/*": [
+        "dist/pagination/*"
+      ],
+      "ma-toggle": [
+        "dist/ma-toggle"
+      ],
+      "ma-toggle/*": [
+        "dist/ma-toggle/*"
+      ],
+      "ma-table": [
+        "dist/ma-table"
+      ],
+      "ma-table/*": [
+        "dist/ma-table/*"
+      ],
+      "ma-modal": [
+        "dist/ma-modal"
+      ],
+      "ma-modal/*": [
+        "dist/ma-modal/*"
+      ],
+      "ma-select": [
+        "dist/ma-select"
+      ],
+      "ma-select/*": [
+        "dist/ma-select/*"
+      ],
+      "ma-text": [
+        "dist/ma-text",
+        "dist/ma-text"
+      ],
+      "ma-text/*": [
+        "dist/ma-text/*",
+        "dist/ma-text/*"
+      ],
+      "ma-pagination": [
+        "dist/ma-pagination"
+      ],
+      "ma-pagination/*": [
+        "dist/ma-pagination/*"
+      ],
+      "ma-date-time": [
+        "dist/ma-date-time"
+      ],
+      "ma-date-time/*": [
+        "dist/ma-date-time/*"
+      ],
+      "ma-date-picker": [
+        "dist/ma-date-picker"
+      ],
+      "ma-date-picker/*": [
+        "dist/ma-date-picker/*"
+      ],
+      "ma-tab": [
+        "dist/ma-tab"
+      ],
+      "ma-tab/*": [
+        "dist/ma-tab/*"
+      ],
+      "ma-number": [
+        "dist/ma-number"
+      ],
+      "ma-number/*": [
+        "dist/ma-number/*"
+      ],
+      "ma-accordian": [
+        "dist/ma-accordian",
+        "dist/ma-accordian"
+      ],
+      "ma-accordian/*": [
+        "dist/ma-accordian/*",
+        "dist/ma-accordian/*"
+      ],
+      "ma-photo": [
+        "dist/ma-photo"
+      ],
+      "ma-photo/*": [
+        "dist/ma-photo/*"
+      ],
+      "ma-masking": [
+        "dist/ma-masking"
+      ],
+      "ma-masking/*": [
+        "dist/ma-masking/*"
+      ],
+      "ma-text-area": [
+        "dist/ma-text-area",
+        "dist/ma-text-area"
+      ],
+      "ma-text-area/*": [
+        "dist/ma-text-area/*",
+        "dist/ma-text-area/*"
+      ],
+      "ma-email": [
+        "dist/ma-email"
+      ],
+      "ma-email/*": [
+        "dist/ma-email/*"
+      ],
+      "ma-loader": [
+        "dist/ma-loader"
+      ],
+      "ma-loader/*": [
+        "dist/ma-loader/*"
+      ],
+      "ma-asterisk": [
+        "dist/ma-asterisk"
+      ],
+      "ma-asterisk/*": [
+        "dist/ma-asterisk/*"
+      ],
+      "ma-drag-drop": [
+        "dist/ma-drag-drop"
+      ],
+      "ma-drag-drop/*": [
+        "dist/ma-drag-drop/*"
+      ],
+      "ma-dynamic-modal": [
+        "dist/ma-dynamic-modal"
+      ],
+      "ma-dynamic-modal/*": [
+        "dist/ma-dynamic-modal/*"
+      ],
+      "ma-password": [
+        "dist/ma-password"
+      ],
+      "ma-password/*": [
+        "dist/ma-password/*"
+      ],
+      "ma-url": [
+        "dist/ma-url"
+      ],
+      "ma-url/*": [
+        "dist/ma-url/*"
+      ],
+      "ma-custom-pattern": [
+        "dist/ma-custom-pattern"
+      ],
+      "ma-custom-pattern/*": [
+        "dist/ma-custom-pattern/*"
+      ],
+      "ma-accordion": [
+        "dist/ma-accordion"
+      ],
+      "ma-accordion/*": [
+        "dist/ma-accordion/*"
+      ],
+      "ma-auto-complete": [
+        "dist/ma-auto-complete"
+      ],
+      "ma-auto-complete/*": [
+        "dist/ma-auto-complete/*"
+      ],
+      "ma-checkbox": [
+        "dist/ma-checkbox"
+      ],
+      "ma-checkbox/*": [
+        "dist/ma-checkbox/*"
+      ],
+      "ma-multi-select": [
+        "dist/ma-multi-select"
+      ],
+      "ma-multi-select/*": [
+        "dist/ma-multi-select/*"
+      ],
+      "ma-password-confirmation": [
+        "dist/ma-password-confirmation"
+      ],
+      "ma-password-confirmation/*": [
+        "dist/ma-password-confirmation/*"
+      ],
+      "ma-radio-button": [
+        "dist/ma-radio-button"
+      ],
+      "ma-radio-button/*": [
+        "dist/ma-radio-button/*"
+      ],
+      "ma-tree": [
+        "dist/ma-tree"
+      ],
+      "ma-tree/*": [
+        "dist/ma-tree/*"
+      ],
+      "xyz": [
+        "dist/xyz"
+      ],
+      "xyz/*": [
+        "dist/xyz/*"
+      ]
+    }
+  }
+}

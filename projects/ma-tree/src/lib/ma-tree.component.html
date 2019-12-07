@@ -1,0 +1,21 @@
+<div class="accordion">
+    <ng-container *ngFor="let tree of treeList; let i=index">
+        <div class="accordion-section accordion-section-expanded-only"
+            [ngClass]="{'accordion-section-expanded': tree?.isOpen}">
+            <header class="accordion-head">
+                <h3 [ngClass]="checkArrayOfObjectKeys(tree) ? 'section-title': 'title-position'">
+                    <span *ngIf="checkArrayOfObjectKeys(tree)" class="accordion-status"
+                        (click)="toggleTree(tree)"></span>
+                    <span id="property"
+                        (click)="maInnerTreeOnChange(tree);addClass($event.target)">{{tree[renderProperty]}}</span>
+                </h3>
+            </header>
+            <div class="section-body accordion-body">
+                <ng-container *ngFor="let key of keys(tree);">
+                    <ma-tree *ngIf="checkIfArray(tree[key])" [treeList]="tree[key]" [renderProperty]="renderProperty"
+                        (maTreeOnChange)="maInnerTreeOnChange($event)"></ma-tree>
+                </ng-container>
+            </div>
+        </div>
+    </ng-container>
+</div>

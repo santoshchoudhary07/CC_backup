@@ -1,0 +1,14 @@
+.not-found {
+  padding: 5px;
+  border: 1px solid #DDD;
+}
+.ui-autocomplete{
+  top: 28px;
+}
+
+.ui-autocomplete li:hover, .ui-autocomplete li:focus {
+  background: #0366dd;
+  color: #fff;
+  border: 0px !important;
+  margin: inherit;
+}

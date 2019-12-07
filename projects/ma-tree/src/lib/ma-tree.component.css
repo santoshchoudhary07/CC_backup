@@ -1,0 +1,20 @@
+.title-position {
+    margin-left: 22px;
+    padding-top: 10px;
+} 
+
+.section-title {
+    padding-top: 10px;
+} 
+
+.tree-property {
+    background: #084c9e !important;
+    color: #fff !important;
+    padding: 3px;
+} 
+
+#property:hover {
+     background: #084c9e !important;
+     color: #fff !important;
+     padding: 3px;
+}

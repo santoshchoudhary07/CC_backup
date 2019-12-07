@@ -1,0 +1,67 @@
+<ng-container *ngIf="options.isScrollable; else simpleTable">
+    <div class="table table-properties table-scrollable table-fixed-layout">
+        <div class="table-head">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <thead>
+                    <tr>
+                        <ng-container *ngFor="let head of this.options.headList">
+                            <th class="sorting-arrow" (click)="sortBy(head)">
+                                <span>{{head.columnName}}</span>
+                                <i
+                                    [ngClass]="(sortField === head.sortBy && options.sorting && head.isSorting) ? 'arrow-up inline-space-left arrow' : options.sorting && head.isSorting ? 'arrow-down inline-space-left arrow': ''"></i>
+                            </th>
+                        </ng-container>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="table-body custom-scroll">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tbody>
+                    <tr *ngIf="loading" class="data-info">
+                        <td [attr.colspan]="options?.headList?.length">
+                            <img [src]="loaderImagePath" alt="Loading...">
+                        </td>
+                    </tr>
+                    <tr *ngIf="!loading && options.dataList && options.dataList.length === 0" class="data-info">
+                        <td [attr.colspan]="options?.headList?.length">{{options?.message}}</td>
+                    </tr>
+                    <tr *ngFor="let data of options.dataList; let i=index">
+                        <td *ngFor="let property of this.options.headList">{{data[property.sortBy]}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</ng-container>
+
+<ng-template #simpleTable>
+    <div class="table table-worksheet">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <thead>
+                <tr>
+                    <ng-container *ngFor="let head of this.options.headList">
+                        <th class="sorting-arrow" (click)="sortBy(head)">
+                            <span>{{head.columnName}}</span>
+                            <i
+                                [ngClass]="(sortField === head.sortBy && options.sorting && head.isSorting) ? 'arrow-up inline-space-left arrow' : options.sorting && head.isSorting ? 'arrow-down inline-space-left arrow': ''"></i>
+                        </th>
+                    </ng-container>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngIf="loading" class="data-info">
+                    <td [attr.colspan]="options?.headList?.length">
+                        <img [src]="loaderImagePath" alt="Loading...">
+                    </td>
+                </tr>
+                <tr *ngIf="!loading && options.dataList && options.dataList.length === 0" class="data-info">
+                    <td [attr.colspan]="options?.headList?.length">{{options?.message}} </td>
+                </tr>
+                <tr *ngFor="let data of options.dataList; let i=index">
+                    <td *ngFor="let property of this.options.headList">{{data[property.sortBy]}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</ng-template>

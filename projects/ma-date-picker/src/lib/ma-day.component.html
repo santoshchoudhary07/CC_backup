@@ -1,0 +1,2 @@
+﻿<a class="ui-state-default" [ngClass]="currentDate? day.setHours(0, 0, 0, 0)=== currentDate.setHours(0, 0, 0, 0)? 'ui-state-active': '': ''"
+    *ngIf="day.getMonth() == month" (click)="selectedDate()">{{day.getDate()}}</a>

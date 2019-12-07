@@ -1,0 +1,52 @@
+<div *ngIf="itemList.length!= null">
+    <header class="section-head">
+        <div class="filter">
+            <strong class="filter-label">Results Per Page:</strong>
+            <div class="select select-inline inline-space-left inline-space-right">
+                <select [(ngModel)]="itemsPerPage" (change)="onSelectPage()">
+                    <option *ngFor="let item of itemsPerPageList" [ngValue]="item">{{item}}</option>
+                </select>
+            </div>
+
+            <span class="filter-result"> Returned Rows {{ itemsPerPage>itemList.length ? 1: itemsPerPage*(pageNumber-1)+1 >itemList.length? 1: itemsPerPage*(pageNumber-1)+1
+        }} through
+                {{ itemsPerPage>itemList.length?itemList.length:(itemsPerPage*pageNumber)>itemList.length?itemList.length:(itemsPerPage*pageNumber)}}
+                of {{itemList.length}}</span>
+                
+        </div>
+
+
+        <div class="paging pagination">
+            <a [ngClass]="{disabled:pageDetails.currentPage === 1}" (click)="pageNumber !== 1 && setPage(1)"
+                class="btn btn-transparent disabled">
+                <i class="arrow arrow-left inline-space-right">
+                </i>First</a>
+
+            <a [ngClass]="{disabled:pageDetails.currentPage === 1}"
+                (click)="pageDetails.currentPage !== 1 && setPage(pageNumber - 1)" class="btn btn-transparent disabled">
+                <i class="arrow arrow-left inline-space-right">
+                </i> Previous</a>
+
+            <div class="select select-inline inline-space-left inline-space-right">
+                <div>
+                    <select [(ngModel)]="pageNumber" (change)="changePage()">
+                        <option *ngFor="let item of pageArray" [ngValue]="item.id">{{item.name}} </option>
+                    </select>
+                </div>
+            </div>
+
+            <span class="paging-counter">of {{pageDetails.totalPages}}</span>
+            <a [ngClass]="{disabled:pageDetails.currentPage === pageDetails.totalPages}"
+                class="btn btn-transparent disabled"
+                (click)="pageDetails.currentPage !== pageDetails.totalPages && setPage(pageNumber + 1)">
+                Next <i class="arrow arrow-right inline-space-left"></i>
+            </a>
+
+            <a [ngClass]="{disabled:pageDetails.currentPage === pageDetails.totalPages}"
+                class="btn btn-transparent disabled"
+                (click)="pageDetails.currentPage !== pageDetails.totalPages && setPage(pageDetails.totalPages)">
+                Last <i class="arrow arrow-right inline-space-left"></i></a>
+        </div>
+
+    </header>
+</div>

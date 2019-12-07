@@ -1,0 +1,93 @@
+﻿<div class="popup popup-inspection popup-open" id="popup-inspection" [ngClass]="{'photo-expanded': expandedPhoto}">
+	<div class="popup-overlay popup-close"></div>
+	<div [hidden]="expandedPhoto" class="popup-inner" style="width: 750px;">
+		<div class="popup-head">
+			<h1 class="popup-title">Photos
+			</h1>
+			<div class="popup-actions">
+				<a class="popup-close" (click)="close.emit()">
+					<i class="ico-x-medium-white"></i>
+				</a>
+			</div>
+		</div>
+		<div class="popup-body">
+			<div class="form">
+				<form #photosForm="ngForm">
+
+					<div class="form-body">
+						<section id="content-1" class="section section-light-blue">
+							<header class="section-head">
+								<h3 class="section-title">Photos</h3>
+							</header>
+							<div class="section-body">
+								<div class="form-row">
+									<div class="assets">
+										<header class="assets-head" [ngClass]="{'hidden' : readOnly}">
+											<div class="assets-head-actions">
+												<input #file type="file" [name]="name ? name : 'file-upload'" [id]="id ? id : 'file-upload'" [disabled]="disabled" [readonly]="readOnly"
+												 [required]="required" multiple accept="image/*" (change)="processFile($event)">
+												<label [for]="id ? id : 'file-upload'">
+													<i class="ico-add-photo inline-space-right"></i>
+													Add Photos
+												</label>
+											</div>
+										</header>
+										<div class="assets-body">
+											<ul class="list-photos" id="myList">
+												<li *ngFor="let photo of displayPhotos; let p = index" draggable="true" (dragstart)="drag(p)" (drop)="drop(p)" (dragover)="allowDrop($event, p)">
+													<a *ngIf="photo.string && !readOnly" class="link-remove" [ngClass]="{'drop-hover': allowIndex === p}" (click)="removePhoto(p)">
+														<i class="ico-x-o-red"></i>
+													</a>
+													<img class="img" (click)="toggleExpansion(photo)" *ngIf="photo.string" [src]="photo.string + photo.varbinary" />
+												</li>
+
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-actions">
+								<div class="btns-group top-gutter-15">
+
+									<div class="btn-holder">
+										<button *ngIf="!readOnly" type="button" class="btn btn-small btn-left" (click)="save()" [disabled]="loading">Complete</button>
+										<button type="button" class="btn btn-small btn-right" (click)="cancel()">{{readOnly ? 'Close' : 'Cancel'}}</button>
+									</div>
+								</div>
+							</div>
+						</section>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div [hidden]="!expandedPhoto" class="popup-inner" style="width: 750px;">
+		<div class="popup-head">
+			<h1 class="popup-title">Photo Detail</h1>
+
+			<div class="popup-actions">
+				<a class="popup-close" (click)="toggleExpansion(expandedPhoto)">
+					<i class="ico-x-medium-white"></i>
+				</a>
+			</div>
+		</div>
+		
+		<div class="popup-body">
+			<div class="photo-detail" [ngClass]="{'short': expandedPhoto?.rotationIndex == 0 ||  expandedPhoto?.rotationIndex == 2 }">
+				<div class="photo image-position">
+					<img *ngIf="expandedPhoto && expandedPhoto?.expanded && expandedPhoto?.string" [ngClass]="['rotation-' + rotations[expandedPhoto?.rotationIndex]]"
+					 [src]="expandedPhoto?.string + expandedPhoto?.varbinary" />
+				</div>
+			</div>
+
+			<div class="form-actions">
+				<div class="btns-group top-gutter-15">
+					<div class="btn-holder">
+						<div class="btn" (click)="toggleRotation(expandedPhoto)">Rotate</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

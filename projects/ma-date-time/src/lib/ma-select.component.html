@@ -1,0 +1,15 @@
+﻿<div class="select">
+    <div class="fs-dropdown" [ngClass]="{'fs-dropdown-focus fs-dropdown-open': focused, 'fs-dropdown-disabled': disabled}">
+        <select tabindex="-1" name="{{name}}" id="{{id}}" class="fs-dropdown-element" [(ngModel)]="maModel" [disabled]="readOnly || loading"
+            [required]="required" (blur)="setFocus(false)">
+            <option *ngFor="let option of options" [ngValue]="option">{{option.name}}</option>
+        </select>
+        <button type="button" class="fs-dropdown-selected" (click)="setFocus(true)">{{(selectedOption ? selectedOption.name : '')}}</button>
+        <div class="fs-dropdown-options" tabindex="0" [focus]="focused" (blur)="setFocus(false)" (mouseleave)="allowBlur(true)" (mouseenter)="allowBlur(false)">
+            <button *ngFor="let option of options" type="button" class="fs-dropdown-item" [ngClass]="{'fs-dropdown-item_selected': selectedOption == option}"
+                (click)="select(option)">
+                {{option.name}}
+            </button>
+        </div>
+    </div>
+</div>

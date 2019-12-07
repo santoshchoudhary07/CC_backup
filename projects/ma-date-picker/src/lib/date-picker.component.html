@@ -1,0 +1,54 @@
+<div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" tabindex="0"
+    [focus]="true" (mouseleave)="allowBlur(true)" (mouseenter)="allowBlur(false)">
+    <div class="ui-datepicker-header ui-widget-header ui-helper-clearfix ui-corner-all">
+        <a class="ui-datepicker-prev ui-corner-all" (click)="incrementMonth(-1)" title="Prev">
+            <span class="ui-icon ui-icon-circle-triangle-w">Prev</span>
+        </a>
+        <a class="ui-datepicker-next ui-corner-all" (click)="incrementMonth(1)" title="Next">
+            <span class="ui-icon ui-icon-circle-triangle-e">Next</span>
+        </a>
+        <div class="ui-datepicker-title">
+            <select class="ui-datepicker-month" [(ngModel)]="selectedMonth">
+                <option *ngFor="let month of months" [ngValue]="month">{{month.name}}</option>
+            </select>
+            <select class="ui-datepicker-year" [(ngModel)]="selectedYear">
+                <option *ngFor="let year of years" [ngValue]="year">{{year.name}}</option>
+            </select>
+        </div>
+    </div>
+    <table class="ui-datepicker-calendar">
+        <thead>
+            <tr>
+                <th scope="col" class="ui-datepicker-week-end">
+                    <span title="Sunday">Su</span>
+                </th>
+                <th scope="col">
+                    <span title="Monday">Mo</span>
+                </th>
+                <th scope="col">
+                    <span title="Tuesday">Tu</span>
+                </th>
+                <th scope="col">
+                    <span title="Wednesday">We</span>
+                </th>
+                <th scope="col">
+                    <span title="Thursday">Th</span>
+                </th>
+                <th scope="col">
+                    <span title="Friday">Fr</span>
+                </th>
+                <th scope="col" class="ui-datepicker-week-end">
+                    <span title="Saturday">Sa</span>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let week of weeks(selectedYear.id, selectedMonth.id);let w = index;">
+                <td *ngFor="let day of days; let d = index;">
+                    <ma-day [month]="selectedMonth.id" [day]="date(w,d)" (selectedDay)="maDateOnChange.emit($event)" [maxDate]="endDate" [minDate]="startDate"
+                        [currentDate]="value"></ma-day>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
