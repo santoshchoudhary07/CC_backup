@@ -9,10 +9,9 @@ import { Table } from './ma-table.model';
   styleUrls: ['./ma-table.component.css']
 })
 export class MaTableComponent implements OnInit, OnChanges {
-  // @Input() options: Table;
   @Input() list: any[];
   @Input() selectList: any[];
-  @Input() selectDisplayProperty: string[];
+  @Input() selectDisplayProperty: string;
   @Input() selectValueProperty: string;
   @Input() selectBindProperty: string;
   @Input() selectPlaceholder: string;
@@ -32,14 +31,12 @@ export class MaTableComponent implements OnInit, OnChanges {
 
   sortField: any;
   checkedSelectAll: boolean;
-  isMessage: boolean;
   isPage: boolean;
 
   constructor() {
     this.options = new Table();
     this.list = [];
     this.loading = true;
-    this.isMessage = true;
   }
 
   ngOnInit() {
@@ -48,7 +45,6 @@ export class MaTableComponent implements OnInit, OnChanges {
   ngOnChanges(): void {
     this.columnList();
     if (this.options.dataList && this.options.dataList.length > 0) {
-      this.isMessage = false;
       if (this.options.dataList.length === this.list.length) {
         this.isPage = true;
       }

@@ -47,7 +47,7 @@ export class TableComponent implements OnInit {
 
   tableHeadList: any[] = [
     { columnName: 'Id', isSorting: true, sortBy: 'id' },
-    { columnName: 'User-Id', sortBy: 'name', isSorting: true },
+    { columnName: 'User-Id', sortBy: 'name', isSorting: true , pipe: { name: 'uppercase' }  },
     { columnName: 'Title', sortBy: 'wins', isSorting: true, pipe: { name: 'currency', format: 'USD' } },
     { columnName: 'Post', sortBy: 'losses', isSorting: true },
     { columnName: 'Date', sortBy: 'date', isSorting: true, pipe: { name: 'date', format: 'MM/dd/yyyy' } },

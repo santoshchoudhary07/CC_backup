@@ -23,17 +23,6 @@ export class MaskDirective {
     public changeEmitter = new EventEmitter<string>();
     @Output() unMask = new EventEmitter<string>();
 
-    @HostListener('input', ['$event'])
-    public onInput(event: { target: { value?: string } }): void {
-        let target = event.target;
-        let value = target.value;
-        this.onValueChange(value);
-    }
-
-    public maskGenerator: MaskGenerator = {
-        generateMask: () => `${this.maskType}`
-      }
-
     private readonly ALPHA = 'A';
     private readonly NUMERIC = '0';
     private readonly ALPHANUMERIC = '&';
@@ -43,10 +32,24 @@ export class MaskDirective {
         [this.ALPHANUMERIC, /\w|\d/],
     ]);
 
-    private value: string = null;
-    private displayValue: string = null;
+    private value: string;
+    private displayValue: string;
 
-    constructor(private ngControl: NgControl) { }
+    public maskGenerator: MaskGenerator = {
+        generateMask: () => `${this.maskType}`
+    };
+
+    @HostListener('input', ['$event'])
+    public onInput(event: { target: { value?: string } }): void {
+        const target = event.target;
+        const value = target.value;
+        this.onValueChange(value);
+    }
+
+    constructor(private ngControl: NgControl) {
+        this.value = null;
+        this.displayValue = null;
+    }
 
     private updateValue(value: string) {
         this.value = value;
@@ -60,7 +63,7 @@ export class MaskDirective {
         let value: string = this.value;
         let displayValue: string = null;
         if (this.maskGenerator) {
-            let mask = this.maskGenerator.generateMask(value);
+            const mask = this.maskGenerator.generateMask(value);
 
             if (value != null) {
                 displayValue = this.mask(value, mask);
@@ -78,7 +81,7 @@ export class MaskDirective {
             }
         }).then(() => {
 
-            if (value != this.value) {
+            if (value !== this.value) {
                 return this.updateValue(value);
             }
         });
@@ -91,7 +94,7 @@ export class MaskDirective {
             if ((newValue == null) || (newValue.trim() === '')) {
                 value = null;
             } else if (this.maskGenerator) {
-                let mask = this.maskGenerator.generateMask(newValue);
+                const mask = this.maskGenerator.generateMask(newValue);
                 displayValue = this.mask(newValue, mask);
                 value = this.processValue(displayValue, mask, this.keepMask);
                 this.unMask.emit(value);
@@ -107,20 +110,20 @@ export class MaskDirective {
     }
 
     private processValue(displayValue: string, mask: string, keepMask: boolean) {
-        let value = keepMask ? displayValue : this.unmask(displayValue, mask);
+        const value = keepMask ? displayValue : this.unmask(displayValue, mask);
         return value;
     }
 
     private mask(value: string, mask: string): string {
         value = value.toString();
         let len = value.length;
-        let maskLen = mask.length;
+        const maskLen = mask.length;
         let pos = 0;
         let newValue = '';
         for (let i = 0; i < Math.min(len, maskLen); i++) {
-            let maskChar = mask.charAt(i);
-            let newChar = value.charAt(pos);
-            let regex: RegExp = this.REGEX_MAP.get(maskChar);
+            const maskChar = mask.charAt(i);
+            const newChar = value.charAt(pos);
+            const regex: RegExp = this.REGEX_MAP.get(maskChar);
             if (regex) {
                 pos++;
                 if (regex.test(newChar)) {
@@ -142,7 +145,7 @@ export class MaskDirective {
     }
 
     private unmask(maskedValue: string, mask: string): string {
-        let maskLen = (mask && mask.length) || 0;
+        const maskLen = (mask && mask.length) || 0;
         return maskedValue.split('').filter(
             (currChar, idx) => (idx < maskLen) && this.REGEX_MAP.has(mask[idx])
         ).join('');

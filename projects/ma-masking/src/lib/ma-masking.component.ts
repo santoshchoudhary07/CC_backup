@@ -6,7 +6,7 @@ import { MaInputComponent, MakeProvider } from './ma-input.component';
   selector: 'ma-masking',
   template: `
   <input class="field" type="text" ngModel [(maMaskValue)]="value" [maMask]="maskType" [maKeepMask]="!unMaskValue" [id]="id"
-  [name]="name" [disabled]="disabled" [required]="required" [readonly]="readOnly" [placeholder]="placeholder ? placeholder : 'Enter value'"
+  [name]="name" [disabled]="disabled" [required]="required" [readonly]="readOnly" [placeholder]="placeholder ? placeholder : ''"
   (unMask)="unMask($event)">
   `,
   styles: [],

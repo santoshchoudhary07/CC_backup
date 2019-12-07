@@ -5,8 +5,8 @@
                 <thead>
                     <tr>
                         <ng-container *ngFor="let head of options.headList">
-                            <ng-container *ngIf="!head?.thNgIfCondition">
-                                <th class="sorting-arrow" [ngClass]="head?.headerClassName ? head?.headerClassName : ''"
+                            <ng-container *ngIf="!head?.thNgIf">
+                                <th class="sorting-arrow" [ngClass]="head?.thClassName ? head?.thClassName : ''"
                                     (click)="sortBy(head)">
                                     <span>
                                         <ng-container *ngIf="head?.selectAllCheckBox">
@@ -40,10 +40,10 @@
                         <td [attr.colspan]="options?.headList?.length">{{options?.message}}</td>
                     </tr>
                     <ng-container *ngFor="let data of options.dataList; let i=index">
-                        <ng-container *ngIf="!data?.trNgIfCondition">
+                        <ng-container *ngIf="!data?.trNgIf">
                             <tr [ngClass]="data?.trClassName ? data?.trClassName : ''" (click)="editTable(data, i)">
                                 <ng-container *ngFor="let property of options.headList">
-                                    <ng-container *ngIf="!data[property?.tdNgIfCondition]">
+                                    <ng-container *ngIf="!data[property?.tdNgIf]">
                                         <td [ngClass]="data[property?.tdClassName] ? data[property?.tdClassName] : ''">
                                             <div [ngSwitch]="data[property?.inputType]">
                                                 <div *ngSwitchCase="'button'">
@@ -147,8 +147,8 @@
             <thead>
                 <tr>
                     <ng-container *ngFor="let head of options.headList">
-                        <ng-container *ngIf="!head?.thNgIfCondition">
-                            <th class="sorting-arrow" [ngClass]="head?.headerClassName ? head?.headerClassName : ''"
+                        <ng-container *ngIf="!head?.thNgIf">
+                            <th class="sorting-arrow" [ngClass]="head?.thClassName ? head?.thClassName : ''"
                                 (click)="sortBy(head)">
                                 <span>
                                     <ng-container *ngIf="head?.selectAllCheckBox">
@@ -178,10 +178,10 @@
                     <td [attr.colspan]="options?.headList?.length">{{options?.message}}</td>
                 </tr>
                 <ng-container *ngFor="let data of options.dataList; let i=index">
-                    <ng-container *ngIf="!data?.trNgIfCondition">
+                    <ng-container *ngIf="!data?.trNgIf">
                         <tr [ngClass]="data?.trClassName ? data?.trClassName : ''" (click)="editTable(data, i)">
                             <ng-container *ngFor="let property of options.headList">
-                                <ng-container *ngIf="!data[property?.tdNgIfCondition]">
+                                <ng-container *ngIf="!data[property?.tdNgIf]">
                                     <td [ngClass]="data[property?.tdClassName] ? data[property?.tdClassName] : ''">
                                         <div [ngSwitch]="data[property?.inputType]">
                                             <div *ngSwitchCase="'button'">
