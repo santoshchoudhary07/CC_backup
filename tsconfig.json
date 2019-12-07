@@ -205,11 +205,11 @@
       "ma-tree/*": [
         "dist/ma-tree/*"
       ],
-      "xyz": [
-        "dist/xyz"
+      "ma-show-hide-tab": [
+        "dist/ma-show-hide-tab"
       ],
-      "xyz/*": [
-        "dist/xyz/*"
+      "ma-show-hide-tab/*": [
+        "dist/ma-show-hide-tab/*"
       ]
     }
   }

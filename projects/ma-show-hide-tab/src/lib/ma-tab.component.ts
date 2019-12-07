@@ -8,8 +8,8 @@ import { TabModel } from './ma-tab.model';
   <header class="tabs-head">
   <nav class="tabs-nav">
     <ul>
-      <li *ngFor="let tab of tabList; let i=index" [routerLink]="tab.url" (click)="getTab(tab)"
-        [ngClass]="tab==selectedTab ? 'current': ''" [routerLinkActive]="tab?.url ?'current':''">
+      <li *ngFor="let tab of tabList; let i=index" (click)="getTab(tab)"
+        [ngClass]="tab==selectedTab ? 'current': ''">
         <a>{{tab.tabText}}</a>
       </li>
     </ul>

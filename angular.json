@@ -1111,33 +1111,33 @@
         }
       }
     },
-    "xyz": {
+    "ma-show-hide-tab": {
       "projectType": "library",
-      "root": "projects/xyz",
-      "sourceRoot": "projects/xyz/src",
+      "root": "projects/ma-show-hide-tab",
+      "sourceRoot": "projects/ma-show-hide-tab/src",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "projects/xyz/tsconfig.lib.json",
-            "project": "projects/xyz/ng-package.json"
+            "tsConfig": "projects/ma-show-hide-tab/tsconfig.lib.json",
+            "project": "projects/ma-show-hide-tab/ng-package.json"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/xyz/src/test.ts",
-            "tsConfig": "projects/xyz/tsconfig.spec.json",
-            "karmaConfig": "projects/xyz/karma.conf.js"
+            "main": "projects/ma-show-hide-tab/src/test.ts",
+            "tsConfig": "projects/ma-show-hide-tab/tsconfig.spec.json",
+            "karmaConfig": "projects/ma-show-hide-tab/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/xyz/tsconfig.lib.json",
-              "projects/xyz/tsconfig.spec.json"
+              "projects/ma-show-hide-tab/tsconfig.lib.json",
+              "projects/ma-show-hide-tab/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
