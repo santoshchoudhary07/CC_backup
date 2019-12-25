@@ -102,6 +102,24 @@
       ],
       "ma-table-testing-module/*": [
         "dist/ma-table-testing-module/*"
+      ],
+      "ma-photo": [
+        "dist/ma-photo"
+      ],
+      "ma-photo/*": [
+        "dist/ma-photo/*"
+      ],
+      "ma-toggle": [
+        "dist/ma-toggle"
+      ],
+      "ma-toggle/*": [
+        "dist/ma-toggle/*"
+      ],
+      "ma-multi-select": [
+        "dist/ma-multi-select"
+      ],
+      "ma-multi-select/*": [
+        "dist/ma-multi-select/*"
       ]
     }
   },

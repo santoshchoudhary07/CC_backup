@@ -17,7 +17,7 @@
                 [selectList]="tableList" [selectDisplayProperty]="'id'" [selectBindProperty]="'bind'" [selectValueProperty]="'id'"
                 [loaderImagePath]="'./assets/Common/CSS/images/loading-small.gif'"
                 (listChange)="sortingChange($event)" (maTableInputOnChange)="maTableInputOnChange($event)"
-                (editData)="edit($event)"></ma-table>
+                (editData)="edit($event)" (mouseEnter)="mouseEnter($event)" (mouseLeave)="mouseLeave($event)"></ma-table>
                 <!-- <ma-table-testing-module [(options)]="options" [(list)]="fighters" [checkBoxBindProperty]="'isChecked'" [selectPlaceholder]="'--'"
                 [selectList]="tableList" [selectDisplayProperty]="'id'" [selectBindProperty]="'bind'" [selectValueProperty]="'id'"
                 [loaderImagePath]="'./assets/Common/CSS/images/loading-small.gif'"

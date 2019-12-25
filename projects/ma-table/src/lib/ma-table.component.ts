@@ -21,6 +21,8 @@ export class MaTableComponent implements OnInit, OnChanges {
   @Output() listChange = new EventEmitter<any[]>();
   @Output() maTableInputOnChange = new EventEmitter<any[]>();
   @Output() editData = new EventEmitter<any[]>();
+  @Output() mouseLeave = new EventEmitter<any>();
+  @Output() mouseEnter = new EventEmitter<any>();
   public tableOption: Table;
   @Input() get options(): Table {
     return this.tableOption;
@@ -127,6 +129,14 @@ export class MaTableComponent implements OnInit, OnChanges {
 
   isArray(item: any): boolean {
     return Array.isArray(item) ? true : false;
+  }
+
+  mouseLeaves(item: any): void {
+    this.mouseLeave.emit(item);
+  }
+
+  mouseEnters(item: any): void {
+    this.mouseEnter.emit(item);
   }
 
   private columnList(): void {

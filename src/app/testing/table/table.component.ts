@@ -47,11 +47,11 @@ export class TableComponent implements OnInit {
 
   tableHeadList: any[] = [
     { columnName: 'Id', isSorting: true, sortBy: 'id' },
-    { columnName: 'User-Id', sortBy: 'name', isSorting: true , pipe: { name: 'uppercase' }  },
+    { columnName: 'User-Id', sortBy: 'name', isSorting: true, pipe: { name: 'uppercase' } },
     { columnName: 'Title', sortBy: 'wins', isSorting: true, pipe: { name: 'currency', format: 'USD' } },
     { columnName: 'Post', sortBy: 'losses', isSorting: true },
     { columnName: 'Date', sortBy: 'date', isSorting: true, pipe: { name: 'date', format: 'MM/dd/yyyy' } },
-    { columnName: 'Action', isSorting: true, inputType: 'inputType', inputLabel: 'actionLink', },
+    { columnName: 'Action', isSorting: true, inputType: 'inputType', inputLabel: 'actionLink', iconClassName: 'iconClass', actionClass: 'actionClassName' },
     // { columnName: 'Action', isSorting: true, inputType: 'inputType' },
     // { columnName: 'link', isSorting: true, sortBy: 'id', inputType: 'inputType', inputLabel: 'link'},
   ];
@@ -66,7 +66,7 @@ export class TableComponent implements OnInit {
     // isDate()
     this.init();
     // table begin
-   
+
     this.demoSer.getData().subscribe(data => {
       this.originalData = data;
       this.tableList = data;
@@ -75,8 +75,10 @@ export class TableComponent implements OnInit {
       this.tableList[1].bind = 2;
       this.fighters.forEach(element => {
         element.date = new Date();
-        element.inputType = 'link';
-        element.actionLink = ['save', 'edit'];
+        element.inputType = 'link-icon';
+        element.iconClass = 'ico-x-o-red';
+        element.actionClassName = 'link-remove';
+        // element.actionLink = ['save', 'edit'];
         element.link = element.id;
         // element.isChecked = true;
         // element.trClassName = element.isChecked ? 'change-background' : ''
@@ -86,7 +88,7 @@ export class TableComponent implements OnInit {
 
 
       });
-        this.options.dataList =this.fighters;
+      this.options.dataList = this.fighters;
       // this.options.dataList = this.tableList;
       // this.list = this.tableList
       this.options = Object.assign({}, this.options);
@@ -122,15 +124,15 @@ export class TableComponent implements OnInit {
   }
 
   sortingChange(list: any[]): void {
-    this.tableList.forEach(element => {
-      element.inputType = 'checkbox';
-      element.actionName = 'save';
-      element.trClassName = element.isChecked ? 'change-background' : '',
-        element.tdClassName = element.isChecked ? 'change-background' : '';
-      element.isHide = element.isChecked;
-      // element.trNgIfCondition = element.isChecked;
+    // this.tableList.forEach(element => {
+    //   element.inputType = 'checkbox';
+    //   element.actionName = 'save';
+    //   element.trClassName = element.isChecked ? 'change-background' : '',
+    //     element.tdClassName = element.isChecked ? 'change-background' : '';
+    //   element.isHide = element.isChecked;
+    //   // element.trNgIfCondition = element.isChecked;
 
-    });
+    // });
     this.options.dataList = this.fighters;
     this.options = Object.assign({}, this.options);
   }
@@ -160,5 +162,13 @@ export class TableComponent implements OnInit {
     console.log('paginatio', list);
     this.options.dataList = list;
     this.options = Object.assign({}, this.options);
+  }
+
+  mouseLeave(item: any){
+    console.log(item, 'mouseLeave')
+  }
+
+  mouseEnter(item: any){
+    console.log(item, 'mouseEnter')
   }
 }

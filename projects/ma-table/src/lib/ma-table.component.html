@@ -76,6 +76,13 @@
                                                             [ngClass]="data[property?.actionClass] ? data[property?.actionClass] : ''">{{data[property?.inputLabel]}}</a>
                                                     </ng-template>
                                                 </div>
+                                                <div *ngSwitchCase="'link-icon'">
+                                                    <a (click)="inputChange(data, i, property.columnName)"
+                                                        [ngClass]="data[property?.actionClass] ? data[property?.actionClass] : ''">
+                                                        <i
+                                                            [ngClass]="data[property?.iconClassName] ? data[property?.iconClassName] : ''"></i>
+                                                    </a>
+                                                </div>
                                                 <div *ngSwitchCase="'dropdown'">
                                                     <ma-dropdown [options]="selectList"
                                                         [renderProperty]="selectDisplayProperty"
@@ -182,7 +189,9 @@
                         <tr [ngClass]="data?.trClassName ? data?.trClassName : ''" (click)="editTable(data, i)">
                             <ng-container *ngFor="let property of options.headList">
                                 <ng-container *ngIf="!data[property?.tdNgIf]">
-                                    <td [ngClass]="data[property?.tdClassName] ? data[property?.tdClassName] : ''">
+                                    <td (mouseleave)="property?.iconClassName && mouseLeaves(data)"
+                                        (mouseenter)="property?.iconClassName && mouseEnters(data)"
+                                        [ngClass]="data[property?.tdClassName] ? data[property?.tdClassName] : ''">
                                         <div [ngSwitch]="data[property?.inputType]">
                                             <div *ngSwitchCase="'button'">
                                                 <ng-container
@@ -211,6 +220,13 @@
                                                     <a (click)="inputChange(data, i, property.columnName)"
                                                         [ngClass]="data[property?.actionClass] ? data[property?.actionClass] : ''">{{data[property?.inputLabel]}}</a>
                                                 </ng-template>
+                                            </div>
+                                            <div *ngSwitchCase="'link-icon'">
+                                                <a (click)="inputChange(data, i, property.columnName)"
+                                                    [ngClass]="data[property?.actionClass] ? data[property?.actionClass] : ''">
+                                                    <i
+                                                        [ngClass]="data[property?.iconClassName] ? data[property?.iconClassName] : ''"></i>
+                                                </a>
                                             </div>
                                             <div *ngSwitchCase="'dropdown'">
                                                 <ma-dropdown [options]="selectList"

@@ -48,15 +48,15 @@ const routes: Routes = [
   {
     path: 'text-area', component: MaTextAreaComponent
   },
-  // {
-  //   path: 'photo', component: PhotosComponent
-  // },
+  {
+    path: 'photo', component: PhotosComponent
+  },
   {
     path: 'text', component: MaTextComponent
   },
-  // {
-  //   path: 'masking', component: MaskingComponent
-  // },
+  {
+    path: 'masking', component: MaskingComponent
+  },
   // {
   //   path: 'accordion', component: MaAccordionComponent
   // },

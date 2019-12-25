@@ -1,0 +1,44 @@
+<div class="section-body">
+    <div class="form form-questions">
+      <div class="form-body">
+        <div class="selects top-gutter-15">
+          <div class="cols">
+            <div class="col col-1of3">
+              <div class="form-row form-row-block">
+                <label class="form-label">{{availableLabel}}</label>
+                <div class="form-controls">
+                  <div class="select">
+                    <select [name]="name" [id]="id ? id : 'id'" [(ngModel)]="forSelectList" multiple [disabled]="loading" [required]="required">
+                      <option *ngFor="let multiSelect of multiSelectList" [ngValue]="multiSelect">{{multiSelect[renderProperty]}}</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="selects-controls">
+              <a (click)="!disabled && !readonly && !loading && select()" class="btn" [ngClass]="{'disabled':disabled || loading}">
+                <i class="ico-raquo"></i>
+              </a>
+              <br>
+              <a (click)="!disabled && !readonly && deSelect()" class="btn" [ngClass]="{'disabled':disabled || (selectedList && selectedList.length===0)}">
+                <i class="ico-laquo"></i>
+              </a>
+            </div>
+            <div class="col col-1of3">
+              <div class="form-row form-row-block">
+                <label class="form-label">{{selectedLabel}}
+                </label>
+                <div class="form-controls">
+                  <div class="select">
+                    <select [name]="name" [(ngModel)]="forAvailableList" multiple [disabled]="loading">
+                      <option *ngFor="let selected of selectedList" [ngValue]="selected">{{selected[renderProperty]}}</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

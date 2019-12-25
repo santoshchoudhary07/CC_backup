@@ -610,6 +610,111 @@
           }
         }
       }
+    },
+    "ma-photo": {
+      "projectType": "library",
+      "root": "projects/ma-photo",
+      "sourceRoot": "projects/ma-photo/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ma-photo/tsconfig.lib.json",
+            "project": "projects/ma-photo/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ma-photo/src/test.ts",
+            "tsConfig": "projects/ma-photo/tsconfig.spec.json",
+            "karmaConfig": "projects/ma-photo/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ma-photo/tsconfig.lib.json",
+              "projects/ma-photo/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "ma-toggle": {
+      "projectType": "library",
+      "root": "projects/ma-toggle",
+      "sourceRoot": "projects/ma-toggle/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ma-toggle/tsconfig.lib.json",
+            "project": "projects/ma-toggle/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ma-toggle/src/test.ts",
+            "tsConfig": "projects/ma-toggle/tsconfig.spec.json",
+            "karmaConfig": "projects/ma-toggle/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ma-toggle/tsconfig.lib.json",
+              "projects/ma-toggle/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "ma-multi-select": {
+      "projectType": "library",
+      "root": "projects/ma-multi-select",
+      "sourceRoot": "projects/ma-multi-select/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ma-multi-select/tsconfig.lib.json",
+            "project": "projects/ma-multi-select/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ma-multi-select/src/test.ts",
+            "tsConfig": "projects/ma-multi-select/tsconfig.spec.json",
+            "karmaConfig": "projects/ma-multi-select/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ma-multi-select/tsconfig.lib.json",
+              "projects/ma-multi-select/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }},
   "defaultProject": "ma-common-components-v8"
 }
