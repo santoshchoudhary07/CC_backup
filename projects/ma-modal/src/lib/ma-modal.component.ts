@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'ma-modal',
@@ -8,7 +8,7 @@ import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angu
   <div class="popup-inner">
     <div class="popup-head">
       <h1 class="popup-title">{{modalType}}</h1>
-      <div class="popup-actions">
+      <div class="popup-actions" *ngIf="!hideCloseButton">
         <a (click)="close();" class="popup-close">
           <i class="ico-x-medium-white"></i>
         </a>
@@ -33,6 +33,8 @@ import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angu
 export class MaModalComponent implements OnInit, OnChanges {
   @Input() modalType: string;
   @Input() isModalOpen: boolean;
+  @Input() closeModal: boolean;
+  @Input() hideCloseButton: boolean;
   @Input() modalMessage: string;
   @Input() closeTimeOut: number;
   @Input() buttonOptions: any[] = [];
@@ -57,9 +59,11 @@ export class MaModalComponent implements OnInit, OnChanges {
 
   setTime(): void {
     if (this.buttonOptions && this.buttonOptions.length === 0) {
-      setTimeout(() => {
-        this.close();
-      }, this.closeTimeOut ? this.closeTimeOut : 3000);
+      if (!this.closeModal) {
+        setTimeout(() => {
+          this.close();
+        }, this.closeTimeOut ? this.closeTimeOut : 3000);
+      }
     }
   }
 }

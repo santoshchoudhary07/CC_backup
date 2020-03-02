@@ -31,7 +31,7 @@ import { MultiSelectComponent } from './multi-select/multi-select.component';
 import { MaModalModule } from '../../../projects/ma-modal/src/lib/ma-modal.module';
 
 // import { ToggleModule } from '../toggle/toggle.module';
-// import { MaToggleModule } from '../../../projects/ma-toggle/src/lib/ma-toggle.module';
+import { MaToggleModule } from '../../../projects/ma-toggle/src/lib/ma-toggle.module';
 
 // import { MaDatePickerModule } from '../ma-date-picker/ma-date-picker.module';
 // import { MaDatePickerModule } from 'ma-date-picker';
@@ -40,7 +40,7 @@ import { MaDatePickerModule } from '../../../projects/ma-date-picker/src/lib/ma-
 
 // import { MaDateTimeModule } from '../ma-date-time/ma-date-time.module';
 // import { MaDateTimeModule } from '../../../dist/ma-date-time';
-// import { MaDateTimeModule } from '../../../projects/ma-date-time/src/lib/ma-date-time.module';
+import { MaDateTimeModule } from '../../../projects/ma-date-time/src/lib/ma-date-time.module';
 // import { MaDateTimeModule } from 'ma-date-time';
 
 // import { MaTextAreaModule } from '../ma-text-area/ma-text-area.module';
@@ -66,13 +66,13 @@ import { MaAccordionModule } from '../../../projects/ma-accordion/src/lib/ma-acc
 // import { MaAccordionModule } from '../../../dist/ma-accordion';
 
 // import { MaNumberModule } from '../ma-number/ma-number.module';
-// import { MaNumberModule } from '../../../projects/ma-number/src/lib/ma-number.module';
+import { MaNumberModule } from '../../../projects/ma-number/src/lib/ma-number.module';
 
 // import { MaCheckboxModule } from '../ma-checkbox/ma-checkbox.module';
 import { MaCheckboxModule } from 'projects/ma-checkbox/src/public-api';
 
 // import { MaMultiSelectModule } from '../ma-multi-select/ma-multi-select.module';
-// import { MaMultiSelectModule } from '../../../projects/ma-multi-select/src/lib/ma-multi-select.module';
+import { MaMultiSelectModule } from '../../../projects/ma-multi-select/src/lib/ma-multi-select.module';
 
 import { MaRadioButtonModule } from 'projects/ma-radio-button/src/public-api';
 
@@ -96,7 +96,7 @@ import { AutoCompleteComponent } from './auto-complete/auto-complete.component';
 import { MaTableModule } from 'projects/ma-table/src/public-api';
 import { MaSelectModule } from 'projects/ma-select/src/public-api';
 import { PaginationModule } from 'projects/pagination/src/public-api';
-
+// import { MaAsteriskModule } from 'ma-asterisk';
 @NgModule({
   declarations: [TableComponent, AutoCompleteComponent, MaSearchPipe, DatePickerComponent, DateTimeComponent,
     SelectComponent, ModalComponent, MaskingComponent, ToggleComponent, MaTextAreaComponent, PhotosComponent,
@@ -117,20 +117,21 @@ import { PaginationModule } from 'projects/pagination/src/public-api';
     // MaTableModule,
     // NgPaginationModule,
     // MaSelectModule,
+    // MaAsteriskModule,
     MaModalModule,
     PaginationModule,
     // // ToggleModule,
-    // MaToggleModule,
+    MaToggleModule,
     // MaDatePickerModule,
-    // MaDateTimeModule,
+    MaDateTimeModule,
     // MaTextAreaModule,
     MaPhotoModule,
     // MaTextModule,
     MaMaskingModule,
     // MaAccordionModule,
-    // MaNumberModule,
+    MaNumberModule,
     MaCheckboxModule,
-    // MaMultiSelectModule,
+    MaMultiSelectModule,
     MaRadioButtonModule,
     // MaPasswordConfirmationModule,
     // MaAutoCompleteModule,

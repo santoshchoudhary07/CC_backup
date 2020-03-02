@@ -9,14 +9,14 @@
             [maMask]="maskType ? maskType : '00/00/0000'" [maKeepMask]="!unMaskValue"
             (ngModelChange)="updateValue(null)" (blur)="convertToDate(false);onTouched()"
             (click)="pickerFocusOpen && openDatePicker()" [placeholder]="placeholder ? placeholder : ''"
-            [disabled]="disabled" [readonly]="readOnly" [required]="required">
+            [disabled]="disabled" [readonly]="readOnly || inputReadOnly" [required]="required" (keypress)="disableInput($event)">
     </ng-container>
 
     <ng-template #noMasking>
         <input type="text" autocomplete="off" name="display_{{name}}" id="display_{{id}}" class="field hasDatepicker"
             [(ngModel)]="displayDate" (ngModelChange)="updateValue(null)" (blur)="convertToDate(false);onTouched()"
             (keypress)="disableInput($event)" (click)="pickerFocusOpen && openDatePicker()"
-            [placeholder]="placeholder ? placeholder : ''" [disabled]="disabled" [readonly]="readOnly"
+            [placeholder]="placeholder ? placeholder : ''" [disabled]="disabled" [readonly]="readOnly || inputReadOnly"
             [required]="required">
     </ng-template>
     <button type="button" class="ui-datepicker-trigger" (click)="openDatePicker()" [disabled]="disabled">...</button>

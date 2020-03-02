@@ -6,8 +6,8 @@ import { ControlValueAccessor } from './control-value-accessor';
 @Component({
   selector: 'ma-number',
   template: `
-  <input class="field" type="number" [name]="name" [id]="id ? id : ''" [(ngModel)]="value" [disabled]="disabled" [readonly]="readonly"
-  [required]="required" [placeholder]="placeholder ? placeholder : ''" (keyup)="onKeyPress($event)" (blur)="onTouched()" [min]="min" [max]="max">
+  <input class="field" type="text" [name]="name" [id]="id ? id : ''" [(ngModel)]="value" [disabled]="disabled" [readonly]="readonly"
+  [required]="required" [placeholder]="placeholder ? placeholder : ''" (keypress)="onKeyPress($event)" (blur)="onTouched()" [min]="min" [max]="max">
   `,
   styles: [],
   providers: [MakeProvider(MaNumberComponent)]
@@ -46,9 +46,11 @@ export class MaNumberComponent extends MaInputComponent implements OnInit, OnCha
     this.maNumberOnChange.emit(this.ngModel);
   }
 
-  onKeyPress(event: any): boolean {
+  onKeyPress(event: any): any {
+    setTimeout(() => {
     this.updateValue();
-    if (event.target.value.length === this.maxLength) { return false; }
+    }, 100);
+    return ((event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57)
   }
 
   registerOnTouched(fn: any): void {

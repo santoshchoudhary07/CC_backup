@@ -8,7 +8,7 @@
                             <ng-container *ngIf="!head?.thNgIf">
                                 <th class="sorting-arrow" [ngClass]="head?.thClassName ? head?.thClassName : ''"
                                     (click)="sortBy(head)">
-                                    <span>
+                                    <span *ngIf="!head.isHideHeadKey">
                                         <ng-container *ngIf="head?.selectAllCheckBox">
                                             <div class="checkbox set-checkbox">
                                                 <input id="check-id" [(ngModel)]="checkedSelectAll" type="checkbox"
@@ -39,7 +39,7 @@
                     <tr *ngIf="!loading && (options.dataList && options.dataList.length) === 0" class="data-info">
                         <td [attr.colspan]="options?.headList?.length">{{options?.message}}</td>
                     </tr>
-                    <ng-container *ngFor="let data of options.dataList; let i=index">
+                    <ng-container *ngFor="let data of options.dataList; let i=index;trackBy: identify">
                         <ng-container *ngIf="!data?.trNgIf">
                             <tr [ngClass]="data?.trClassName ? data?.trClassName : ''" (click)="editTable(data, i)">
                                 <ng-container *ngFor="let property of options.headList">
@@ -131,7 +131,15 @@
                                                         <div *ngSwitchCase="'uppercase'">
                                                             {{(displayProperty(property.sortBy, data)) | uppercase}}
                                                         </div>
-                                                        <div *ngSwitchDefault>{{displayProperty(property.sortBy, data)}}
+                                                        <div *ngSwitchDefault>
+                                                            <ng-container
+                                                                *ngIf="isArray(data[property?.sortBy]); else noArray">
+                                                                <div *ngFor="let itemData of data[property?.sortBy]">
+                                                                    {{itemData[property?.sortBy]}}</div>
+                                                            </ng-container>
+                                                            <ng-template #noArray>
+                                                                {{displayProperty(property.sortBy, data)}}
+                                                            </ng-template>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -157,7 +165,7 @@
                         <ng-container *ngIf="!head?.thNgIf">
                             <th class="sorting-arrow" [ngClass]="head?.thClassName ? head?.thClassName : ''"
                                 (click)="sortBy(head)">
-                                <span>
+                                <span *ngIf="!head.isHideHeadKey">
                                     <ng-container *ngIf="head?.selectAllCheckBox">
                                         <div class="checkbox set-checkbox">
                                             <input id="check-id" [(ngModel)]="checkedSelectAll" type="checkbox"
@@ -184,7 +192,7 @@
                 <tr *ngIf="!loading && (options.dataList && options.dataList.length) === 0" class="data-info">
                     <td [attr.colspan]="options?.headList?.length">{{options?.message}}</td>
                 </tr>
-                <ng-container *ngFor="let data of options.dataList; let i=index">
+                <ng-container *ngFor="let data of options.dataList; let i=index;trackBy: identify">
                     <ng-container *ngIf="!data?.trNgIf">
                         <tr [ngClass]="data?.trClassName ? data?.trClassName : ''" (click)="editTable(data, i)">
                             <ng-container *ngFor="let property of options.headList">
@@ -276,7 +284,15 @@
                                                     <div *ngSwitchCase="'uppercase'">
                                                         {{(displayProperty(property.sortBy, data)) | uppercase}}
                                                     </div>
-                                                    <div *ngSwitchDefault>{{displayProperty(property.sortBy, data)}}
+                                                    <div *ngSwitchDefault>
+                                                        <ng-container
+                                                            *ngIf="isArray(data[property?.sortBy]); else noArray">
+                                                            <div *ngFor="let itemData of data[property?.sortBy]">
+                                                                {{itemData[property?.sortBy]}}</div>
+                                                        </ng-container>
+                                                        <ng-template #noArray>
+                                                            {{displayProperty(property.sortBy, data)}}
+                                                        </ng-template>
                                                     </div>
                                                 </div>
                                             </div>

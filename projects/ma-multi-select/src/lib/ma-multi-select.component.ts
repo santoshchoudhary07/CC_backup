@@ -1,14 +1,16 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges, Host, Optional } from '@angular/core';
 
 import { MaInputComponent, MakeProvider } from './ma-input.component';
+import { NgForm, ControlContainer } from '@angular/forms';
+import { ControlValueAccessor } from './control-value-accessor';
 
 @Component({
   selector: 'ma-multi-select',
-  templateUrl: './ma-multi-select.html',
+  templateUrl: './ma-multi-select.component.html',
   providers: [MakeProvider(MaMultiSelectComponent)],
   styles: ['.form-controls .select select{height: 175px;border: 1px solid #bbb;border-radius: 0;box-shadow: none;width: 100%;}']
 })
-export class MaMultiSelectComponent extends MaInputComponent implements OnInit, OnChanges {
+export class MaMultiSelectComponent extends MaInputComponent implements OnInit, OnChanges, ControlValueAccessor {
   @Input() multiSelectList: any[];
   @Input() ngModel: any[];
   @Input() renderProperty: string;
@@ -20,6 +22,7 @@ export class MaMultiSelectComponent extends MaInputComponent implements OnInit, 
   @Input() required: boolean;
   @Input() name: string;
   @Input() id: string;
+  @Input() isAsteriskLabel: boolean;
   @Input() formControlName: any;
   @Output() ngModelChange = new EventEmitter<any[]>();
   @Output() onMaMultiSelectChange = new EventEmitter<any[]>();
@@ -28,18 +31,39 @@ export class MaMultiSelectComponent extends MaInputComponent implements OnInit, 
   selectedList: any[];
   forSelectList: any[];
   forAvailableList: any[];
-
-  constructor() {
+  form: any;
+  formControlResetRequired: boolean;
+  constructor(@Optional() @Host() public parent: ControlContainer) {
     super();
     this.initialize();
   }
 
   ngOnInit() {
+    this.formControlResetRequired = true;
+    this.controlMarkAsPristine();
   }
 
   ngOnChanges(): void {
     this.onCheckList();
   }
+
+  controlMarkAsPristine(): void {
+    setTimeout(() => {
+      this.form = (this.parent as NgForm);
+      if (this.formControlName) {
+        if (this.formControlResetRequired && this.form && this.form.form.controls[this.formControlName ? this.formControlName : this.name]) {
+          this.form.form.controls[this.formControlName ? this.formControlName : this.name].markAsPristine();
+          this.formControlResetRequired = false;
+        }
+      } else {
+        if (this.formControlResetRequired && this.form && this.form.controls[this.formControlName ? this.formControlName : this.name]) {
+          this.form.controls[this.formControlName ? this.formControlName : this.name].markAsPristine();
+          this.formControlResetRequired = false;
+        }
+      }
+    }, 100);
+  }
+
 
   select(): void {
     for (let i = 0; i < this.forSelectList.length; i++) {
@@ -48,6 +72,7 @@ export class MaMultiSelectComponent extends MaInputComponent implements OnInit, 
         this.onSelectChange();
       }
     }
+    this.forSelectList = [];
   }
 
   deSelect(): void {
@@ -59,7 +84,26 @@ export class MaMultiSelectComponent extends MaInputComponent implements OnInit, 
         }
       }
     }
+    this.forAvailableList = [];
   }
+
+  selectSelected(): void {
+    if (this.forSelectList && this.forSelectList.length > 0) {
+      this.forSelectList = [];
+    }
+  }
+
+  selectAvailable(): void {
+    if (this.forAvailableList && this.forAvailableList.length > 0) {
+      this.forAvailableList = [];
+    }
+  }
+
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
+
+  onTouched() { }
 
   private indexOfByKey(key: string, value: any, array: any[]): number {
     let found = -1;

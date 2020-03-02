@@ -7,14 +7,14 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./date-time.component.css']
 })
 export class DateTimeComponent implements OnInit {
-  date: Date;
+  date: any = '';
   minDate: Date;
   maxDate: Date;
   profileForm: FormGroup;
 
   constructor(private fb: FormBuilder) {
-    // this.date = new Date();
-    this.minDate = new Date('05/20/2018');
+    // this.date = '2020-01-29T12:00:00';
+    this.minDate = new Date('05/20/2019');
     this.maxDate = new Date('05/20/2020');
 
     this.profileForm = this.fb.group({
@@ -28,6 +28,7 @@ export class DateTimeComponent implements OnInit {
   }
 
   maDateOnChange(selectedDate: any): void {
+    // console.log(selectedDate);
     console.log(selectedDate);
   }
 

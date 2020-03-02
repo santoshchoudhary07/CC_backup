@@ -14,13 +14,13 @@ export class DatePickerComponent implements OnInit {
   profileForm: FormGroup;
 
   constructor(private fb: FormBuilder) {
-    // this.date = new Date();
+    this.date = new Date();
     this.minDate = new Date('05/20/2019');
-    this.maxDate = new Date('11/20/2019');
+    this.maxDate = new Date('11/20/2020');
   }
 
   ngOnInit() {
-    this.date = new Date('');
+    // this.date = new Date('');
     this.profileForm = this.fb.group({
       firstName: ['', [Validators.required]],
       lastName: ['', [Validators.required]],

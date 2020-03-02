@@ -18,6 +18,34 @@
     </div>
   </div>
 </div>
+<form (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm">
+  <div class="form">
+    <div class="section-body">
+      <h4>Template Driven Form</h4>
+      <div class="form-row">
+        <div class="form-label">Email {{golf?.pristine}}</div>
+        <div class="form-controls">
+
+            <ma-masking [(ngModel)]="name" #golf="ngModel" [name]="'golf'" [maskType]="'(000)-[00]-00'" [disabled]=false [readOnly]=false [required]=true [id]="'mask-id'"
+                [name]="'mask-name'" [unMaskValue]=false (onMaskChange)="onMaskChange($event)" [required]="true"></ma-masking>
+
+          <!-- <div style="color: red;" *ngIf="loginForm.invalid && loginForm.controls['email'].errors.pattern">
+            Email is not valid!
+          </div> -->
+          <div  *ngIf="email?.valid && email?.pristine"
+          style="color: red;">
+       Name is required
+     </div>
+          <!-- <div style="color: red;" *ngIf="(!email?.valid && (email?.pristine))">
+              Email is required
+          </div> -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-small" type="submit" class="">Submit</button>
+</form>
 
 <!-- <app-masking [(ngModel)]="name" [maskType]="'(000)-[00]-00'" [disabled]=false [readOnly]=false [required]=false [id]="'mask-id'"
                 [name]="'mask-name'" [unMaskValue]=true (onMaskChange)="onMaskChange($event)"></app-masking> -->
@@ -39,12 +67,12 @@
         <div class="accordion-body">
           <div class="form-body">
             <div class="form-row">
-              <label class="form-label">MA MASKING</label>
+              <label class="form-label">MA MASKING{{profileForm.controls?.name?.pristine}}</label>
               <div class="form-controls">
                 <!-- <app-masking formControlName="name" [maskType]="'(000)-[00]-00'" [disabled]=false [readOnly]=false [required]=false [id]="'mask-id'"
                   [name]="'mask-name'" [unMaskValue]=false (onMaskChange)="onMaskChange($event)"></app-masking> -->
-                <ma-masking formControlName="name" [maskType]="'(000)-[00]-00'" [disabled]=false [readOnly]=false [id]="'mask-id'"
-                  [name]="'mask-name'" [unMaskValue]=false (onMaskChange)="onMaskChange($event)"></ma-masking>
+                <!-- <ma-masking formControlName="name" [maskType]="'(000)-[00]-00'" [disabled]=false [readOnly]=false [id]="'mask-id'"
+                  [name]="'mask-name'" [unMaskValue]=false (onMaskChange)="onMaskChange($event)"></ma-masking> -->
               </div>
             </div>
           </div>

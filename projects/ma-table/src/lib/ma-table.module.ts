@@ -6,11 +6,12 @@ import { MaTableComponent } from './ma-table.component';
 import { MaSearchPipe } from './ma-search.pipe';
 import { MaSelectComponent } from './ma-select.component';
 import { FocusDirective } from './focus.directive';
+import { MaWinsSearchPipe } from './ma-win.pipe';
 
 @NgModule({
-  declarations: [MaTableComponent, MaSearchPipe, MaSelectComponent, FocusDirective],
+  declarations: [MaTableComponent, MaSearchPipe, MaSelectComponent, FocusDirective, MaWinsSearchPipe],
   imports: [FormsModule, CommonModule],
-  providers: [MaSearchPipe],
-  exports: [MaTableComponent, MaSearchPipe]
+  providers: [MaSearchPipe, MaWinsSearchPipe],
+  exports: [MaTableComponent, MaSearchPipe, MaWinsSearchPipe]
 })
 export class MaTableModule { }

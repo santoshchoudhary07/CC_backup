@@ -36,15 +36,15 @@ const routes: Routes = [
   {
     path: 'modal', component: ModalComponent
   },
-  // {
-  //   path: 'toggle', component: ToggleComponent
-  // },
+  {
+    path: 'toggle', component: ToggleComponent
+  },
   {
     path: 'date-picker', component: DatePickerComponent
   },
-  // {
-  //   path: 'date-time', component: DateTimeComponent
-  // },
+  {
+    path: 'date-time', component: DateTimeComponent
+  },
   {
     path: 'text-area', component: MaTextAreaComponent
   },
@@ -60,15 +60,15 @@ const routes: Routes = [
   // {
   //   path: 'accordion', component: MaAccordionComponent
   // },
-  // {
-  //   path: 'number', component: NumbersComponent
-  // },
+  {
+    path: 'number', component: NumbersComponent
+  },
   {
     path: 'checkbox', component: CheckboxComponent
   },
-  // {
-  //   path: 'multi-select', component: MultiSelectComponent
-  // },
+  {
+    path: 'multi-select', component: MultiSelectComponent
+  },
   {
     path: 'radio', component: RadioComponent
   },
@@ -87,9 +87,9 @@ const routes: Routes = [
   // {
   //   path: 'url', component: MaUrlComponent
   // },
-  // {
-  //   path: 'dynamic-modal', component: DynamicModalComponent
-  // },
+  {
+    path: 'dynamic-modal', component: DynamicModalComponent
+  },
   // {
   //   path: 'custom-pattern', component: CustomPatternComponent
   // }

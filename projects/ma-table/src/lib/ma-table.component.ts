@@ -117,13 +117,17 @@ export class MaTableComponent implements OnInit, OnChanges {
   }
 
   displayProperty(keyPath: any, obj: any): any {
-    if (Array.isArray(keyPath)) {
-      for (const i of keyPath) {
-        obj = obj[i] = obj[i] || {};
+    if (obj) {
+      if (Array.isArray(keyPath)) {
+        for (const i of keyPath) {
+          obj = obj[i] = obj[i] || {};
+        }
+        return isObject(obj) ? Object.keys(obj).length > 0 ? obj : null : obj;
+      } else {
+        return obj[keyPath];
       }
-      return isObject(obj) ? Object.keys(obj).length > 0 ? obj : null : obj;
     } else {
-      return obj[keyPath];
+      return '';
     }
   }
 
@@ -139,6 +143,9 @@ export class MaTableComponent implements OnInit, OnChanges {
     this.mouseEnter.emit(item);
   }
 
+  identify(index: number, item: any) {
+    return index;
+  }
   private columnList(): void {
     const columnName = [];
     const keyArray = [];
@@ -160,23 +167,33 @@ export class MaTableComponent implements OnInit, OnChanges {
   }
 
   private sortByKey(array: any[], key: string, desc: boolean): any[] {
-    let x: any;
-    let y: any;
     if (key) {
       return array.sort((a, b) => {
-        if (isNaN(this.displayProperty(key, a)) && isNaN(this.displayProperty(key, b))) {
-          x = (this.displayProperty(key, a) && this.displayProperty(key, a).toLowerCase()) || '';
-          y = (this.displayProperty(key, b) && this.displayProperty(key, b).toLowerCase()) || '';
+        if (Array.isArray(a[key]) || Array.isArray(b[key])) {
+          if ((a[key] && a[key].length > 0) || (b[key] && b[key].length > 0)) {
+            return this.sortList(key, ((a && a[key] && a[key].length > 0) ? a[key][0] : ''), ((b && b[key] && b[key].length > 0) ? b[key][0] : ''), desc);
+          }
         } else {
-          x = this.displayProperty(key, a) || '';
-          y = this.displayProperty(key, b) || '';
-        }
-        if (desc) {
-          return ((x > y) ? -1 : ((x < y) ? 1 : 0));
-        } else {
-          return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+          return this.sortList(key, a, b, desc);
         }
       });
+    }
+  }
+
+  sortList(key: string, a: any, b: any, desc: boolean) {
+    let x: any;
+    let y: any;
+    if (isNaN(this.displayProperty(key, a)) && isNaN(this.displayProperty(key, b))) {
+      x = (this.displayProperty(key, a) && this.displayProperty(key, a).toLowerCase()) || '';
+      y = (this.displayProperty(key, b) && this.displayProperty(key, b).toLowerCase()) || '';
+    } else {
+      x = this.displayProperty(key, a) || '';
+      y = this.displayProperty(key, b) || '';
+    }
+    if (desc) {
+      return ((x > y) ? -1 : ((x < y) ? 1 : 0));
+    } else {
+      return ((x < y) ? -1 : ((x > y) ? 1 : 0));
     }
   }
 }

@@ -698,7 +698,7 @@ ma-win-modal .loading-step {
 	margin: 0;
 }
 
-ma-datetime .hour, ma-datetime .minute, ma-datetime .select, ma-datetime .fs-dropdown, ma-datetime .fs-dropdown-selected {
+ma-date-time .hour, ma-date-time .minute, ma-date-time .select, ma-date-time .fs-dropdown, ma-date-time .fs-dropdown-selected {
 	width: 50px;
 	display: inline;
 }

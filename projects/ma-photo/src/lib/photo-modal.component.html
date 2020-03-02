@@ -24,8 +24,10 @@
 									<div class="assets">
 										<header class="assets-head" [ngClass]="{'hidden' : readOnly}">
 											<div class="assets-head-actions">
-												<input #file type="file" [name]="name ? name : 'file-upload'" [id]="id ? id : 'file-upload'" [disabled]="disabled" [readonly]="readOnly"
-												 [required]="required" multiple accept="image/*" (change)="processFile($event)">
+												<input #file type="file" [name]="name ? name : 'file-upload'"
+													[id]="id ? id : 'file-upload'" [disabled]="disabled"
+													[readonly]="readOnly" [required]="required" [multiple]="multiple"
+													accept="image/*" (change)="processFile($event)">
 												<label [for]="id ? id : 'file-upload'">
 													<i class="ico-add-photo inline-space-right"></i>
 													Add Photos
@@ -33,15 +35,42 @@
 											</div>
 										</header>
 										<div class="assets-body">
-											<ul class="list-photos" id="myList">
-												<li *ngFor="let photo of displayPhotos; let p = index" draggable="true" (dragstart)="drag(p)" (drop)="drop(p)" (dragover)="allowDrop($event, p)">
-													<a *ngIf="photo.string && !readOnly" class="link-remove" [ngClass]="{'drop-hover': allowIndex === p}" (click)="removePhoto(p)">
-														<i class="ico-x-o-red"></i>
-													</a>
-													<img class="img" (click)="toggleExpansion(photo)" *ngIf="photo.string" [src]="photo.string + photo.varbinary" />
-												</li>
+											<ng-container *ngIf="isActive; else simple">
+												<ul class="list-photos" id="myList">
+													<li *ngFor="let photo of tempList; let p = index"
+														draggable="true" (dragstart)="drag(p)" (drop)="drop(p)"
+														(dragover)="allowDrop($event, p)">
+														<a *ngIf="photo.string && !readOnly && photo.active && photo.varbinary"
+															class="link-remove"
+															[ngClass]="{'drop-hover': allowIndex === p}"
+															(click)="removePhoto(p)">
+															<i class="ico-x-o-red"></i>
+														</a>
+														<img class="img" (click)="toggleExpansion(photo)"
+															*ngIf="photo.string && photo.active && photo.varbinary"
+															[src]="photo.string + photo.varbinary" />
+													</li>
 
-											</ul>
+												</ul>
+											</ng-container>
+											<ng-template #simple>
+												<ul class="list-photos" id="myList">
+													<li *ngFor="let photo of displayPhotos; let p = index"
+														draggable="true" (dragstart)="drag(p)" (drop)="drop(p)"
+														(dragover)="allowDrop($event, p)">
+														<a *ngIf="photo.string && !readOnly" class="link-remove"
+															[ngClass]="{'drop-hover': allowIndex === p}"
+															(click)="removePhoto(p)">
+															<i class="ico-x-o-red"></i>
+														</a>
+														<img class="img" (click)="toggleExpansion(photo)"
+															*ngIf="photo.string"
+															[src]="photo.string + photo.varbinary" />
+													</li>
+												</ul>
+											</ng-template>
+
+
 										</div>
 									</div>
 								</div>
@@ -51,8 +80,10 @@
 								<div class="btns-group top-gutter-15">
 
 									<div class="btn-holder">
-										<button *ngIf="!readOnly" type="button" class="btn btn-small btn-left" (click)="save()" [disabled]="loading">Complete</button>
-										<button type="button" class="btn btn-small btn-right" (click)="cancel()">{{readOnly ? 'Close' : 'Cancel'}}</button>
+										<button *ngIf="!readOnly" type="button" class="btn btn-small btn-left"
+											(click)="save()" [disabled]="loading">Complete</button>
+										<button type="button" class="btn btn-small btn-right"
+											(click)="cancel()">{{readOnly ? 'Close' : 'Cancel'}}</button>
 									</div>
 								</div>
 							</div>
@@ -72,12 +103,14 @@
 				</a>
 			</div>
 		</div>
-		
+
 		<div class="popup-body">
-			<div class="photo-detail" [ngClass]="{'short': expandedPhoto?.rotationIndex == 0 ||  expandedPhoto?.rotationIndex == 2 }">
+			<div class="photo-detail"
+				[ngClass]="{'short': expandedPhoto?.rotationIndex == 0 ||  expandedPhoto?.rotationIndex == 2 }">
 				<div class="photo image-position">
-					<img *ngIf="expandedPhoto && expandedPhoto?.expanded && expandedPhoto?.string" [ngClass]="['rotation-' + rotations[expandedPhoto?.rotationIndex]]"
-					 [src]="expandedPhoto?.string + expandedPhoto?.varbinary" />
+					<img *ngIf="expandedPhoto && expandedPhoto?.expanded && expandedPhoto?.string"
+						[ngClass]="['rotation-' + rotations[expandedPhoto?.rotationIndex]]"
+						[src]="expandedPhoto?.string + expandedPhoto?.varbinary" />
 				</div>
 			</div>
 

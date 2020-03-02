@@ -1,6 +1,8 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, Optional, Host } from '@angular/core';
 
 import { MakeProvider, MaInputComponent } from './ma-inputs';
+import { ControlValueAccessor } from './control-value-accessor';
+import { ControlContainer, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'ma-toggle',
@@ -22,7 +24,7 @@ import { MakeProvider, MaInputComponent } from './ma-inputs';
   `,
   providers: [MakeProvider(MaToggleComponent)]
 })
-export class MaToggleComponent extends MaInputComponent implements OnInit {
+export class MaToggleComponent extends MaInputComponent implements OnInit, ControlValueAccessor {
   @Input() ngModel: boolean;
   @Input() readonly: boolean;
   @Input() disabled: boolean;
@@ -30,19 +32,42 @@ export class MaToggleComponent extends MaInputComponent implements OnInit {
   @Input() name: string;
   @Input() id: string;
   @Input() required: boolean;
+  @Input() formControlName: any;
+
   @Output() maToggleOnChange = new EventEmitter<boolean>();
   @Output() ngModelChange = new EventEmitter<boolean>();
-
-  constructor() { super(); }
+  form: any;
+  formControlResetRequired: boolean;
+  constructor(@Optional() @Host() public parent: ControlContainer) { super(); }
 
   ngOnInit() {
+    this.formControlResetRequired = true;
+    this.controlMarkAsPristine();
   }
 
   toggle(): void {
+    this.onTouched();
     if (!this.readonly && !this.disabled) {
       this.value = !this.value;
       this.updateValue();
     }
+  }
+
+  controlMarkAsPristine(): void {
+    setTimeout(() => {
+      this.form = (this.parent as NgForm);
+      if (this.formControlName) {
+        if (this.formControlResetRequired && this.form && this.form.form.controls[this.formControlName ? this.formControlName : this.name]) {
+          this.form.form.controls[this.formControlName ? this.formControlName : this.name].markAsPristine();
+          this.formControlResetRequired = false;
+        }
+      } else {
+        if (this.formControlResetRequired && this.form && this.form.controls[this.formControlName ? this.formControlName : this.name]) {
+          this.form.controls[this.formControlName ? this.formControlName : this.name].markAsPristine();
+          this.formControlResetRequired = false;
+        }
+      }
+    }, 100);
   }
 
   updateValue(): void {
@@ -50,4 +75,10 @@ export class MaToggleComponent extends MaInputComponent implements OnInit {
     this.ngModelChange.emit(this.ngModel);
     this.maToggleOnChange.emit(this.ngModel);
   }
+
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
+
+  onTouched() { }
 }

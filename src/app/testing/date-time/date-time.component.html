@@ -1,15 +1,15 @@
-<!-- <div class="form">
+<div class="form">
     <div class="section-body section-body-light">
       <div class="form-row">
         <div class="form-label">Date Time</div>
         <div class="form-controls">
-          <ma-datetime [(ngModel)]="date" [minDate]="minDate" [maxDate]="maxDate" [disabled]=false [readOnly]=false [required]=false
+          <ma-date-time [(ngModel)]="date" [inputReadOnly]="true"  [disabled]=false [readOnly]=false [required]=false
             [displayDateFormat]="'dd/MM/yyyy'" [hoursPlaceholder]="'hours'" [minutesPlaceholder]="'minutes'" [datePlaceholder]="'dd/MM/yyyy'"
-            (maDateOnChange)="maDateOnChange($event)"></ma-datetime>
+            (maDateOnChange)="maDateOnChange($event)" [dateTimeString]="true"></ma-date-time>
         </div>
       </div>
     </div>
-</div> -->
+</div>
 
 
 <form [formGroup]="profileForm">

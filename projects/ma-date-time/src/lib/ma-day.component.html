@@ -1,0 +1,4 @@
+﻿<a class="ui-state-default" [ngClass]="(currentDate ? day.setHours(0, 0, 0, 0) === currentDate.setHours(0, 0, 0, 0) ? 'ui-state-active': '' : '') + ' ' + 
+    (isMinDateDisabled ? 'ui-state-disabled' : '') + ' ' + (isMaxDateDisabled ? 'ui-state-disabled' : '')"
+    *ngIf="day.getMonth() == month"
+    (click)="!isMinDateDisabled && !isMaxDateDisabled && selectedDate()">{{day.getDate()}}</a>

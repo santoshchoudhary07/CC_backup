@@ -1,4 +1,4 @@
-<ma-dynamic-modal [title]="'Form'" [(isModalOpen)]="isOpen">
+<ma-dynamic-modal [title]="'Form'" [(isModalOpen)]="isOpen" (isModalOpenChange)="isModalOpenChange()">
   <div class="form">
     <form novalidate="" class="ng-untouched ng-pristine ng-invalid">
       <div class="form-body">

@@ -1,7 +1,8 @@
-import { Component, OnInit, SimpleChanges, Output, Input, EventEmitter, OnChanges, ChangeDetectorRef, AfterViewChecked } from '@angular/core';
+import { Component, OnInit, SimpleChanges, Output, Input, EventEmitter, OnChanges, ChangeDetectorRef, AfterViewChecked, Optional, Host } from '@angular/core';
 
 import { MaInputComponent, MakeProvider } from './ma-inputs';
 import { ControlValueAccessor } from './control-value-accessor';
+import { ControlContainer, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'ma-select',
@@ -21,6 +22,7 @@ export class MaSelectComponent extends MaInputComponent implements OnInit, OnCha
   @Input() placeholder: any;
   @Input() required: boolean;
   @Input() provideObject: boolean;
+  @Input() formControlName: string;
   @Output() ngModelChange = new EventEmitter<any>();
   @Output() onMaSelectChange = new EventEmitter<any>();
 
@@ -29,25 +31,45 @@ export class MaSelectComponent extends MaInputComponent implements OnInit, OnCha
   focused: boolean;
   loading: boolean;
   initialized: boolean;
-
-  constructor(private cdr: ChangeDetectorRef) {
+  form: any;
+  formControlResetRequired: boolean;
+  constructor(private cdr: ChangeDetectorRef, @Optional() @Host() public parent: ControlContainer) {
     super();
     this.canBlur = true;
     this.focused = false;
   }
 
   ngOnInit() {
+    this.formControlResetRequired = true;
+    this.controlMarkAsPristine();
   }
 
   ngOnChanges(changes: SimpleChanges) {
     if ((this.initialized && changes.ngModel && changes.ngModel.currentValue !== changes.ngModel.previousValue) ||
       (this.initialized && changes.optionsList && changes.optionsList.currentValue !== changes.optionsList.previousValue)) {
-        this.initialize();
+      this.initialize();
     }
   }
 
   ngAfterViewChecked() {
     this.cdr.detectChanges();
+  }
+
+  controlMarkAsPristine(): void {
+    setTimeout(() => {
+      this.form = (this.parent as NgForm);
+      if (this.formControlName) {
+        if (this.formControlResetRequired && this.form && this.form.form.controls[this.formControlName ? this.formControlName : this.name]) {
+          this.form.form.controls[this.formControlName ? this.formControlName : this.name].markAsPristine();
+          this.formControlResetRequired = false;
+        }
+      } else {
+        if (this.formControlResetRequired && this.form && this.form.controls[this.formControlName ? this.formControlName : this.name]) {
+          this.form.controls[this.formControlName ? this.formControlName : this.name].markAsPristine();
+          this.formControlResetRequired = false;
+        }
+      }
+    }, 100);
   }
 
   onSelectChange(option: any): void {

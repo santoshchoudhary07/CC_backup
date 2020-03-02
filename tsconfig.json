@@ -120,6 +120,12 @@
       ],
       "ma-multi-select/*": [
         "dist/ma-multi-select/*"
+      ],
+      "ma-date-time": [
+        "dist/ma-date-time"
+      ],
+      "ma-date-time/*": [
+        "dist/ma-date-time/*"
       ]
     }
   },

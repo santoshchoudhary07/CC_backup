@@ -13,14 +13,14 @@ export class SelectComponent implements OnInit {
   selectList = [];
   profileForm: FormGroup;
   name: any;
-  list = [1, 2, 3, 4, 5]
+  list = [{id:1, name:'fgd'}, {id:2, name:'fgghgd'},{id:3, name:'fghgndvfdfd'},]
   hourCounter = new Array(24);
 
   //select end  
   constructor(private demoSer: DemoService, private fb: FormBuilder) { }
 
   ngOnInit() {
-    this.name = 1;
+    // this.name = 3;
     this.profileForm = this.fb.group({
       firstName: ['', [Validators.required]],
       lastName: ['', [Validators.required]],

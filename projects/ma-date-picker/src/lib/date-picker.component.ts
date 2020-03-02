@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, EventEmitter, Output, OnChanges } from '@angular/core';
 
 import { MaInputComponent, MakeProvider } from './ma-input.component';
+import { isString } from 'util';
 
 @Component({
   selector: 'date-picker',
@@ -44,7 +45,7 @@ export class DatePickerComponent extends MaInputComponent implements OnInit, OnC
     if (this.startDate) {
       this.checkMinMaxDate();
     }
-    this.ngModel = (this.ngModel ? (isNaN(this.ngModel.getTime()) ? new Date() : new Date(this.ngModel)) : new Date());
+    this.ngModel = (this.ngModel ? isString(this.ngModel) ? new Date(this.ngModel) : (isNaN(this.ngModel.getTime()) ? new Date() : new Date(this.ngModel)) : new Date());
     if (((this.ngModel.setHours(0, 0, 0, 0) > this.endDate.setHours(0, 0, 0, 0)) || (this.ngModel.setHours(0, 0, 0, 0) < this.startDate.setHours(0, 0, 0, 0)))) {
       this.ngModel = new Date();
     }

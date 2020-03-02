@@ -15,7 +15,7 @@ export class MaskingComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.name = 111111111
+    // this.name = 111111111
     this.profileForm = this.fb.group({
       firstName: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
@@ -31,8 +31,9 @@ export class MaskingComponent implements OnInit {
   }
 
   onMaskChange(value: string): void {
-    this.name = value;
-    console.log(value);
+    // this.name = value;
+    // console.log(value);
+    console.log(this.name)
   }
 
 }

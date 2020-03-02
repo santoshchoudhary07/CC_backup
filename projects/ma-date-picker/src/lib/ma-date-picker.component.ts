@@ -1,9 +1,10 @@
-import { Component, OnInit, Input, Output, EventEmitter, HostListener, ElementRef, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, HostListener, ElementRef, OnChanges, Optional, Host } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { isString } from 'util';
 
 import { MaInputComponent, MakeProvider } from './ma-input.component';
 import { ControlValueAccessor } from './control-value-accessor';
+import { ControlContainer, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'ma-date-picker',
@@ -15,14 +16,18 @@ export class MaDatePickerComponent extends MaInputComponent implements OnInit, O
   @Input() name: string;
   @Input() id: any;
   @Input() readOnly: boolean;
+  @Input() inputReadOnly: boolean;
   @Input() disabled: boolean;
   @Input() required: boolean;
+  @Input() isDisabledInput: boolean;
   @Input() isDateObject: boolean;
   @Input() pickerFocusOpen: boolean;
   @Input() minDate: any;
   @Input() maxDate: any;
+  @Input() disabledMasking: boolean;
   @Input() placeholder: string;
   @Input() displayDateFormat: string;
+  @Input() formControlName: string;
   @Output() maDateOnChange = new EventEmitter<Date>();
   @Output() ngModelChange = new EventEmitter<Date>();
   displayDate: string;
@@ -30,6 +35,8 @@ export class MaDatePickerComponent extends MaInputComponent implements OnInit, O
   maskType: string;
   isMasking: boolean;
   unMaskValue: boolean;
+  form: any;
+  formControlResetRequired: boolean;
   @HostListener('document:click', ['$event'])
   clickout(event: any) {
     if (!this.eRef.nativeElement.contains(event.target)) {
@@ -37,18 +44,40 @@ export class MaDatePickerComponent extends MaInputComponent implements OnInit, O
     }
   }
 
-  constructor(private eRef: ElementRef) {
+  constructor(private eRef: ElementRef,
+    @Optional() @Host() public parent: ControlContainer) {
     super();
     this.initialize();
   }
 
   ngOnInit() {
+    this.formControlResetRequired = true;
+    this.controlMarkAsPristine();
   }
 
   ngOnChanges() {
-    this.checkMaskType();
+    if (!this.disabledMasking) {
+      this.checkMaskType();
+    }
     this.minDate = this.minDate ? (this.isValidDate(this.minDate) ? this.minDate : new Date(Date.parse(this.minDate))) : null;
     this.maxDate = this.maxDate ? (this.isValidDate(this.maxDate) ? this.maxDate : new Date(Date.parse(this.maxDate))) : null;
+  }
+
+  controlMarkAsPristine(): void {
+    setTimeout(() => {
+      this.form = (this.parent as NgForm);
+      if (this.formControlName) {
+        if (this.formControlResetRequired && this.form && this.form.form.controls[this.formControlName ? this.formControlName : this.name]) {
+          this.form.form.controls[this.formControlName ? this.formControlName : this.name].markAsPristine();
+          this.formControlResetRequired = false;
+        }
+      } else {
+        if (this.formControlResetRequired && this.form && this.form.controls[this.formControlName ? this.formControlName : this.name]) {
+          this.form.controls[this.formControlName ? this.formControlName : this.name].markAsPristine();
+          this.formControlResetRequired = false;
+        }
+      }
+    }, 100);
   }
 
   checkMaskType(): void {
@@ -87,7 +116,9 @@ export class MaDatePickerComponent extends MaInputComponent implements OnInit, O
   }
 
   writeValue(value: any): void {
-    value = isString(value) ? (value.length === this.displayDateFormat.length ? value : null) : value;
+    if (!this.disabledMasking) {
+      value = isString(value) ? (value.length === this.displayDateFormat.length ? value : null) : value;
+    }
     if (value) {
       this.value = this.ngModel = isString(value) ? new Date(Date.parse(value)) : (isNaN(value.getTime()) ? null : value);
       this.initDate();
@@ -143,7 +174,9 @@ export class MaDatePickerComponent extends MaInputComponent implements OnInit, O
 
   openDatePicker(): void {
     this.onTouched();
-    this.datePickerOpen = !this.datePickerOpen;
+    if (!this.readOnly && !this.disabled) {
+      this.datePickerOpen = !this.datePickerOpen;
+    }
   }
 
   closeDatePicker(): void {
@@ -172,7 +205,8 @@ export class MaDatePickerComponent extends MaInputComponent implements OnInit, O
     this.minDate = this.minDate ? (isNaN(this.minDate.getTime()) ? new Date() : new Date(this.minDate)) : new Date();
     if (this.minDate && this.maxDate && this.ngModel) {
       this.checkMinMaxDate();
-      if (((this.ngModel.setHours(0, 0, 0, 0) > this.maxDate.setHours(0, 0, 0, 0)) || (this.ngModel.setHours(0, 0, 0, 0) < this.minDate.setHours(0, 0, 0, 0)))) {
+
+      if (((new Date(this.ngModel).setHours(0, 0, 0, 0) > this.maxDate.setHours(0, 0, 0, 0)) || (new Date(this.ngModel).setHours(0, 0, 0, 0) < this.minDate.setHours(0, 0, 0, 0)))) {
         this.ngModel = null;
         this.displayDate = null;
       }

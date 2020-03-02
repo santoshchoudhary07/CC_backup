@@ -18,4 +18,8 @@ export class DynamicModalComponent implements OnInit {
   close() {
     this.isOpen = false;
   }
+
+  isModalOpenChange(){
+    console.log('close')
+  }
 }

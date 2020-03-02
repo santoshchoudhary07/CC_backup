@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class ModalComponent implements OnInit {
   modalOpen: boolean = true;
   buttonList: any[];
-
+  closeModal: boolean = true;
   constructor() {
     this.buttonList = [
       { buttonName: 'Cancel', value: false, cssClass: 'cancel-button-css-class' },
@@ -18,9 +18,12 @@ export class ModalComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    setTimeout(() => {
+      this.closeModal = false;
+    }, 8000);
   }
 
   modalClose(button: any): void {
-    console.log(button)
+    console.log('sfg', button)
   }
 }

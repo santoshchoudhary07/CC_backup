@@ -2,30 +2,57 @@
   <div class="form-body">
     <div class="form-row form-row-inline form-row-gutters">
       <div class="form-label">Select</div> -->
-      <!-- <label for="sourceType">Source Type</label> -->
-      <!-- <div class="form-controls">
+<!-- <label for="sourceType">Source Type</label> -->
+<!-- <div class="form-controls">
         <div class="section-body">
           <ma-select [(ngModel)]="name" [optionsList]="selectList" [optionId]="'id'" [renderProperty]="'title'"
             [readOnly]=false [disabled]=false [disableSelect]=false [required]=false [placeholder]="''"
             [provideObject]=false (onMaSelectChange)="changeProperty($event)"></ma-select>
         </div>
       </div> -->
-      <!-- <div class="form-controls"> -->
-          <!-- <div class="section-body"> -->
+<!-- <div class="form-controls"> -->
+<!-- <div class="section-body"> -->
 
-        <!-- <ma-select [(ngModel)]="name" [optionsList]="selectList" [optionId]="'id'" [renderProperty]="'title'"
+<!-- <ma-select [(ngModel)]="name" [optionsList]="selectList" [optionId]="'id'" [renderProperty]="'title'"
         [readOnly]=false [disabled]=false [disableSelect]=false [required]=false [placeholder]="''"
         [provideObject]=false (onMaSelectChange)="changeProperty($event)"></ma-select> -->
-      <!-- </div> -->
-      <!-- </div>
+<!-- </div> -->
+<!-- </div>
      
     </div>
   </div> -->
-  <ma-select [(ngModel)]="name"  [optionsList]="list"
-  [readOnly]=false [disabled]=false [disableSelect]=false [required]=false [placeholder]="'please select'"
-  [provideObject]=false (onMaSelectChange)="changeProperty($event)"></ma-select>
+<form (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm">
+  <div class="form">
+    <div class="section-body">
+      <h4>Template Driven Form</h4>
+      <div class="form-row">
+        <div class="form-label">Email {{email?.pristine}}</div>
+        <div class="form-controls">
 
-  <form [formGroup]="profileForm">
+          <ma-select [(ngModel)]="name" [name]="'email'" [optionsList]="list" [optionId]="'id'" #email="ngModel" [renderProperty]="'name'"
+            [readOnly]=false [disabled]=false [disableSelect]=false [required]=true [placeholder]="'please select'"
+            [provideObject]=false (onMaSelectChange)="changeProperty($event)"></ma-select>
+
+          <!-- <div style="color: red;" *ngIf="loginForm.invalid && loginForm.controls['email'].errors.pattern">
+            Email is not valid!
+          </div> -->
+          <div  *ngIf="email?.valid && email?.pristine"
+          style="color: red;">
+       Name is required
+     </div>
+          <!-- <div style="color: red;" *ngIf="(!email?.valid && (email?.pristine))">
+              Email is required
+          </div> -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-small" type="submit" class="">Submit</button>
+</form>
+
+
+<form [formGroup]="profileForm">
   <label>
     First Name:
     <input type="text" formControlName="firstName">
@@ -46,18 +73,18 @@
               <div class="form-controls">
                 <!-- <ma-text formControlName="name" [(ngModel)]="name" [required]=true [readonly]=false [disabled]=false [placeholder]="'Enter name'" [id]="'text-id'"
                   [name]="'text-name'" (maTextOnChange)="maTextOnChange($event)" (blur)="blur()"></ma-text> -->
-                  <!-- <ma-select formControlName="name"   [optionsList]="selectList" [optionId]="'id'" [renderProperty]="'title'"
+                <!-- <ma-select formControlName="name"   [optionsList]="selectList" [optionId]="'id'" [renderProperty]="'title'"
                   [readOnly]=false [disabled]=false [disableSelect]=false [required]=false [placeholder]="'please select'"
                   [provideObject]=false (onMaSelectChange)="changeProperty($event)"></ma-select> -->
-                  <!-- <div class="color-attention "
+                <!-- <div class="color-attention "
                   *ngIf="profileForm.controls['name'].touched &&  !profileForm.controls['name'].valid && profileForm.controls['name'].errors.required">
                   name is required.
               </div> -->
-              <!-- <div *ngIf="profileForm.invalid && formControls.name.touched && formControls.name?.errors?.required">Email is required</div> -->
-              <div class="color-attention "
-              *ngIf="profileForm.controls['name'].touched &&  !profileForm.controls['name'].valid && profileForm.controls['name'].errors.required">
-              Title is required.
-          </div>
+                <!-- <div *ngIf="profileForm.invalid && formControls.name.touched && formControls.name?.errors?.required">Email is required</div> -->
+                <div class="color-attention "
+                  *ngIf="profileForm.controls['name'].touched &&  !profileForm.controls['name'].valid && profileForm.controls['name'].errors.required">
+                  Title is required.
+                </div>
               </div>
             </div>
           </div>
@@ -66,5 +93,5 @@
     </div>
   </div>
   <button (click)="submit()" [disabled]="profileForm.invalid">submit</button>
-  <button (click)="reset()" >submit</button>
+  <button (click)="reset()">submit</button>
 </form>

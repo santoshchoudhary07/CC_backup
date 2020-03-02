@@ -9,7 +9,7 @@
               <!-- <ma-dates [(ngModel)]="date" [minDate]="minDate" [maxDate]="maxDate" [disabled]=false [readOnly]=false [name]="'name'"
                 [id]="'id'" [placeholder]="'MM/dd/yyyy'" [displayDateFormat]="'MM/dd/yyyy'" [required]=false (maDateOnChange)="maDateOnChange($event)"></ma-dates> -->
 
-              <!-- <ma-date-picker [(ngModel)]="date" [minDate]="minDate" [maxDate]="maxDate" [disabled]=false [readOnly]=false [name]="'name'"
+              <!-- <ma-date-picker  [(ngModel)]="date" [minDate]="minDate" [maxDate]="maxDate" [disabled]=false [readOnly]=false [name]="'name'"
                 [id]="'id'" [displayDateFormat]="'MM/dd/yyyy'" [placeholder]="'MM/dd/yyyy'" [required]=false (maDateOnChange)="maDateOnChange($event)"></ma-date-picker> -->
           </div>
         </div>
@@ -27,6 +27,35 @@
     </div>
   </div>
 </div>
+
+<form (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm">
+  <div class="form">
+    <div class="section-body">
+      <h4>Template Driven Form</h4>
+      <div class="form-row">
+        <div class="form-label">Email {{name?.pristine}}</div>
+        <div class="form-controls">
+
+            <ma-date-picker  [(ngModel)]="date" [isDisabledInput]="true" [inputReadOnly]="true" [minDate]="minDate" [maxDate]="maxDate" [disabled]=false [readOnly]=true [name]="'name'" #name="ngModel"
+            [id]="'id'" [displayDateFormat]="'MM/dd/yyyy'" [placeholder]="'MM/dd/yyyy'" [required]=false (maDateOnChange)="maDateOnChange($event)"></ma-date-picker>
+
+          <!-- <div style="color: red;" *ngIf="loginForm.invalid && loginForm.controls['email'].errors.pattern">
+            Email is not valid!
+          </div> -->
+          <div  *ngIf="email?.valid && email?.pristine"
+          style="color: red;">
+       Name is required
+     </div>
+          <!-- <div style="color: red;" *ngIf="(!email?.valid && (email?.pristine))">
+              Email is required
+          </div> -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-small" type="submit" class="">Submit</button>
+</form>
 
 <form [formGroup]="profileForm">
     <label>
@@ -47,9 +76,9 @@
               <div class="form-row">
                 <label class="form-label">start Date</label>
                 <div class="form-controls">
-                    <ma-date-picker formControlName="name"
+                    <!-- <ma-date-picker formControlName="name"
                      [minDate]="minDate" [maxDate]="maxDate"  [disabled]=false [readOnly]=false [name]="'name'"
-                    [id]="'id'" [displayDateFormat]="'MM/dd/yyyy'" [placeholder]="'MM/dd/yyyy'" [required]=false (maDateOnChange)="maDateOnChange($event)"></ma-date-picker>
+                    [id]="'id'" [displayDateFormat]="'MM/dd/yyyy'" [placeholder]="'MM/dd/yyyy'" [required]=false (maDateOnChange)="maDateOnChange($event)"></ma-date-picker> -->
                 <div class="color-attention "
                 *ngIf="profileForm.controls['name'].touched &&  !profileForm.controls['name'].valid && profileForm.controls['name'].errors.required">
                 Title is required.

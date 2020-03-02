@@ -4,7 +4,35 @@
 <!-- <ma-multi-select [(ngModel)]="name" [multiSelectList]="list" [renderProperty]="'id'" [optionId]="'id'" [readonly]=false
     [required]=false [disabled]=false [availableLabel]="'available'" [selectedLabel]="'select'" [name]="'name'" [id]="'select-id'"
     (onMaMultiSelectChange)="onMaMultiSelectChange($event)"></ma-multi-select> -->
+<form (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm">
+    <div class="form"> 
+        <div class="accordion"> sdfdsf  {{golf?.pristine}}
+            <div class="accordion-section accordion-section-expanded">
+                <div class="accordion-body">
+                    <div class="form-body">
+                        <div class="form-row">
+                            <!-- <app-multi-select formControlName="name" [multiSelectList]="list" [renderProperty]="'id'" [optionId]="'id'" [readonly]=false
+                                [required]=false [disabled]=false [availableLabel]="'available'" [selectedLabel]="'select'" [name]="'name'"
+                                [id]="'select-id'" (onMaMultiSelectChange)="onMaMultiSelectChange($event)"></app-multi-select> -->
 
+                            <!-- <ma-multi-select formControlName="name" [multiSelectList]="list" [renderProperty]="'id'" [optionId]="'id'" [readonly]=false
+                                [required]=false [disabled]=false [availableLabel]="'available'" [selectedLabel]="'select'" [name]="'name'"
+                                [id]="'select-id'" (onMaMultiSelectChange)="onMaMultiSelectChange($event)" [isAsteriskLabel]="false"></ma-multi-select> -->
+
+                                <ma-multi-select [(ngModel)]="name" #golf="ngModel"  [multiSelectList]="list" [renderProperty]="'id'"
+                                [optionId]="'id'" [readonly]=false [required]=false [disabled]=false
+                                [availableLabel]="'available'" [selectedLabel]="'select'" [name]="'golf'" [id]="'select-id'"
+                                (onMaMultiSelectChange)="onMaMultiSelectChange($event)" [isAsteriskLabel]="false">
+                            </ma-multi-select>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-small" type="submit" class="">Submit</button>
+</form>
 <form [formGroup]="profileForm">
     <label>
         First Name:
@@ -28,7 +56,7 @@
 
                             <!-- <ma-multi-select formControlName="name" [multiSelectList]="list" [renderProperty]="'id'" [optionId]="'id'" [readonly]=false
                                 [required]=false [disabled]=false [availableLabel]="'available'" [selectedLabel]="'select'" [name]="'name'"
-                                [id]="'select-id'" (onMaMultiSelectChange)="onMaMultiSelectChange($event)"></ma-multi-select> -->
+                                [id]="'select-id'" (onMaMultiSelectChange)="onMaMultiSelectChange($event)" [isAsteriskLabel]="false"></ma-multi-select> -->
 
                         </div>
                     </div>

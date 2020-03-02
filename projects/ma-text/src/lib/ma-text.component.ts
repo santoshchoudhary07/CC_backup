@@ -1,7 +1,8 @@
-import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges, OnChanges, AfterViewChecked, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges, OnChanges, AfterViewChecked, ChangeDetectorRef, Optional, Host } from '@angular/core';
 
 import { MaInputComponent, MakeProvider } from './ma-inputs';
 import { ControlValueAccessor } from './control-value-accessor';
+import { ControlContainer, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'ma-text',
@@ -22,18 +23,22 @@ export class MaTextComponent extends MaInputComponent implements OnInit, OnChang
   @Input() id: string;
   @Input() name: string;
   @Input() maxlength: number;
+  @Input() formControlName: any;
   @Output() ngModelChange = new EventEmitter<string>();
   @Output() maTextOnChange = new EventEmitter<string>();
   @Output() blur = new EventEmitter<any>();
 
   initialized: boolean;
-
-  constructor(private changeDetectorRef: ChangeDetectorRef) {
+  form: any;
+  formControlResetRequired: boolean;
+  constructor(private changeDetectorRef: ChangeDetectorRef, @Optional() @Host() public parent: ControlContainer) {
     super();
   }
 
   ngOnInit() {
     this.initialized = true;
+    this.formControlResetRequired = true;
+    this.controlMarkAsPristine();
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -44,6 +49,23 @@ export class MaTextComponent extends MaInputComponent implements OnInit, OnChang
 
   ngAfterViewChecked(): void {
     this.changeDetectorRef.detectChanges();
+  }
+
+  controlMarkAsPristine(): void {
+    setTimeout(() => {
+      this.form = (this.parent as NgForm);
+      if (this.formControlName) {
+        if (this.formControlResetRequired && this.form && this.form.form.controls[this.formControlName ? this.formControlName : this.name]) {
+          this.form.form.controls[this.formControlName ? this.formControlName : this.name].markAsPristine();
+          this.formControlResetRequired = false;
+        }
+      } else {
+        if (this.formControlResetRequired && this.form && this.form.controls[this.formControlName ? this.formControlName : this.name]) {
+          this.form.controls[this.formControlName ? this.formControlName : this.name].markAsPristine();
+          this.formControlResetRequired = false;
+        }
+      }
+    }, 100);
   }
 
   updateValue(): void {
