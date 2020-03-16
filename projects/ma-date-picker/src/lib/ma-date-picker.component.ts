@@ -202,7 +202,7 @@ export class MaDatePickerComponent extends MaInputComponent implements OnInit, O
 
   private checkInvalidDate(): void {
     this.maxDate = this.maxDate ? (isNaN(this.maxDate.getTime()) ? null : new Date(this.maxDate)) : null;
-    this.minDate = this.minDate ? (isNaN(this.minDate.getTime()) ? new Date() : new Date(this.minDate)) : new Date();
+    this.minDate = this.minDate ? (isNaN(this.minDate.getTime()) ? new Date() : new Date(this.minDate)) : null;
     if (this.minDate && this.maxDate && this.ngModel) {
       this.checkMinMaxDate();
 

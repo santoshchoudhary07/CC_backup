@@ -54,7 +54,6 @@ export class MaDateComponent extends MaInputComponent implements OnInit, OnChang
     ngOnChanges(changes: SimpleChanges): void {
         this.minDate = this.minDate ? (this.isValidDate(this.minDate) ? this.minDate : new Date(Date.parse(this.minDate))) : null;
         this.maxDate = this.maxDate ? (this.isValidDate(this.maxDate) ? this.maxDate : new Date(Date.parse(this.maxDate))) : null;
-
     }
 
     initDate(): void {

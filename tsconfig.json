@@ -126,6 +126,12 @@
       ],
       "ma-date-time/*": [
         "dist/ma-date-time/*"
+      ],
+      "ma-assignment": [
+        "dist/ma-assignment"
+      ],
+      "ma-assignment/*": [
+        "dist/ma-assignment/*"
       ]
     }
   },

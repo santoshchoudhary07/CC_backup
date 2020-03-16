@@ -22,6 +22,7 @@ import { PasswordComponent } from './password/password.component';
 import { MaUrlComponent } from './ma-url/ma-url.component';
 import { DynamicModalComponent } from './dynamic-modal/dynamic-modal.component';
 import { CustomPatternComponent } from './custom-pattern/custom-pattern.component';
+import { AssignmentComponent } from './assignment/assignment.component';
 
 const routes: Routes = [
   // {
@@ -90,6 +91,9 @@ const routes: Routes = [
   {
     path: 'dynamic-modal', component: DynamicModalComponent
   },
+  {
+    path: 'assignment', component: AssignmentComponent
+  }
   // {
   //   path: 'custom-pattern', component: CustomPatternComponent
   // }

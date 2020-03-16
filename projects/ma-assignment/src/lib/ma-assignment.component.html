@@ -1,0 +1,94 @@
+<div class="form-body" *ngIf="assignment">
+    <h1>Assignment</h1>
+    <div class="form-row">
+        <label for="set-as-default">Filter</label>
+        <div class="select">
+            <select type="number" name="selectedFilter" [(ngModel)]="selectedFilter" (ngModelChange)="onFilterChange()">
+                <option></option>
+                <option *ngFor="let filter of assignment.filterTypes;" [ngValue]="filter">{{filter.name}}
+                </option>
+            </select>
+        </div>
+        <!-- /.checkbox -->
+    </div>
+    <div class="form-row">
+        <div class="table table-properties-main">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <colgroup>
+                    <col width="42">
+                    <col width="25">
+                    <col width="55">
+                    <col width="30">
+                    <col width="240">
+                    <col width="130">
+                    <col width="110">
+                    <col width="73">
+                    <col width="">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th colspan="9">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="check-1" id="check-1" [(ngModel)]="allChecked"
+                                        (change)="toggleAllChecked()" [disabled]="disabled"
+                                        [ngClass]="isParentIndeterminate?'indeterminate':''"
+                                        [indeterminate]="isParentIndeterminate">
+                                    <span></span>
+                                </label>
+                            </div>
+                            <!-- /.checkbox -->
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ng-container *ngFor="let primary of assignment.assignments;trackBy:trackById; let p = index;">
+                        <ng-container *ngIf="primary.isVisible">
+                            <tr class="table-row-primary">
+                                <td>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="check-2-{{p}}" id="check-2-{{p}}"
+                                                [(ngModel)]="primary.assigned"
+                                                (change)="primary.check($event, p, setParentCheckbox, primary);emitAssignment()"
+                                                [ngClass]="primary.indeterminate?'indeterminate':''"
+                                                [disabled]="disabled" [indeterminate]="primary.indeterminate">
+                                            <span></span>
+                                        </label>
+                                    </div>
+                                    <!-- /.checkbox -->
+                                </td>
+                                <td colspan="8" (click)="primary.collapsed=!primary.collapsed">
+                                    {{primary.name}} ({{primary.assignedChildren}} of {{primary.assignments.length}} assigned)
+                                    <span class="accordion-status alignright" [ngClass]="{'expanded': primary.collapsed}"></span>
+                                </td>
+                            </tr>
+                            <ng-container *ngIf="primary.collapsed">
+                                <ng-container *ngFor="let secondary of primary.assignments;trackBy:trackById; let s = index;">
+                                    <ng-container *ngIf="secondary.isVisible">
+                                        <tr class="table-row-secondary">
+                                            <td>&nbsp;</td>
+                                            <td>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" name="check-3-{{p}}-{{s}}"
+                                                            id="check-3-{{p}}-{{s}}" [(ngModel)]="secondary.assigned"
+                                                            (change)="secondary.check($event, p, setParentCheckbox, primary, secondary);emitAssignment()"
+                                                            [disabled]="disabled">
+                                                        <span></span>
+                                                    </label>
+                                                </div>
+                                                <!-- /.checkbox -->
+                                            </td>
+                                            <td colspan="7">{{secondary.name}}</td>
+                                        </tr>
+                                    </ng-container>
+                                </ng-container>
+                            </ng-container>
+                        </ng-container>
+                    </ng-container>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

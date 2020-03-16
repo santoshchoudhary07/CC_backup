@@ -36,17 +36,17 @@ export class DatePickerComponent extends MaInputComponent implements OnInit, OnC
 
   ngOnChanges() {
     this.endDate = this.endDate ? (isNaN(this.endDate.getTime()) ? null : new Date(this.endDate)) : null;
-    this.startDate = this.startDate ? (isNaN(this.startDate.getTime()) ? this.today : new Date(this.startDate)) : this.today;
+    this.startDate = this.startDate ? (isNaN(this.startDate.getTime()) ? this.today : new Date(this.startDate)) : null;
     if (this.endDate) {
       this.checkMinMaxDate();
     } else {
-      this.endDate = new Date(new Date().setDate(this.today.getDate() + 365));
+      this.endDate = new Date(new Date().setFullYear(this.today.getFullYear() + 5));
     }
     if (this.startDate) {
       this.checkMinMaxDate();
     }
     this.ngModel = (this.ngModel ? isString(this.ngModel) ? new Date(this.ngModel) : (isNaN(this.ngModel.getTime()) ? new Date() : new Date(this.ngModel)) : new Date());
-    if (((this.ngModel.setHours(0, 0, 0, 0) > this.endDate.setHours(0, 0, 0, 0)) || (this.ngModel.setHours(0, 0, 0, 0) < this.startDate.setHours(0, 0, 0, 0)))) {
+    if (((this.ngModel.setHours(0, 0, 0, 0) > this.endDate.setHours(0, 0, 0, 0)) || (this.ngModel.setHours(0, 0, 0, 0) < (this.startDate && this.startDate.setHours(0, 0, 0, 0))))) {
       this.ngModel = new Date();
     }
     this.calendarDate = new Date(this.ngModel);
@@ -56,6 +56,7 @@ export class DatePickerComponent extends MaInputComponent implements OnInit, OnC
 
   initCalendar(): void {
     this.years = [];
+    this.startDate = this.startDate ? this.startDate : new Date('01/01/1900');
     for (let y = this.startDate.getFullYear(); y <= this.endDate.getFullYear(); y++) {
       this.years.push({ id: y, name: y.toString() });
     }
@@ -108,12 +109,14 @@ export class DatePickerComponent extends MaInputComponent implements OnInit, OnC
   }
 
   private checkMinMaxDate(): void {
-    if (this.startDate.setHours(0, 0, 0, 0) > this.endDate.setHours(0, 0, 0, 0)) {
-      this.startDate = this.today;
-    }
-
-    if (this.endDate.setHours(0, 0, 0, 0) < this.today.setHours(0, 0, 0, 0)) {
-      this.endDate = this.today;
+    if (this.startDate && this.endDate) {
+      if (this.startDate.setHours(0, 0, 0, 0) > this.endDate.setHours(0, 0, 0, 0)) {
+        this.startDate = this.today;
+      }
+  
+      if (this.endDate.setHours(0, 0, 0, 0) < this.today.setHours(0, 0, 0, 0)) {
+        this.endDate = this.today;
+      }
     }
   }
 

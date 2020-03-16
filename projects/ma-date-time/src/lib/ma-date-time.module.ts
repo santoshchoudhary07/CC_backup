@@ -8,10 +8,9 @@ import { MaDayComponent } from './ma-day.component';
 import { FocusDirective } from './focus.directive';
 import { MaDateComponent } from './ma-date.component';
 import { MaSelectComponent } from './ma-select.component';
-import { MaskDirective } from './mask.directive';
 
 @NgModule({
-  declarations: [MaDateTimeComponent, DatePickerComponent, MaDayComponent, FocusDirective, MaDateComponent, MaSelectComponent, MaskDirective],
+  declarations: [MaDateTimeComponent, DatePickerComponent, MaDayComponent, FocusDirective, MaDateComponent, MaSelectComponent],
   imports: [CommonModule, FormsModule],
   exports: [MaDateTimeComponent, DatePickerComponent, MaDayComponent, FocusDirective, MaDateComponent, MaSelectComponent]
 })

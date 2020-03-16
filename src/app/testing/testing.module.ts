@@ -73,6 +73,7 @@ import { MaCheckboxModule } from 'projects/ma-checkbox/src/public-api';
 
 // import { MaMultiSelectModule } from '../ma-multi-select/ma-multi-select.module';
 import { MaMultiSelectModule } from '../../../projects/ma-multi-select/src/lib/ma-multi-select.module';
+import { MaAssignmentModule } from '../../../projects/ma-assignment/src/lib/ma-assignment.module';
 
 import { MaRadioButtonModule } from 'projects/ma-radio-button/src/public-api';
 
@@ -96,12 +97,13 @@ import { AutoCompleteComponent } from './auto-complete/auto-complete.component';
 import { MaTableModule } from 'projects/ma-table/src/public-api';
 import { MaSelectModule } from 'projects/ma-select/src/public-api';
 import { PaginationModule } from 'projects/pagination/src/public-api';
+import { AssignmentComponent } from './assignment/assignment.component';
 // import { MaAsteriskModule } from 'ma-asterisk';
 @NgModule({
   declarations: [TableComponent, AutoCompleteComponent, MaSearchPipe, DatePickerComponent, DateTimeComponent,
     SelectComponent, ModalComponent, MaskingComponent, ToggleComponent, MaTextAreaComponent, PhotosComponent,
     MaTextComponent, MaAccordionComponent, NumbersComponent, CheckboxComponent, MultiSelectComponent, RadioComponent,
-    PasswordConfirmationComponent, MaTreeComponent, PasswordComponent, MaUrlComponent, DynamicModalComponent, CustomPatternComponent],
+    PasswordConfirmationComponent, MaTreeComponent, PasswordComponent, MaUrlComponent, DynamicModalComponent, CustomPatternComponent, AssignmentComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -140,6 +142,7 @@ import { PaginationModule } from 'projects/pagination/src/public-api';
     // MaUrlModule,
     // MaDynamicModalModule,
     // MaCustomPatternModule
+    MaAssignmentModule
   ],
   providers: [MaSearchPipe]
 })

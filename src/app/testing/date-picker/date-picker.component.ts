@@ -15,7 +15,7 @@ export class DatePickerComponent implements OnInit {
 
   constructor(private fb: FormBuilder) {
     this.date = new Date();
-    this.minDate = new Date('05/20/2019');
+    this.minDate = '05/20/2019';
     this.maxDate = new Date('11/20/2020');
   }
 
